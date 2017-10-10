@@ -58,11 +58,25 @@ func (this *Meme) kind() (str string) {
 	return "meme"
 }
 
-func GetMemeFromId(id string) (objs *User, err error) {
+func GetMemeFromId(id string) (objs *Meme, err error) {
 	ctx := context.Background()
 
 	key := datastore.NameKey("meme", id, nil)
-	var data User
+	var data Meme
+	er := shared.DatastoreClient.Get(ctx, key, &data)
+
+	if er != nil {
+		return nil, er
+	}
+
+	return &data, nil
+
+}
+
+func GetMemeFromKey(key *datastore.Key) (objs *Meme, err error) {
+	ctx := context.Background()
+
+ 	var data Meme
 	er := shared.DatastoreClient.Get(ctx, key, &data)
 
 	if er != nil {

@@ -14,6 +14,7 @@ type UploadController struct {
 }
 
 func (c *UploadController) Get() {
+	c.Authorize()
 	c.TplName = "upload.tpl"
 }
 

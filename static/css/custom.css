@@ -47,3 +47,17 @@ textarea.form-control:focus, textarea.form-control:active {
 .form-control {
     border: 1px solid #636363;
 }
+
+.btn-light{
+    background-color:   #ebebeb !important;
+    color: #000;
+}
+.btn-light:hover{
+    background-color: #ffffff !important;
+    color: #000;
+}
+
+.has-icon i{
+    float: left;
+    margin-right: 10px;
+}

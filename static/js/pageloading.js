@@ -8,8 +8,9 @@ $('#pjax-container').on('pjax:start', function() {
     NProgress.start();
 });
 
-$('#pjax-container').on('pjax:end',   function() {
+$('#pjax-container').on('pjax:success',   function() {
     NProgress.done();
     $('#pjax-container').fadeOut(0);
     $('#pjax-container').fadeIn(500);
+
 });

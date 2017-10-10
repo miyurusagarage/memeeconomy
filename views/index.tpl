@@ -32,8 +32,8 @@
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-inverse " color-on-scroll="400">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="http://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip"
-               title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+            <a class="navbar-brand" href="/" rel="tooltip" href="/" data-pjax="#pjax-container"
+                 data-placement="bottom" target="_blank">
                 Meme Economy
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"
@@ -47,7 +47,12 @@
         <div class="collapse navbar-collapse justify-content-end" id="navigation"
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
-
+                <li class="nav-item">
+                    <a class="nav-link btn btn-light btn-round" href="/uploadmeme" data-pjax="#pjax-container"  >
+                        <i class="now-ui-icons arrows-1_share-66"></i>
+                        <p style="color:#333">Upload Meme</p>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
                        href="https://twitter.com/CreativeTim" target="_blank">
