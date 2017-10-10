@@ -30,6 +30,7 @@ func (this *User) Save() (err error) {
 		fmt.Println(err)
 		return err
 	}
+	this.Key = key
 	return nil
 }
 
