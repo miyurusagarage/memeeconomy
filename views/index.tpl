@@ -27,6 +27,7 @@
 </head>
 
 <body class="index-page">
+<body class="index-page">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-inverse " color-on-scroll="400">
     <div class="container">

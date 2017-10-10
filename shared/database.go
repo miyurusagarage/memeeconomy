@@ -6,13 +6,11 @@ import (
 	"log"
 )
 
-var(
+var (
 	DatastoreClient *datastore.Client
 )
 
-
-
-func  ConnectGDS(projId string){
+func ConnectGDS(projId string) {
 	var err error
 	ctx := context.Background()
 	DatastoreClient, err = datastore.NewClient(ctx, projId)

@@ -6,7 +6,6 @@ import (
 	"github.com/miyurusagarage/memeeconomy/shared"
 	"fmt"
 	"time"
-
 	"github.com/nu7hatch/gouuid"
 )
 
@@ -15,7 +14,7 @@ type Meme struct {
 	CreatedDate         time.Time
 	CreatedUserId       string
 	CurrentInvestments  int
-	description         string
+	Description         string
 	ExpirationDate      time.Time
 	ImagePath           string
 	InternalLikes       int

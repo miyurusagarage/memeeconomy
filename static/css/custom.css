@@ -1,0 +1,49 @@
+body{
+    background: #2c2c2c;
+    color: #d7d7d7;
+}
+
+.navbar a:not(.btn):not(.dropdown-item) {
+    color: #ffffff;
+}
+
+.section{
+    background: #2c2c2c
+}
+
+h1, h2{
+    color: #ffffff;
+}
+
+h3,h4,h5,p{
+    color: #d7d7d7;
+}
+
+input{
+    color: #d7d7d7;
+}
+
+.form-control:focus {
+    background: #1e1e1e;
+}
+textarea.form-control {
+    border: 1px solid #636363;
+    border-radius: 16px;
+}
+
+textarea.form-control:focus, textarea.form-control:active {
+    border: 1px solid #f96332;
+}
+
+.btn-primary:hover {
+    background-color: #f73d00;
+    color: #ffffff;
+}
+
+.btn{
+    color: #fff;
+}
+
+.form-control {
+    border: 1px solid #636363;
+}

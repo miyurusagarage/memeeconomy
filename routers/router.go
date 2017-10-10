@@ -7,5 +7,7 @@ import (
 
 func init() {
     beego.Router("/", &controllers.MainController{})
-    beego.Router("/berzerkzerglongstringsabcdesanchez", &controllers.UploadController{})
+    beego.Router("/uploadmeme", &controllers.UploadController{})
+    beego.Router("/uploadimage", &controllers.UploadImageController{})
+
 }
