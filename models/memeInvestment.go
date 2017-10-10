@@ -11,18 +11,18 @@ import (
 )
 
 type MemeInvestment struct {
-	Key                 *datastore.Key `datastore:"__key__"`
-	BidAmount	int
-	CreatedDate         time.Time
-	MomentsInternalLikes	int
+	Key                   *datastore.Key `datastore:"__key__"`
+	BidAmount             int
+	CreatedDate           time.Time
+	MomentsInternalLikes  int
 	MomentsMemeInvestment int
-	MomentsSocialLikes int
-	MomentsSocialShares int
-	InvestmentPoints int
-	MemeId string
-	PayoutAmount int
-	PayoutDate time.Time
-	UserId string
+	MomentsSocialLikes    int
+	MomentsSocialShares   int
+	InvestmentPoints      int
+	MemeId                string
+	PayoutAmount          int
+	PayoutDate            time.Time
+	UserId                string
 }
 
 func (this *MemeInvestment) Save() (err error) {
@@ -40,7 +40,7 @@ func (this *MemeInvestment) Save() (err error) {
 }
 
 func (this *MemeInvestment) Update() (err error) {
- 	ctx := context.Background()
+	ctx := context.Background()
 	if _, err := shared.DatastoreClient.Put(ctx, this.Key, this); err != nil {
 		fmt.Println(err)
 		return err
