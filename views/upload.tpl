@@ -1,10 +1,10 @@
 <div class="container" style=" ">
-    <script src="static/js/dropzone.js"></script>
+
     <link rel="stylesheet" href="static/css/dropzone.css">
     <h2>Upload Meme</h2>
 
     <form action="/uploadimage" enctype="multipart/form-data" method="post"
-          class="col-sm-12 dropzone"
+          class="col-sm-12"
           id="my-awesome-dropzone">
         <input type="hidden" id="dropzoneImageId" name="imgId" value=""/>
 
@@ -31,41 +31,12 @@
 
     <script>
 
-        $(document).ready( function () {
-
-            onPageLoad();
-            // code here
+        $.getScript('static/js/dropzone.js', function(){
+            onPageLoad()
         });
 
-        Dropzone.options.myAwesomeDropzone = {
-            paramName: "file", // The name that will be used to transfer the file
-            maxFilesize: 5, // MB
-            thumbnailWidth: null,
-
-            thumbnailHeight: 357,
-            maxFiles: 1,
-            dictDefaultMessage: "drop your memes here",
-            maxfilesexceeded: function (file) {
-                this.removeAllFiles();
-                this.addFile(file);
-
-            },
-            accept: function (file, done) {
-                if (file.name == "justinbieber.jpg") {
-                    done("Naha, you don't.");
-                }
-                else {
-                    done();
-                    uuid = guid();
-                    $('#imgId').val(uuid)
-                    $('#dropzoneImageId').val(uuid)
-
-                }
-            }
-
-        };
-
         function onPageLoad() {
+            Dropzone.autoDiscover = false;
             function guid() {
                 function s4() {
                     return Math.floor((1 + Math.random()) * 0x10000)
@@ -81,6 +52,36 @@
 
             $('#imgId').val(uuid)
             $('#dropzoneImageId').val(uuid)
+
+            Dropzone.options.myAwesomeDropzone = {
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 5, // MB
+                thumbnailWidth: null,
+                thumbnailHeight: 357,
+                maxFiles: 1,
+                dictDefaultMessage: "drop your memes here",
+                maxfilesexceeded: function (file) {
+                    this.removeAllFiles();
+                    this.addFile(file);
+
+                },
+                accept: function (file, done) {
+                    if (file.name == "justinbieber.jpg") {
+                        done("Naha, you don't.");
+                    }
+                    else {
+                        done();
+                        uuid = guid();
+                        $('#imgId').val(uuid)
+                        $('#dropzoneImageId').val(uuid)
+
+                    }
+                }
+            };
+
+            $('#my-awesome-dropzone').addClass('dropzone')
+            var myDropzone = new Dropzone("#my-awesome-dropzone");
+
         }
 
     </script>

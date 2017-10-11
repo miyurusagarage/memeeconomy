@@ -21,7 +21,7 @@ func (c *MemesController) GetRecentBlock() {
 		return
 	}
 	memes, total, _ := models.GetRecentMemes(offset-2, 1)
-	println(memes)
+
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
 	c.Data["total"] = total

@@ -8,8 +8,7 @@ import (
 
 func main() {
 	projId := beego.AppConfig.String("gds_project_id")
-	beego.BConfig.WebConfig.TemplateLeft = "<<<"
-	beego.BConfig.WebConfig.TemplateRight = ">>>"
+
 	shared.ConnectGDS(projId)
 	shared.ConnectGCS(projId)
 	beego.Run()

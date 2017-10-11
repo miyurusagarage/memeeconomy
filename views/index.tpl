@@ -44,7 +44,6 @@
 </head>
 
 <body class="index-page">
-<body class="index-page">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-inverse "  >
     <div class="container">
@@ -100,7 +99,7 @@
     <div class="main">
         <div class="section section-basic">
             <div class="container" id="pjax-container">
-                <<<.LayoutContent>>>
+                {{.LayoutContent}}
             </div>
         </div>
     </div>

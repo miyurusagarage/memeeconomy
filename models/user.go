@@ -13,6 +13,7 @@ import (
 type User struct {
 	Key           *datastore.Key `datastore:"__key__"`
 	Username      string
+	FbId      	  string
 	FbToken       string
 	CurrentCredit string
 	CreatedDate   time.Time
@@ -60,5 +61,23 @@ func GetUserFromId(id string) (objs *User, err error) {
 	}
 
 	return &data, nil
+}
 
+func GetUserFromFbId(fbId string) (objs *User, err error) {
+	ctx := context.Background()
+
+	q := datastore.NewQuery("user").
+		Filter("FbId =", fbId)
+
+	var users []User
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &users)
+
+	if er != nil {
+		return nil, er
+	}
+
+	if len(users) > 0{
+		return &users[0], nil
+	}
+	return nil, nil
 }

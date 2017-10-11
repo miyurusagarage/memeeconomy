@@ -1,4 +1,4 @@
-body{
+body {
     background: #2c2c2c;
     color: #d7d7d7;
 }
@@ -7,29 +7,30 @@ body{
     color: #ffffff;
 }
 
-.section{
+.section {
     background: #2c2c2c
 }
 
-h1, h2{
+h1, h2 {
     color: #ffffff;
 }
 
-h3,h4,h5,p{
+h3, h4, h5, p {
     color: #d7d7d7;
 }
 
-hr{
+hr {
     border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-input{
+input {
     color: #d7d7d7;
 }
 
 .form-control:focus {
     background: #1e1e1e;
 }
+
 textarea.form-control {
     border: 1px solid #636363;
     border-radius: 16px;
@@ -44,7 +45,7 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #ffffff;
 }
 
-.btn{
+.btn {
     color: #fff;
 }
 
@@ -52,29 +53,30 @@ textarea.form-control:focus, textarea.form-control:active {
     border: 1px solid #636363;
 }
 
-.btn-light{
-    background-color:   #ebebeb !important;
+.btn-light {
+    background-color: #ebebeb !important;
     color: #000;
 }
-.btn-light:hover{
+
+.btn-light:hover {
     background-color: #ffffff !important;
     color: #000;
 }
 
-.has-icon i{
+.has-icon i {
     float: left;
     margin-right: 10px;
 }
 
-.modal-content{
+.modal-content {
     background-color: #1f1f1f;
 }
 
-.sidebar-block{
+.sidebar-block {
     position: relative;
 }
 
-.sidebar-block:after{
+.sidebar-block:after {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
@@ -93,35 +95,36 @@ textarea.form-control:focus, textarea.form-control:active {
     font-weight: 600;
 }
 
-.sidebar-value{
+.sidebar-value {
     margin-bottom: 12px;
     margin-left: 6px;
 }
 
-.meme-description{
+.meme-description {
     color: #7d7d7d;
 }
 
-.btn-invest{
+.btn-invest {
     margin-top: 36px;
     font-size: 16px;
 }
 
-.help-box{
+.help-box {
     margin-top: 30px;
     border: 1px solid #3c3c3c;
-   padding: 25px;;
+    padding: 25px;;
     color: #616161;
 }
 
-.help-box p{
+.help-box p {
     margin: 0;
     color: #616161;
 }
 
-.meme-img{
-    border-radius:7px;
+.meme-img {
+    border-radius: 7px;
     width: 100%;
+    cursor: pointer;
 }
 
 .like-icon {
@@ -134,16 +137,80 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .liked {
-
-        color: #ffb8b8  !important;
-     /*-webkit-text-stroke-width: 1px;*/
+    color: #ff383c !important;
+    transition: all .25s ease-in;
+    /*-webkit-text-stroke-width: 1px;*/
     /*-webkit-text-stroke-color: #c01300;*/
 }
 
-.meme{
+.meme-likes{
+    margin-top: -20px;
+    float: right;
+    position: absolute;
+    right: 29px;
+    top: 27px;
+}
+
+.meme {
     margin-bottom: 60px;
 }
 
-.memecontainer{
+.memecontainer {
 
+}
+
+.meme-img-container {
+    position: relative;
+
+}
+
+.meme-img-container > img {
+    display: block;
+    max-width: 100%;
+}
+
+.meme-img-container .heart-container {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    margin: -75px 0 0 -75px;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.meme-img-container .heart-container:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.meme-img-container .heart-container > img {
+    display: inline-block;
+    width: 100px;
+    height: 88px;
+    opacity: 0;
+    vertical-align: middle;
+
+}
+
+.meme-img-container.active .heart-container > img {
+    width: 150px;
+    height: 131px;
+    opacity: 1;
+    transition: all 1s ease-in;
+    animation: fade .5s ease-in forwards;
+
+}
+
+@keyframes fade {
+    0%, 100% {
+        opacity: 0
+    }
+    50% {
+        opacity: 1
+    }
 }

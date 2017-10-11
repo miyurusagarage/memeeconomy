@@ -10,6 +10,6 @@ type MainController struct {
 
 func (c *MainController) Get() {
 	c.ManageLoginCookie()
-
+	c.Authorize()
 	c.TplName = "home.tpl"
 }
