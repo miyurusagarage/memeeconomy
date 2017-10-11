@@ -5,7 +5,6 @@ import (
 	"github.com/miyurusagarage/memeeconomy/shared"
 	"context"
 	"github.com/miyurusagarage/memeeconomy/utils"
-
 )
 
 type LoginController struct {
@@ -13,7 +12,6 @@ type LoginController struct {
 }
 
 func (c *LoginController) Get() {
-	c.Authorize()
 	c.Data["FbUrl"] = shared.FbConfig.AuthCodeURL("")
 	c.TplName = "login.tpl"
 }
@@ -33,12 +31,18 @@ func (this *LoginController) LoginFb() {
 		print(err)
 	}
 
-	var user = new(models.User)
-	user.Username = fbUser.Name
-	user.FbToken = tok.AccessToken
-	user.Save()
+	dbUser, err := models.GetUserFromFbId(fbUser.Id)
 
-
+	if dbUser == nil{
+		dbUser = new(models.User)
+		dbUser.Username = fbUser.Name
+		dbUser.FbId = fbUser.Id
+		dbUser.FbToken = tok.AccessToken
+		dbUser.Save()
+	}else{
+		dbUser.FbToken = tok.AccessToken
+		dbUser.Update()
+	}
 
 	this.Redirect("/?t=" + tok.AccessToken, 302)
 	return
