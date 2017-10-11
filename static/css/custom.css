@@ -19,6 +19,10 @@ h3,h4,h5,p{
     color: #d7d7d7;
 }
 
+hr{
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
 input{
     color: #d7d7d7;
 }
@@ -60,4 +64,86 @@ textarea.form-control:focus, textarea.form-control:active {
 .has-icon i{
     float: left;
     margin-right: 10px;
+}
+
+.modal-content{
+    background-color: #1f1f1f;
+}
+
+.sidebar-block{
+    position: relative;
+}
+
+.sidebar-block:after{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.sidebar-caption {
+    color: #6d6d6d;
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.sidebar-value{
+    margin-bottom: 12px;
+    margin-left: 6px;
+}
+
+.meme-description{
+    color: #7d7d7d;
+}
+
+.btn-invest{
+    margin-top: 36px;
+    font-size: 16px;
+}
+
+.help-box{
+    margin-top: 30px;
+    border: 1px solid #3c3c3c;
+   padding: 25px;;
+    color: #616161;
+}
+
+.help-box p{
+    margin: 0;
+    color: #616161;
+}
+
+.meme-img{
+    border-radius:7px;
+    width: 100%;
+}
+
+.like-icon {
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.28);
+    margin-top: 5px;
+    font-weight: 600;
+    /*-webkit-text-stroke-width: 1px;*/
+    /*-webkit-text-stroke-color: #c01300;*/
+}
+
+.liked {
+
+        color: #ffb8b8  !important;
+     /*-webkit-text-stroke-width: 1px;*/
+    /*-webkit-text-stroke-color: #c01300;*/
+}
+
+.meme{
+    margin-bottom: 60px;
+}
+
+.memecontainer{
+
 }

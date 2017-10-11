@@ -30,11 +30,40 @@
 
 
     <script>
-        $(document).on('ready pjax:success', function () {
+
+        $(document).ready( function () {
 
             onPageLoad();
             // code here
         });
+
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "file", // The name that will be used to transfer the file
+            maxFilesize: 5, // MB
+            thumbnailWidth: null,
+
+            thumbnailHeight: 357,
+            maxFiles: 1,
+            dictDefaultMessage: "drop your memes here",
+            maxfilesexceeded: function (file) {
+                this.removeAllFiles();
+                this.addFile(file);
+
+            },
+            accept: function (file, done) {
+                if (file.name == "justinbieber.jpg") {
+                    done("Naha, you don't.");
+                }
+                else {
+                    done();
+                    uuid = guid();
+                    $('#imgId').val(uuid)
+                    $('#dropzoneImageId').val(uuid)
+
+                }
+            }
+
+        };
 
         function onPageLoad() {
             function guid() {
@@ -52,36 +81,7 @@
 
             $('#imgId').val(uuid)
             $('#dropzoneImageId').val(uuid)
-
-            Dropzone.options.myAwesomeDropzone = {
-                paramName: "file", // The name that will be used to transfer the file
-                maxFilesize: 5, // MB
-                thumbnailWidth: null,
-
-                thumbnailHeight: 357,
-                maxFiles: 1,
-                dictDefaultMessage: "drop your memes here",
-                maxfilesexceeded: function (file) {
-                    this.removeAllFiles();
-                    this.addFile(file);
-
-                },
-                accept: function (file, done) {
-                    if (file.name == "justinbieber.jpg") {
-                        done("Naha, you don't.");
-                    }
-                    else {
-                        done();
-                        uuid = guid();
-                        $('#imgId').val(uuid)
-                        $('#dropzoneImageId').val(uuid)
-
-                    }
-                }
-
-            };
         }
-
 
     </script>
 </div>

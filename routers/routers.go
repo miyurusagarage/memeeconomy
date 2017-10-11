@@ -11,5 +11,6 @@ func init() {
     beego.Router("/login/facebook", &controllers.LoginController{}, "get:LoginFb")
     beego.Router("/uploadmeme", &controllers.UploadController{})
     beego.Router("/uploadimage", &controllers.UploadImageController{})
-    beego.Router("/meme", &controllers.MemeSingleController{})
+    beego.Router("/recentmemes", &controllers.MemesController{},"get:GetRecent")
+    beego.Router("/getmeme", &controllers.MemesController{},"get:GetRecentBlock")
 }

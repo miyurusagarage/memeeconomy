@@ -1,8 +1,8 @@
-<div class="container" style=" ">
-
-
-    <h2>{{.data.Title}}</h2>
-    <p class="meme-description" style="margin-top: -20px;">{{.data.Description}}</p>
+<<< $showRank  := .showRank >>>
+<<< range $mm  := .data >>>
+<div class="meme" style=" ">
+    <h2><<<$mm.Title>>></h2>
+    <p class="meme-description" style="margin-top: -20px;"><<<$mm.Description>>></p>
 
     <div class="row">
         <div class="col-md-10">
@@ -11,34 +11,26 @@
                 <i class="now-ui-icons  like-icon   ui-2_favourite-28"></i>
             </p>
             <img class="meme-img"
-                    src="{{.data.ImagePath}}"
+                 src="<<<$mm.ImagePath>>>"
             />
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="help-box col-md-12">
-                        <p class="">
-                            Clicking on the image will add a "like".
-                            <br/>
-                            Double clicking the image will load the next image
-                        </p>
-                    </div>
-                </div>
 
-            </div>
         </div>
         <div class="col-md-2">
             <div class="">
+                <<< if $showRank >>>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Meme Rank</h5>
                     <h3 class="sidebar-value">#1</h3>
                 </div>
+
+                <<< end >>>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Total Worth</h5>
-                    <h3 class="sidebar-value">100,000 F</h3>
+                    <h3 class="sidebar-value"><<< $mm.CurrentInvestments >>> F</h3>
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Total Likes</h5>
-                    <h3 class="sidebar-value">500 </h3>
+                    <h3 class="sidebar-value"><<< $mm.InternalLikes >>> </h3>
                 </div>
 
                 <button class="btn btn-primary btn-block btn-lg btn-invest" data-toggle="modal" data-target="#myModal">
@@ -46,12 +38,9 @@
                 </button>
             </div>
         </div>
-
     </div>
-
-
 </div>
-
+<<< end >>>
 
 <!-- Modal Core -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
