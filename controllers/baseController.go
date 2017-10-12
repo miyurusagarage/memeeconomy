@@ -35,9 +35,17 @@ func (c *BaseController) IsAuthorized() (bool, *shared.FbError){
 			c.Data["fbId"] = dbUser.FbId
 			return true, err
 		} else {
+			c.Data["authorized"] = false
+			c.Data["userKey"] = ""
+			c.Data["username"] = ""
+			c.Data["fbId"] = ""
 			return false, err
 		}
 	}
+	c.Data["authorized"] = false
+	c.Data["userKey"] = ""
+	c.Data["username"] = ""
+	c.Data["fbId"] = ""
 	return false, nil
 }
 

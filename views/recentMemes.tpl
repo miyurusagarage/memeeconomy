@@ -17,7 +17,6 @@
 
     <script>
         $(document).ready(function () {
-
             $('.memecontainer').infiniteScroll({
                 path: '/getmeme?offset={{"{{"}}#{{"}}"}}',
                 append: '.meme',
@@ -50,23 +49,35 @@
             }
         }
 
-        function attachHeartAnimations(key) {
+        function attachHeartAnimations(key, isAuthorized, userKey) {
+
             var imgContainer = $("#meme-img-container" + key),
                 theHeartImage = $("#js-heart-image" + key),
                 likedHeart = $("#liked-heart" + key),
                 likeValue = $("#like-value" + key);
 
-            imgContainer.on('click', function () {
-                if (!imgContainer.hasClass(likedClassName)) {
-                    imgContainer.removeClass(activeClassName)
-                    imgContainer.addClass(activeClassName)
-                    imgContainer.addClass(likedClassName)
-                    likedHeart.addClass(likedClassName)
-                    likeValue.text(function (i, oldVal) {
-                        return parseInt(oldVal, 10) + 1;
-                    });
-                }
-            });
+            if (isAuthorized) {
+                imgContainer.on('click', function () {
+                    if (!imgContainer.hasClass(likedClassName)) {
+                        imgContainer.removeClass(activeClassName)
+                        imgContainer.addClass(activeClassName)
+                        imgContainer.addClass(likedClassName)
+                        likedHeart.addClass(likedClassName)
+                        likeValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) + 1;
+                        });
+                        $.ajax({
+                            url: "/votememe",
+                            type: "get",
+                            data: {
+                                type: 'up',
+                                memeId: key
+                            }
+                        });
+                    }
+                });
+
+            }
 
             theHeartImage.on('transitionend', function () {
                 imgContainer.removeClass(activeClassName)

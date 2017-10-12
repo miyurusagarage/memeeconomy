@@ -14,6 +14,7 @@ func (c *MemesController) GetRecent() {
 }
 
 func (c *MemesController) GetRecentBlock() {
+	c.IsAuthorized()
 	offset, err := c.GetInt("offset")
 	if (err != nil) {
 		return
