@@ -44,9 +44,6 @@
         alert("SSS")
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover();
-
-
-
     </script>
 
 </div>
