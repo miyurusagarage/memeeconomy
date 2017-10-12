@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"cloud.google.com/go/datastore"
+	"github.com/miyurusagarage/memeeconomy/utils"
 )
 
 type VoteMemeController struct {
@@ -30,7 +31,14 @@ func (c *VoteMemeController) Get() {
 				err := memeVote.Save()
 				if err == nil{
 					meme.InternalLikes++
-					meme.Save()
+					meme.Update()
+					if meme.InternalLikes >= meme.SocialPostThreshold {
+						if meme.SocialFbPostLink == "" {
+							postId := utils.PostMemeToFb(meme.ImagePath, meme.Title)
+							meme.SocialFbPostLink = postId
+							meme.Update()
+						}
+					}
 				}
 			}
 		case "down":

@@ -15,7 +15,7 @@ type User struct {
 	Username      string
 	FbId      	  string
 	FbToken       string
-	CurrentCredit string
+	CurrentCredit int
 	CreatedDate   time.Time
 	UpdateDate    time.Time
 }
@@ -68,6 +68,25 @@ func GetUserFromFbId(fbId string) (objs *User, err error) {
 
 	q := datastore.NewQuery("user").
 		Filter("FbId =", fbId)
+
+	var users []User
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &users)
+
+	if er != nil {
+		return nil, er
+	}
+
+	if len(users) > 0{
+		return &users[0], nil
+	}
+	return nil, nil
+}
+
+func GetUserFromFbToken(fbToken string) (objs *User, err error) {
+	ctx := context.Background()
+
+	q := datastore.NewQuery("user").
+		Filter("FbToken =", fbToken)
 
 	var users []User
 	_, er := shared.DatastoreClient.GetAll(ctx, q, &users)

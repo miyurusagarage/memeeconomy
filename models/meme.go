@@ -9,6 +9,8 @@ import (
 	"github.com/nu7hatch/gouuid"
 )
 
+const SocialPostThreshold = 1
+
 type Meme struct {
 	Key                 *datastore.Key `datastore:"__key__"`
 	CreatedDate         time.Time
@@ -32,6 +34,7 @@ type Meme struct {
 
 func (this *Meme) Save() (err error) {
 	this.CreatedDate = time.Now()
+	this.SocialPostThreshold = SocialPostThreshold
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()
