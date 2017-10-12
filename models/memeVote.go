@@ -72,10 +72,10 @@ func GetMemeVoteFromMemeAndUser(memeId string, userId string) (objs *MemeVote, e
 	ctx := context.Background()
 
 	q := datastore.NewQuery("meme_vote").
-		Filter("meme_id =", memeId).Filter("user_id =", userId)
+		Filter("MemeId =", memeId).Filter("UserId =", userId)
 
 	var memeVotes []MemeVote
-	_, er := shared.DatastoreClient.GetAll(ctx, q, &memeVotes)
+	_, er := shared.DatastoreClient.GetAll(ctx, q,  &memeVotes)
 
 	if er != nil {
 		return nil, er
