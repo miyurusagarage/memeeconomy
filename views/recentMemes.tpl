@@ -33,7 +33,7 @@
 
                             <div class="form-group">
 
-                                <input type="number" id="investAmount" name="amount" placeholder="enter the amount"
+                                <input type="number" id="investAmount" name="amount" placeholder="enter the amount" required
                                        class="form-control">
                             </div>
                             <div class="form-group">
