@@ -56,6 +56,7 @@ func (c *BaseController) Authorize() {
 		println("no cookie sending to login")
 		//send to login if there was no cookie (new guy)
 		c.Redirect("/login", 302)
+		return
 	}
 }
 
