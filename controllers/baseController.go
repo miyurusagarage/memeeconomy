@@ -23,11 +23,12 @@ func (c *BaseController) Prepare() {
 
 func (c *BaseController) IsAuthorized() (bool, *shared.FbError){
 	cookie, _ := c.Ctx.Request.Cookie("token")
-	if (cookie != nil) {
+	user, _ := models.GetUserFromFbToken(cookie.Value)
+	if (cookie != nil && user != nil) {
 		println("Cookie have")
 		fbUser := new(shared.FbUser)
-		err := utils.GetFbJson("https://graph.facebook.com/me?access_token="+cookie.Value, *fbUser)
-		if (&fbUser.Name != nil) {
+		err := utils.GetFbJson("https://graph.facebook.com/me?access_token="+cookie.Value, fbUser)
+		if (fbUser.Name != "") {
 			c.Data["authorized"] = true
 			dbUser, _ := models.GetUserFromFbId(fbUser.Id)
 			c.Data["userKey"] = dbUser.Key

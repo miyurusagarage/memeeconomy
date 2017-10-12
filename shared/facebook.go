@@ -29,3 +29,8 @@ type ErrorDescription struct {
 	Code      int `code`
 	FbtraceId int `fbtrace_id`
 }
+
+type PostResult struct {
+	Id string
+	Post_id string
+}

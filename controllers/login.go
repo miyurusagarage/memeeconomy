@@ -25,7 +25,7 @@ func (this *LoginController) LoginFb() {
 	}
 
 	fbUser := new(shared.FbUser)
-	utils.GetFbJson("https://graph.facebook.com/me?access_token="+tok.AccessToken, *fbUser)
+	utils.GetFbJson("https://graph.facebook.com/me?access_token="+tok.AccessToken, fbUser)
 
 	if err != nil {
 		print(err)
