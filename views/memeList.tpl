@@ -36,7 +36,7 @@
                     <h3 class="sidebar-value" id="like-value{{$mm.Key.Name}}">{{ $mm.InternalLikes }}</h3>
                 </div>
 
-                <button class="btn btn-primary btn-block btn-lg btn-invest" data-toggle="modal" data-target="#myModal">
+                <button class="btn btn-primary btn-block btn-lg btn-invest" data-id="{{$mm.Key.Name}}" data-toggle="modal" data-target="#investModal">
                     Invest
                 </button>
             </div>
@@ -51,40 +51,4 @@
 </div>
 {{ end }}
 
-<!-- Modal Core -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="/investmeme" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title" id="myModalLabel">Invest in this meme!</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="col-sm-12">
-                        <p>You have <strong>1000 Flurbos</strong></p>
-
-                        <p>Enter the amount of Flurbos you want to invest:</p>
-
-
-                        <div class="form-group">
-                            <input type="number" value="" name="title" placeholder="enter the amount"
-                                   class="form-control">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-simple " data-color="popover-info"
-                            data-toggle="popover" data-placement="left" title="Meme Investing"
-                            data-content="Here will be some very useful information about his popover.">What's this?
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-simple ">Submit Investment</button>
-
-                </div>
-
-            </div>
-        </form>
-    </div>
-</div>
 

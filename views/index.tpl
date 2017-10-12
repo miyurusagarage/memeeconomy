@@ -39,7 +39,13 @@
     <script src='static/js/nprogress.js'></script>
     <script src='static/js/pjax-standalone.min.js'></script>
     <script src="static/js/pageloading.js"></script>
+
+    <!--Inf Scrolling-->
     <script src="static/js/infinite-scroll.pkgd.min.js"></script>
+
+    <!--Toasts-->
+    <script src="static/js/iziToast.min.js"></script>
+    <link rel="stylesheet" href="static/css/iziToast.min.css">
 
 </head>
 
