@@ -13,6 +13,7 @@ import (
 
 type BaseController struct {
 	beego.Controller
+	Authorized bool
 }
 
 func (c *BaseController) Prepare() {
@@ -21,39 +22,48 @@ func (c *BaseController) Prepare() {
 	}
 }
 
-func (c *BaseController) IsAuthorized() (bool, *shared.FbError){
+func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 	cookie, _ := c.Ctx.Request.Cookie("token")
-	user, _ := models.GetUserFromFbToken(cookie.Value)
-	if (cookie != nil && user != nil) {
-		println("Cookie have")
-		fbUser := new(shared.FbUser)
-		err := utils.GetFbJson("https://graph.facebook.com/me?access_token="+cookie.Value, fbUser)
-		if (fbUser.Name != "") {
-			c.Data["authorized"] = true
-			dbUser, _ := models.GetUserFromFbId(fbUser.Id)
-			c.Data["userKey"] = dbUser.Key
-			c.Data["username"] = dbUser.Username
-			c.Data["fbId"] = dbUser.FbId
-			return true, err
-		} else {
-			c.Data["authorized"] = false
-			c.Data["userKey"] = ""
-			c.Data["username"] = ""
-			c.Data["fbId"] = ""
-			return false, err
+	if (cookie != nil) {
+
+		user, _ := models.GetUserFromFbToken(cookie.Value)
+		if (user != nil) {
+			println("Cookie have")
+			fbUser := new(shared.FbUser)
+			err := utils.GetFbJson("https://graph.facebook.com/me?access_token="+cookie.Value, fbUser)
+			if (fbUser.Name != "") {
+				c.Data["authorized"] = true
+				c.Authorized = true
+				dbUser, _ := models.GetUserFromFbId(fbUser.Id)
+				c.Data["userKey"] = dbUser.Key
+				c.Data["username"] = dbUser.Username
+				c.Data["user"] = dbUser
+				c.Data["fbId"] = dbUser.FbId
+				return true, err
+			} else {
+				c.Authorized = false
+				c.Data["authorized"] = false
+				c.Data["userKey"] = ""
+				c.Data["username"] = ""
+				c.Data["fbId"] = ""
+				c.Data["user"] = nil
+				return false, err
+			}
 		}
 	}
+	c.Authorized = false
 	c.Data["authorized"] = false
 	c.Data["userKey"] = ""
 	c.Data["username"] = ""
 	c.Data["fbId"] = ""
+	c.Data["user"] = nil
 	return false, nil
 }
 
 //call this before a request or in the prepare method of a controller if the user must be authorized for what ever comes next
 func (c *BaseController) Authorize() {
 	isAuthorized, err := c.IsAuthorized()
-	if  !isAuthorized{
+	if !isAuthorized {
 		if err != nil {
 			if (err.Error.Code == 190) {
 				//somethings up or needs a refresh

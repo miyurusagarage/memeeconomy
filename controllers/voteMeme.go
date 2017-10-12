@@ -18,7 +18,7 @@ func (c *VoteMemeController) Get() {
 	voteType := c.GetString("type")
 	memeId := c.GetString("memeId")
 	userKey := c.Data["userKey"].(*datastore.Key)
-	memeVote, _ := models.GetMemeVoteFromMemeAndUser(memeId, userKey.Name)
+	memeVote, _ := models.GetMemeVoteFromMemeByUser(memeId, userKey.Name)
 	meme, _ := models.GetMemeFromId(memeId)
 	if meme != nil && userKey != nil && memeId != "" {
 		switch voteType {
@@ -46,7 +46,7 @@ func (c *VoteMemeController) Get() {
 				err := memeVote.Delete()
 				if err == nil {
 					meme.InternalLikes--
-					meme.Save()
+					meme.Update()
 				}
 			}
 		}

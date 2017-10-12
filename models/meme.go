@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"time"
 	"github.com/nu7hatch/gouuid"
+
+
 )
 
 const SocialPostThreshold = 1
@@ -79,7 +81,7 @@ func GetMemeFromId(id string) (objs *Meme, err error) {
 func GetMemeFromKey(key *datastore.Key) (objs *Meme, err error) {
 	ctx := context.Background()
 
- 	var data Meme
+	var data Meme
 	er := shared.DatastoreClient.Get(ctx, key, &data)
 
 	if er != nil {
@@ -90,7 +92,8 @@ func GetMemeFromKey(key *datastore.Key) (objs *Meme, err error) {
 
 }
 
-func GetRecentMemes( offset int, pageSize int) (objs *[]Meme, total int , err error) {
+func GetRecentMemes(offset int, pageSize int) (objs *[]Meme, total int, err error) {
+
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
 	q = q.Order("-CreatedDate")
@@ -101,12 +104,12 @@ func GetRecentMemes( offset int, pageSize int) (objs *[]Meme, total int , err er
 	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
 
 	//count for pagination
-	q  = datastore.NewQuery("meme")
-	count:=0
-	count, er  = shared.DatastoreClient.Count(ctx, q, )
+	q = datastore.NewQuery("meme")
+	count := 0
+	count, er = shared.DatastoreClient.Count(ctx, q, )
 
 	if er != nil {
 		return nil, 0, er
 	}
-	return &data, count , nil
+	return &data, count, nil
 }

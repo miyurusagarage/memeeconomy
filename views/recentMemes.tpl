@@ -26,7 +26,7 @@
                     <div class="modal-body">
                         <input name="memeId" value="" id="memeId" type="hidden"/>
                         <div class="col-sm-12">
-                            <p>You have <strong>1000 Flurbos</strong></p>
+                            <p>You have <strong><span name="availableFlurbos">{{ .user.CurrentCredit }}</span> Flurbos</strong></p>
 
                             <p>Enter the amount of Flurbos you want to invest:</p>
 
@@ -36,6 +36,10 @@
                                 <input type="number" id="investAmount" name="amount" placeholder="enter the amount"
                                        class="form-control">
                             </div>
+                            <div class="form-group">
+
+                               <p class="text-warning" style="display: none;" id="flurbowarning">Insufficient flurbos! Enter a value less than <span name="availableFlurbos">{{ .user.CurrentCredit }}</span></p>
+                            </div>
 
                         </div>
                     </div>
@@ -44,7 +48,7 @@
                                 data-toggle="popover" data-placement="left" title="Meme Investing"
                                 data-content="Mung beans smell like death -Creed">What's this?
                         </button>
-                        <button type="submit" class="btn btn-primary btn-simple ">Submit Investment</button>
+                        <button type="submit" class="btn btn-primary btn-simple " id="btn-submit-investment">Submit Investment</button>
 
                     </div>
 
@@ -94,7 +98,7 @@
                 likedHeart = $("#liked-heart" + key),
                 likeValue = $("#like-value" + key);
 
-            if (isAuthorized) {
+            if (isAuthorized=='true') {
                 imgContainer.on('click', function () {
                     if (!imgContainer.hasClass(likedClassName)) {
                         imgContainer.removeClass(activeClassName)
@@ -114,7 +118,24 @@
                         });
                     }
                 });
-
+                likedHeart.on('click', function (event ) {
+                    event.stopPropagation();
+                    if (likedHeart.hasClass(likedClassName)) {
+                        imgContainer.removeClass(likedClassName)
+                        likedHeart.removeClass(likedClassName)
+                        likeValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) - 1;
+                        });
+                        $.ajax({
+                            url: "/votememe",
+                            type: "get",
+                            data: {
+                                type: 'down',
+                                memeId: key
+                            }
+                        });
+                    }
+                });
             }
 
             theHeartImage.on('transitionend', function () {
@@ -132,6 +153,16 @@
             $(".modal-body #memeId").val(memeId);
         });
 
+        $('#investAmount').on('input',function(e){
+           if(parseInt(e.target.value, 10)>parseInt('{{.user.CurrentCredit }}',10)){
+                $("#btn-submit-investment").prop( "disabled", true );
+                $('#flurbowarning').show()
+           }else{
+               $("#btn-submit-investment").prop( "disabled", false );
+               $('#flurbowarning').hide()
+           }
+        });
+
         $("#investSubmitForm").submit(function (event) {
 
             /* stop form from submitting normally */
@@ -140,14 +171,14 @@
             /* get the action attribute from the <form action=""> element */
             var $form = $(this),
                 url = $form.attr('action');
-
+    var key = $('#memeId').val()
             /* Send the data using post with element id name and name2*/
             $.ajax({
                 url: url,
                 type: "get",
                 data: {
                     amount: $('#investAmount').val(),
-                    memeId: $('#memeId').val()
+                    memeId: key
                 },
                 success: function (result) {
                     iziToast.success({
@@ -158,6 +189,13 @@
                         message:  'Investment was successful.',
                         position: 'bottomRight',
                         transitionIn: 'bounceInLeft',
+                    });
+                    $('span[name=availableFlurbos]').text(function (i, oldVal) {
+                        return parseInt(oldVal, 10) - parseInt($('#investAmount').val(),10)
+                    });
+
+                    $('#meme-flurbos'+key).text(function (i, oldVal) {
+                        return parseInt(oldVal, 10) + parseInt($('#investAmount').val(),10)
                     });
                 },
                 error: function (result) {
