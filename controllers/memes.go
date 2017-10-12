@@ -9,19 +9,20 @@ type MemesController struct {
 }
 
 func (c *MemesController) GetRecent() {
-	memes, total, _ := models.GetRecentMemes(0, 2)
-	c.Data["data"] = memes
-	c.Data["total"] = total
-    c.TplName = "recentMemes.tpl"
+
+	c.TplName = "recentMemes.tpl"
 }
 
 func (c *MemesController) GetRecentBlock() {
-	offset,err := c.GetInt("offset")
-	if(err!=nil){
+	offset, err := c.GetInt("offset")
+	if (err != nil) {
 		return
 	}
-	memes, total, _ := models.GetRecentMemes(offset-2, 1)
-
+	println(offset)
+	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3)
+	if len(*memes) == 0 {
+		c.Abort("404")
+	}
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
 	c.Data["total"] = total
