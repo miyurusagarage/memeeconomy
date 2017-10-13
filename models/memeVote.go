@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/nu7hatch/gouuid"
+	"sync"
 )
 
 type MemeVote struct {
@@ -68,11 +69,11 @@ func GetMemeVoteFromId(id string) (objs *MemeVote, err error) {
 	return &data, nil
 }
 
-func GetMemeVoteFromMemeAndUser(memeId string, userId string) (objs *MemeVote, err error) {
+func GetMemeVoteFromMemeByUser(memeId string, userId string) (objs *MemeVote, err error) {
 	ctx := context.Background()
 
 	q := datastore.NewQuery("meme_vote").
-		Filter("meme_id =", memeId).Filter("user_id =", userId)
+		Filter("MemeId =", memeId).Filter("UserId =", userId)
 
 	var memeVotes []MemeVote
 	_, er := shared.DatastoreClient.GetAll(ctx, q, &memeVotes)
@@ -81,9 +82,46 @@ func GetMemeVoteFromMemeAndUser(memeId string, userId string) (objs *MemeVote, e
 		return nil, er
 	}
 
-	if len(memeVotes) > 0{
+	if len(memeVotes) > 0 {
 		return &memeVotes[0], nil
 	}
 	return nil, nil
 }
 
+func GetMemeVoteFromMemesByUser(memeIds []string, userId string) (objs *map[string]MemeVote, err error) {
+	ctx := context.Background()
+	var bufferedChan = make(chan *MemeVote, len(memeIds))
+	var wg sync.WaitGroup
+	voteMap := make(map[string]MemeVote)
+	for _, memeIdx := range memeIds {
+		wg.Add(1)
+		go func(memeId string) {
+			q := datastore.NewQuery("meme_vote").
+				Filter("MemeId =", memeId).Filter("UserId =", userId)
+
+			var memeVotes []MemeVote
+			_, er := shared.DatastoreClient.GetAll(ctx, q, &memeVotes)
+			if er != nil {
+				bufferedChan <- nil
+			}
+			if len(memeVotes) > 0 {
+				bufferedChan <- &memeVotes[0]
+			}
+			wg.Done()
+		}(memeIdx)
+	}
+
+	go func() {
+		wg.Wait()
+		close(bufferedChan)
+	}()
+
+	for v := range bufferedChan{
+		if (v != nil) {
+			fmt.Println(*v)
+			voteMap[v.MemeId] = *v
+		}
+	}
+
+	return &voteMap, nil
+}

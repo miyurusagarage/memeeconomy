@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta http-equiv="x-pjax-version" content="v123">
 
-    <title>Overwatch Wallpapers</title>
+    <title>The Meme Economy</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
@@ -24,22 +24,7 @@
     <link rel="stylesheet" href="static/css/custom.css">
 
     <script src="static/js/core/jquery.3.2.1.min.js"></script>
-    <script src="static/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="static/js/core/bootstrap.min.js" type="text/javascript"></script>
-    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-    <script src="static/js/plugins/bootstrap-switch.js"></script>
-    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="static/js/plugins/nouislider.min.js" type="text/javascript"></script>
-    <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-    <script src="static/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
-    <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
-    <script src="static/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 
-    <!--page loading-->
-    <script src='static/js/nprogress.js'></script>
-    <script src='static/js/pjax-standalone.min.js'></script>
-    <script src="static/js/pageloading.js"></script>
-    <script src="static/js/infinite-scroll.pkgd.min.js"></script>
 
 </head>
 
@@ -115,7 +100,28 @@
 </footer>
 </body>
 
+<script src="static/js/core/popper.min.js" type="text/javascript"></script>
+<script src="static/js/core/bootstrap.min.js" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+<script src="static/js/plugins/bootstrap-switch.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="static/js/plugins/nouislider.min.js" type="text/javascript"></script>
+<!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+<script src="static/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+<!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
+<script src="static/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
 
+<!--page loading-->
+<script src='static/js/nprogress.js'></script>
+<script src='static/js/pjax-standalone.min.js'></script>
+<script src="static/js/pageloading.js"></script>
+
+<!--Inf Scrolling-->
+<script src="static/js/infinite-scroll.pkgd.min.js"></script>
+
+<!--Toasts-->
+<script src="static/js/iziToast.min.js"></script>
+<link rel="stylesheet" href="static/css/iziToast.min.css">
 
 
 <script type="text/javascript">
