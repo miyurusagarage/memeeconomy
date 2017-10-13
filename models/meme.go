@@ -27,6 +27,7 @@ type Meme struct {
 	SocialPostsCreated  bool
 	SocialPostedDate    time.Time
 	SocialShares        int
+	SocialUpdatedDate   time.Time
 	Status              string
 	Title               string
 	TotalFame           int
@@ -109,4 +110,17 @@ func GetRecentMemes( offset int, pageSize int) (objs *[]Meme, total int , err er
 		return nil, 0, er
 	}
 	return &data, count , nil
+}
+
+func GetAllMemes( ) (objs *[]Meme, err error) {
+	ctx := context.Background()
+	q := datastore.NewQuery("meme")
+
+	var data []Meme
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+
+	if er != nil {
+		return nil, er
+	}
+	return &data , nil
 }

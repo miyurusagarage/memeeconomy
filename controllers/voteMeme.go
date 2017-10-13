@@ -4,6 +4,7 @@ import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"cloud.google.com/go/datastore"
 	"github.com/miyurusagarage/memeeconomy/utils"
+	"time"
 )
 
 type VoteMemeController struct {
@@ -36,6 +37,8 @@ func (c *VoteMemeController) Get() {
 						if meme.SocialFbPostLink == "" {
 							postId := utils.PostMemeToFb(meme.ImagePath, meme.Title)
 							meme.SocialFbPostLink = postId
+							meme.SocialPostedDate = time.Now()
+							meme.SocialPostsCreated = true
 							meme.Update()
 						}
 					}

@@ -34,3 +34,20 @@ type PostResult struct {
 	Id string
 	Post_id string
 }
+
+type PostStatsResult struct{
+	Likes PostLikes
+	Shares PostShares
+}
+
+type PostLikes struct {
+	Summary LikeSummary
+}
+
+type PostShares struct {
+	Count int
+}
+
+type LikeSummary struct {
+	Total_count int
+}

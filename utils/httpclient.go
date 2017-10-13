@@ -51,3 +51,16 @@ func PostMemeToFb(memeImageUrl string, memeTitle string) (string){
 	}
 	return ""
 }
+
+func GetFbStatsForPost(postId string) (*shared.PostStatsResult){
+	fbGraphUrl := beego.AppConfig.String("facebook_graph_url")
+	fbPageAccessToken := beego.AppConfig.String("facebook_page_access_token")
+
+	response, err := simpleHttpClient.Get(fbGraphUrl + "/" + postId + "?fields=likes.limit(0).summary(true),shares" + "&access_token=" + fbPageAccessToken)
+	if err == nil{
+		postStatResult := new(shared.PostStatsResult)
+		json.NewDecoder(response.Body).Decode(postStatResult)
+		return postStatResult
+	}
+	return nil
+}
