@@ -15,4 +15,6 @@ func init() {
     beego.Router("/getmeme", &controllers.MemesController{},"get:GetRecentBlock")
     beego.Router("/votememe", &controllers.VoteMemeController{})
     beego.Router("/investmeme", &controllers.InvestMemeController{})
+    beego.Router("/profile", &controllers.ProfileController{})
+    beego.Router("/getmemesforuser", &controllers.MemesController{},"get:GetUserPosts")
 }

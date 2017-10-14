@@ -36,6 +36,7 @@ func (this *LoginController) LoginFb() {
 	if dbUser == nil{
 		dbUser = new(models.User)
 		dbUser.Username = fbUser.Name
+		dbUser.CurrentCredit = 100
 		dbUser.FbId = fbUser.Id
 		dbUser.FbToken = tok.AccessToken
 		dbUser.Save()

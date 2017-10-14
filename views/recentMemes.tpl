@@ -1,8 +1,6 @@
 <div>
     <div class="memecontainer" style=" ">
         <!--data-infinite-scroll='{ "path": "/getmeme?offset={{"{{"}}#{{"}}"}}", "append": ".meme", "history": false , status: ".scroller-status"}'-->
-
-
     </div>
     <div class="scroller-status">
         <div class="infinite-scroll-request loader-ellips">
@@ -11,8 +9,8 @@
             <span class="loader-ellips__dot"></span>
             <span class="loader-ellips__dot"></span>
         </div>
-        <p class="infinite-scroll-last">End of content</p>
-        <p class="infinite-scroll-error">No memes to load</p>
+        <p class="infinite-scroll-last text-center">End of content</p>
+        <p class="infinite-scroll-error text-center">No memes to load</p>
     </div>
     <!-- Modal Core -->
     <div class="modal fade" id="investModal" tabindex="-1" role="dialog" aria-hidden="true">

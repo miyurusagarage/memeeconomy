@@ -13,7 +13,7 @@ import (
 type User struct {
 	Key           *datastore.Key `datastore:"__key__"`
 	Username      string
-	FbId      	  string
+	FbId          string
 	FbToken       string
 	CurrentCredit int
 	CreatedDate   time.Time
@@ -76,7 +76,7 @@ func GetUserFromFbId(fbId string) (objs *User, err error) {
 		return nil, er
 	}
 
-	if len(users) > 0{
+	if len(users) > 0 {
 		return &users[0], nil
 	}
 	return nil, nil
@@ -95,8 +95,38 @@ func GetUserFromFbToken(fbToken string) (objs *User, err error) {
 		return nil, er
 	}
 
-	if len(users) > 0{
+	if len(users) > 0 {
 		return &users[0], nil
 	}
 	return nil, nil
+}
+
+func (this *User) GetRank() (rank int, err error) {
+	ctx := context.Background()
+
+	q := datastore.NewQuery("user").
+		Filter("CurrentCredit >", this.CurrentCredit)
+
+	rank, er := shared.DatastoreClient.Count(ctx, q)
+
+	if er != nil {
+		return -1, er
+	}
+
+	return rank + 1, nil
+}
+
+func (this *User)  GetPostCount() (count int, err error) {
+	ctx := context.Background()
+	q := datastore.NewQuery("meme").
+			Filter("CreatedUserId =",this.Key.Name)
+
+
+	count, er := shared.DatastoreClient.Count(ctx, q)
+
+	if er != nil {
+		return -1, er
+	}
+
+	return count , nil
 }

@@ -7,8 +7,6 @@ import (
 	"fmt"
 	"time"
 	"github.com/nu7hatch/gouuid"
-
-
 )
 
 const SocialPostThreshold = 1
@@ -115,6 +113,31 @@ func GetRecentMemes(offset int, pageSize int) (objs *[]Meme, total int, err erro
 	return &data, count , nil
 }
 
+func GetRecentMemesByUser(key string ,offset int, pageSize int) (objs *[]Meme, total int, err error) {
+
+	ctx := context.Background()
+	q := datastore.NewQuery("meme")
+	println(pageSize)
+
+
+	q = q.Filter("CreatedUserId =", key)
+	q = q.Offset(offset)
+	q = q.Limit(pageSize)
+
+	var data []Meme
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+
+	//count for pagination
+	q = datastore.NewQuery("meme")
+	count := 0
+	count, er = shared.DatastoreClient.Count(ctx, q, )
+
+	if er != nil {
+		return nil, 0, er
+	}
+	return &data, count , nil
+}
+
 func GetAllMemes( ) (objs *[]Meme, err error) {
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
@@ -127,3 +150,4 @@ func GetAllMemes( ) (objs *[]Meme, err error) {
 	}
 	return &data , nil
 }
+
