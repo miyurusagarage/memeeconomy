@@ -49,12 +49,12 @@
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  btn btn-light  btn-round" href="/getTopMemes" data-pjax="#pjax-container"  >
+                    <a class="nav-link  btn btn-light  " href="/getTopMemes" data-pjax="#pjax-container"  >
                         <p style="color:#333; ">Top Memes</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-warning btn-round" href="/uploadmeme" data-pjax="#pjax-container"  >
+                    <a class="nav-link btn btn-warning " href="/uploadmeme" data-pjax="#pjax-container"  >
                         <i style="color:#333" class="now-ui-icons arrows-1_share-66"></i>
                         <p style="color:#333">Upload Meme</p>
                     </a>
@@ -65,7 +65,7 @@
 
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle   btn btn-light  btn-round" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="nav-link dropdown-toggle   btn btn-light   " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                          <p style="color:#333">{{.user.Username}}</p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -80,19 +80,13 @@
                 </li>
                 {{else}}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-light btn-round" href="/login" data-pjax="#pjax-container"  >
+                    <a class="nav-link btn btn-light  " href="/login" data-pjax="#pjax-container"  >
 
                         <p style="color:#333">Login</p>
                     </a>
                 </li>
                 {{end}}
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
-                       href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none d-xl-none">Facebook</p>
-                    </a>
-                </li>
+
 
             </ul>
         </div>
@@ -110,7 +104,13 @@
     </div>
 </div>
 <footer class="footer">
+
     <div class="container text-center">
+        <a class="  btn btn-neutral btn-icon btn-facebook btn-round btn-lg"
+           href="https://www.facebook.com/TheMemeEconomy123/" target="_blank">
+            <i class="fa fa-facebook-square"></i>
+            <p class="d-lg-none d-xl-none">Facebook</p>
+        </a>
         <div class="  ">
             &copy;
             <script>document.write(new Date().getFullYear())</script>
