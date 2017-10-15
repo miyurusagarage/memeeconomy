@@ -7,9 +7,11 @@ import (
 	"fmt"
 	"time"
 	"github.com/nu7hatch/gouuid"
+	"github.com/miyurusagarage/memeeconomy/utils"
 )
 
 const SocialPostThreshold = 1
+const MemeExpirationInDays = 5
 
 type Meme struct {
 	Key                 *datastore.Key `datastore:"__key__"`
@@ -28,7 +30,7 @@ type Meme struct {
 	SocialPostedDate    time.Time
 	SocialShares        int
 	SocialUpdatedDate   time.Time
-	Status              string
+	IsExpired           bool
 	Title               string
 	TotalFame           int
 }
@@ -50,6 +52,16 @@ func (this *Meme) Save() (err error) {
 
 func (this *Meme) Update() (err error) {
 	this.ModifiedDate = time.Now()
+	if this.CurrentInvestments >= this.SocialPostThreshold {
+		if this.SocialFbPostLink == "" {
+			postId := utils.PostMemeToFb(this.ImagePath, this.Title)
+			this.SocialFbPostLink = postId
+			this.SocialPostedDate = time.Now()
+			this.ExpirationDate = time.Now().Add(MemeExpirationInDays * (time.Hour * 24))
+			this.SocialPostsCreated = true
+		}
+	}
+	this.TotalFame = this.SocialLikes + this.SocialShares + this.CurrentInvestments + this.InternalLikes
 	ctx := context.Background()
 	if _, err := shared.DatastoreClient.Put(ctx, this.Key, this); err != nil {
 		fmt.Println(err)

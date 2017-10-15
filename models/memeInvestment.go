@@ -10,8 +10,6 @@ import (
 	"github.com/nu7hatch/gouuid"
 )
 
-const InvestmentPayoutInDays = 5
-
 type MemeInvestment struct {
 	Key                   *datastore.Key `datastore:"__key__"`
 	BidAmount             int
@@ -20,7 +18,7 @@ type MemeInvestment struct {
 	MomentsMemeInvestment int
 	MomentsSocialLikes    int
 	MomentsSocialShares   int
-	InvestmentPoints      int
+	MomentsTotalFame      int
 	MemeId                string
 	PayoutAmount          int
 	PayoutDate            time.Time
@@ -29,7 +27,6 @@ type MemeInvestment struct {
 
 func (this *MemeInvestment) Save() (err error) {
 	this.CreatedDate = time.Now()
-	this.PayoutDate = time.Now().Add(InvestmentPayoutInDays * (time.Hour * 24))
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()
@@ -69,3 +66,17 @@ func GetMemeInvestmentFromId(id string) (objs *User, err error) {
 	return &data, nil
 
 }
+
+func GetMemeInvestmentsByMeme(memeId string) (objs *[]MemeInvestment, err error) {
+	ctx := context.Background()
+	q := datastore.NewQuery("meme_investment").Filter("MemeId=", memeId)
+
+	var data []MemeInvestment
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+
+	if er != nil {
+		return nil, er
+	}
+	return &data , nil
+}
+

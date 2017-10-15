@@ -3,8 +3,6 @@ package controllers
 import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"cloud.google.com/go/datastore"
-	"github.com/miyurusagarage/memeeconomy/utils"
-	"time"
 )
 
 type VoteMemeController struct {
@@ -21,7 +19,7 @@ func (c *VoteMemeController) Get() {
 	userKey := c.Data["userKey"].(*datastore.Key)
 	memeVote, _ := models.GetMemeVoteFromMemeByUser(memeId, userKey.Name)
 	meme, _ := models.GetMemeFromId(memeId)
-	if meme != nil && userKey != nil && memeId != "" {
+	if meme != nil && userKey != nil && memeId != ""  && !meme.IsExpired{
 		switch voteType {
 		case "up":
 			if memeVote == nil {
@@ -33,15 +31,6 @@ func (c *VoteMemeController) Get() {
 				if err == nil{
 					meme.InternalLikes++
 					meme.Update()
-					if meme.InternalLikes >= meme.SocialPostThreshold {
-						if meme.SocialFbPostLink == "" {
-							postId := utils.PostMemeToFb(meme.ImagePath, meme.Title)
-							meme.SocialFbPostLink = postId
-							meme.SocialPostedDate = time.Now()
-							meme.SocialPostsCreated = true
-							meme.Update()
-						}
-					}
 				}
 			}
 		case "down":
