@@ -20,6 +20,7 @@ func (c *BaseController) Prepare() {
 	if c.Ctx.Request.Header.Get("X-Pjax") == "" {
 		c.Layout = "index.tpl"
 	}
+	c.IsAuthorized()
 }
 
 func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
@@ -82,7 +83,6 @@ func (c *BaseController) Authorize() {
 func (c *BaseController) ManageLoginCookie() {
 	if (c.GetString("t") != "") {
 		expiration := time.Now().Add(365 * 24 * time.Hour) //1 year
-		c.Ctx.Request.Header.Set("domain", "localhost")
 		tokenCookie := http.Cookie{Name: "token", Value: c.GetString("t"), Expires: expiration}
 		http.SetCookie(c.Ctx.ResponseWriter, &tokenCookie)
 		c.Redirect("/", 302)

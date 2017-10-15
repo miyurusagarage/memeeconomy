@@ -19,4 +19,5 @@ func init() {
     beego.Router("/getmemesforuser", &controllers.MemesController{},"get:GetUserPosts")
     beego.Router("/getTopMemes", &controllers.MemesController{},"get:GetTop")
     beego.Router("/gettopblock", &controllers.MemesController{},"get:GetTopBlock")
+    beego.Router("/logout", &controllers.LoginController{},"get:LogOut")
 }

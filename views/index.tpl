@@ -49,18 +49,43 @@
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link btn btn-light btn-round" href="/uploadmeme" data-pjax="#pjax-container"  >
-                        <i class="now-ui-icons arrows-1_share-66"></i>
-                        <p style="color:#333">Upload Meme</p>
+                    <a class="nav-link  btn btn-light  btn-round" href="/getTopMemes" data-pjax="#pjax-container"  >
+                        <p style="color:#333; ">Top Memes</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
-                       href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none d-xl-none">Twitter</p>
+                    <a class="nav-link btn btn-warning btn-round" href="/uploadmeme" data-pjax="#pjax-container"  >
+                        <i style="color:#333" class="now-ui-icons arrows-1_share-66"></i>
+                        <p style="color:#333">Upload Meme</p>
                     </a>
                 </li>
+
+
+
+
+                {{ if .authorized }}
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle   btn btn-light  btn-round" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                         <p style="color:#333">{{.user.Username}}</p>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/profile" data-pjax="#pjax-container" >
+                             Profile
+                        </a>
+                        <a class="dropdown-item" href="/logout" data-pjax="#pjax-container" >
+                            Logout
+                        </a>
+
+                    </div>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link btn btn-warning btn-round" href="/login" data-pjax="#pjax-container"  >
+
+                        <p style="color:#333">Login</p>
+                    </a>
+                </li>
+                {{end}}
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
                        href="https://www.facebook.com/CreativeTim" target="_blank">
@@ -68,15 +93,10 @@
                         <p class="d-lg-none d-xl-none">Facebook</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
-                       href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none d-xl-none">Instagram</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
+
     </div>
 </nav>
 <!-- End Navbar -->

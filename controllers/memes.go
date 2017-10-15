@@ -10,19 +10,16 @@ type MemesController struct {
 }
 
 func (c *MemesController) GetRecent() {
-	c.IsAuthorized()
 	c.Data["blockFetchUrl"] = "getmeme"
 	c.TplName = "recentMemes.tpl"
 }
 
 func (c *MemesController) GetTop() {
-	c.IsAuthorized()
 	c.Data["blockFetchUrl"] = "gettopblock"
 	c.TplName = "recentMemes.tpl"
 }
 
 func (c *MemesController) GetRecentBlock() {
-	c.IsAuthorized()
 	offset, err := c.GetInt("offset")
 
 	if (err != nil) {
@@ -60,7 +57,6 @@ func (c *MemesController) GetRecentBlock() {
 }
 
 func (c *MemesController) GetTopBlock() {
-	c.IsAuthorized()
 	offset, err := c.GetInt("offset")
 
 	if (err != nil) {
@@ -99,7 +95,6 @@ func (c *MemesController) GetTopBlock() {
 }
 
 func (c *MemesController) GetUserPosts() {
-	c.IsAuthorized()
 	offset, err := c.GetInt("offset")
 
 	if (err != nil) {

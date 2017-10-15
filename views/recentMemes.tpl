@@ -12,6 +12,8 @@
         <p class="infinite-scroll-last text-center">End of content</p>
         <p class="infinite-scroll-error text-center">No memes to load</p>
     </div>
+
+    {{if .user}}
     <!-- Modal Core -->
     <div class="modal fade" id="investModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
@@ -54,7 +56,7 @@
             </form>
         </div>
     </div>
-
+{{end}}
     <script>
         $(document).ready(function () {
             $('.memecontainer').infiniteScroll({
@@ -150,7 +152,7 @@
             var memeId = $(this).data('id');
             $(".modal-body #memeId").val(memeId);
         });
-
+        {{if .user }}
         $('#investAmount').on('input',function(e){
            if(parseInt(e.target.value, 10)>parseInt('{{.user.CurrentCredit }}',10)){
                 $("#btn-submit-investment").prop( "disabled", true );
@@ -160,7 +162,7 @@
                $('#flurbowarning').hide()
            }
         });
-
+        {{end}}
         $("#investSubmitForm").submit(function (event) {
 
             /* stop form from submitting normally */
