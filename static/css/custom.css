@@ -337,3 +337,33 @@ textarea.form-control:focus, textarea.form-control:active {
     margin: 20px;
     padding: 20px;
 }
+
+.social-btn-fb{
+    background-color: #4267b2  ;
+    color: #fff;
+    height: 15.6rem !important;
+    min-width: 3.6rem !important;;
+    width: 15.6rem !important;;
+}
+.social-btn-fb i.fa{
+    left: 43% !important;
+    top: 45% !important;
+    font-size: 6rem !important;
+}
+
+.social-btn-fb p{
+    left: 10% !important;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+    font-weight: 600;
+}
+
+.social-btn-fb:hover{
+     background-color: #fff  ;
+     color: #4267b2 !important;
+ }
+
+.social-btn-fb:hover p{
+    color: #4267b2 !important;
+}
