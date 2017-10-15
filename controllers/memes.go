@@ -11,6 +11,13 @@ type MemesController struct {
 
 func (c *MemesController) GetRecent() {
 	c.IsAuthorized()
+	c.Data["blockFetchUrl"] = "getmeme"
+	c.TplName = "recentMemes.tpl"
+}
+
+func (c *MemesController) GetTop() {
+	c.IsAuthorized()
+	c.Data["blockFetchUrl"] = "gettopblock"
 	c.TplName = "recentMemes.tpl"
 }
 
@@ -52,6 +59,45 @@ func (c *MemesController) GetRecentBlock() {
 	c.TplName = "memeList.tpl"
 }
 
+func (c *MemesController) GetTopBlock() {
+	c.IsAuthorized()
+	offset, err := c.GetInt("offset")
+
+	if (err != nil) {
+		return
+	}
+
+	println(offset)
+	memes, total, _ := models.GetTopMemes((offset-2)*3, 3)
+
+	var keys []string
+	for _, mem := range *memes {
+		key := mem.Key.Name
+		keys = append(keys, key)
+	}
+
+	var voteMapCss = make(map[string]string)
+	if (c.Authorized) {
+		voteMap, _ := models.GetMemeVoteFromMemesByUser(keys, c.Data["userKey"].(*datastore.Key).Name)
+		for k, v := range *voteMap {
+			if (&v != nil) {
+				voteMapCss[k] = "liked"
+			}
+		}
+	}
+
+	c.Data["voteMap"] = voteMapCss
+
+	if len(*memes) == 0 {
+		c.Abort("404")
+	}
+
+	c.Data["data"] = memes
+	c.Data["showRank"] = false
+	c.Data["total"] = total
+	c.TplName = "memeList.tpl"
+}
+
 func (c *MemesController) GetUserPosts() {
 	c.IsAuthorized()
 	offset, err := c.GetInt("offset")
@@ -63,6 +109,7 @@ func (c *MemesController) GetUserPosts() {
 	println(offset)
 	var user *models.User
 	userKey := c.GetString("id")
+
 	if userKey != "" {
 		user, _ = models.GetUserFromId(userKey)
 	} else {

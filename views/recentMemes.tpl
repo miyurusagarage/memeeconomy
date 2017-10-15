@@ -58,7 +58,7 @@
     <script>
         $(document).ready(function () {
             $('.memecontainer').infiniteScroll({
-                path: '/getmeme?offset={{"{{"}}#{{"}}"}}',
+                path: '/{{.blockFetchUrl}}?offset={{"{{"}}#{{"}}"}}',
                 append: '.meme',
                 status: '.scroller-status',
                 history: false,
