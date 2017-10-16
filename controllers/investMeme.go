@@ -21,22 +21,14 @@ func (c *InvestMemeController) Get() {
 	meme, _ := models.GetMemeFromId(memeId)
 	dbUser, _ := models.GetUserFromId(userKey.Name)
 	investMemeError := new(shared.JSONResponse)
-	if meme != nil && userKey != nil && memeId != "" && err == nil && dbUser != nil {
+	if meme != nil && userKey != nil && memeId != "" && err == nil && dbUser != nil && !meme.IsExpired {
 
-		if dbUser.CurrentCredit >= investmentBidAmount {
+		if dbUser.CurrentCredit >= investmentBidAmount && investmentBidAmount > 0 {
 
 			memeInvestment := new(models.MemeInvestment)
 			memeInvestment.MemeId = memeId
 			memeInvestment.UserId = userKey.Name
 			memeInvestment.BidAmount = investmentBidAmount
-
-			// Meme's current values
-			memeInvestment.MomentsInternalLikes = meme.InternalLikes
-			memeInvestment.MomentsMemeInvestment = meme.CurrentInvestments
-			memeInvestment.MomentsSocialLikes = meme.SocialLikes
-			memeInvestment.MomentsSocialShares = meme.SocialShares
-
-			err := memeInvestment.Save()
 
 			// Deduct From User
 			dbUser.CurrentCredit -= memeInvestment.BidAmount
@@ -45,6 +37,15 @@ func (c *InvestMemeController) Get() {
 			// Add to Current Investment
 			meme.CurrentInvestments += memeInvestment.BidAmount
 			meme.Update()
+
+			// Meme's current values
+			memeInvestment.MomentsInternalLikes = meme.InternalLikes
+			memeInvestment.MomentsMemeInvestment = meme.CurrentInvestments
+			memeInvestment.MomentsSocialLikes = meme.SocialLikes
+			memeInvestment.MomentsSocialShares = meme.SocialShares
+			memeInvestment.MomentsTotalFame = meme.TotalFame
+
+			err := memeInvestment.Save()
 
 			if err == nil {
 				c.Data["json"] = &meme
