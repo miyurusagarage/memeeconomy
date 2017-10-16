@@ -9,6 +9,7 @@ import (
 	"time"
 	"net/http"
 	"github.com/miyurusagarage/memeeconomy/models"
+	"net/url"
 )
 
 type BaseController struct {
@@ -20,11 +21,15 @@ func (c *BaseController) Prepare() {
 	if c.Ctx.Request.Header.Get("X-Pjax") == "" {
 		c.Layout = "index.tpl"
 	}
+
+	t := url.QueryEscape(time.Now().Format("2006-01-02 15:04:05"))
+	c.Data["time"] = t
 	c.IsAuthorized()
 }
 
 func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 	cookie, _ := c.Ctx.Request.Cookie("token")
+
 	if (cookie != nil) {
 
 		user, _ := models.GetUserFromFbToken(cookie.Value)
@@ -40,6 +45,7 @@ func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 				c.Data["username"] = dbUser.Username
 				c.Data["user"] = dbUser
 				c.Data["fbId"] = dbUser.FbId
+
 				return true, err
 			} else {
 				c.Authorized = false

@@ -116,10 +116,44 @@ func GetMemeVoteFromMemesByUser(memeIds []string, userId string) (objs *map[stri
 		close(bufferedChan)
 	}()
 
-	for v := range bufferedChan{
+	for v := range bufferedChan {
 		if (v != nil) {
 			fmt.Println(*v)
 			voteMap[v.MemeId] = *v
+		}
+	}
+
+	return &voteMap, nil
+}
+
+func GetUsersFromUserIds(userIds []string) (objs *map[string]User, err error) {
+ 	var bufferedChan = make(chan *User, len(userIds))
+	var wg sync.WaitGroup
+	voteMap := make(map[string]User)
+	for _, userIdx := range userIds {
+		wg.Add(1)
+		go func(userId string) {
+			user, er := GetUserFromId(userId)
+
+			if er != nil {
+				bufferedChan <- nil
+			}
+
+				bufferedChan <- user
+
+			wg.Done()
+		}(userIdx)
+	}
+
+	go func() {
+		wg.Wait()
+		close(bufferedChan)
+	}()
+
+	for v := range bufferedChan {
+		if (v != nil) {
+			fmt.Println(*v)
+			voteMap[v.Key.Name] = *v
 		}
 	}
 

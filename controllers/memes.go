@@ -3,6 +3,8 @@ package controllers
 import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"cloud.google.com/go/datastore"
+	"time"
+	"net/url"
 )
 
 type MemesController struct {
@@ -21,13 +23,15 @@ func (c *MemesController) GetTop() {
 
 func (c *MemesController) GetRecentBlock() {
 	offset, err := c.GetInt("offset")
+	t,_ := url.QueryUnescape(c.GetString("time"))
+	startingTime, _ := time.Parse("2006-01-02 15:04:05", t)
 
 	if (err != nil) {
 		return
 	}
 
 	println(offset)
-	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3)
+	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3, startingTime)
 
 	var keys []string
 	for _, mem := range *memes {
@@ -45,6 +49,13 @@ func (c *MemesController) GetRecentBlock() {
 		}
 	}
 	c.Data["voteMap"] = voteMapCss
+
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
 
 	if len(*memes) == 0 {
 		c.Abort("404")
@@ -72,6 +83,7 @@ func (c *MemesController) GetTopBlock() {
 		keys = append(keys, key)
 	}
 
+
 	var voteMapCss = make(map[string]string)
 	if (c.Authorized) {
 		voteMap, _ := models.GetMemeVoteFromMemesByUser(keys, c.Data["userKey"].(*datastore.Key).Name)
@@ -87,6 +99,13 @@ func (c *MemesController) GetTopBlock() {
 	if len(*memes) == 0 {
 		c.Abort("404")
 	}
+
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
 
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
@@ -129,6 +148,13 @@ func (c *MemesController) GetUserPosts() {
 		}
 	}
 	c.Data["voteMap"] = voteMapCss
+
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
 
 	if len(*memes) == 0 {
 		c.Abort("404")

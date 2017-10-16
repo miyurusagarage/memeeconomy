@@ -1,0 +1,6 @@
+indexes:
+
+- kind: meme
+  properties:
+    - name: IsExpired
+    - name: CurrentInvestments

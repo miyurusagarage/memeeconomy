@@ -19,6 +19,8 @@ func (c *ProfileController) Get() {
 		user = (c.Data["user"]).(*models.User)
 	}
 
+	
+
 	c.Data["userData"] = user
 	c.Data["userRank"],_ = user.GetRank()
 	c.Data["userPosts"],_ = user.GetPostCount()
