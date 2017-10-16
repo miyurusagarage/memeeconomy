@@ -60,7 +60,7 @@
     <script>
         $(document).ready(function () {
             $('.memecontainer').infiniteScroll({
-                path: '/{{.blockFetchUrl}}?offset={{"{{"}}#{{"}}"}}',
+                path: '/{{.blockFetchUrl}}?offset={{"{{"}}#{{"}}"}}&time={{.time}}',
                 append: '.meme',
                 status: '.scroller-status',
                 history: false,

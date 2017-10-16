@@ -91,10 +91,11 @@ func GetMemeFromKey(key *datastore.Key) (objs *Meme, err error) {
 
 }
 
-func GetRecentMemes(offset int, pageSize int) (objs *[]Meme, total int, err error) {
+func GetRecentMemes(offset int, pageSize int, fromTime time.Time) (objs *[]Meme, total int, err error) {
 
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
+	q = q.Filter("CreatedDate <", fromTime)
 	q = q.Order("-CreatedDate")
 	q = q.Offset(offset)
 	q = q.Limit(pageSize)

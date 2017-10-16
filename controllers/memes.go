@@ -3,6 +3,8 @@ package controllers
 import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"cloud.google.com/go/datastore"
+	"time"
+	"net/url"
 )
 
 type MemesController struct {
@@ -21,13 +23,15 @@ func (c *MemesController) GetTop() {
 
 func (c *MemesController) GetRecentBlock() {
 	offset, err := c.GetInt("offset")
+	t,_ := url.QueryUnescape(c.GetString("time"))
+	startingTime, _ := time.Parse("2006-01-02 15:04:05", t)
 
 	if (err != nil) {
 		return
 	}
 
 	println(offset)
-	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3)
+	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3, startingTime)
 
 	var keys []string
 	for _, mem := range *memes {
