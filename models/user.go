@@ -11,13 +11,14 @@ import (
 )
 
 type User struct {
-	Key           *datastore.Key `datastore:"__key__"`
-	Username      string
-	FbId          string
-	FbToken       string
-	CurrentCredit int
-	CreatedDate   time.Time
-	UpdateDate    time.Time
+	Key                 *datastore.Key `datastore:"__key__"`
+	Username            string
+	FbId                string
+	FbToken             string
+	CurrentCredit       int
+	CreatedDate         time.Time
+	UpdateDate          time.Time
+	UsernamePromptShown bool
 }
 
 func (this *User) Save() (err error) {
@@ -116,11 +117,10 @@ func (this *User) GetRank() (rank int, err error) {
 	return rank + 1, nil
 }
 
-func (this *User)  GetPostCount() (count int, err error) {
+func (this *User) GetPostCount() (count int, err error) {
 	ctx := context.Background()
 	q := datastore.NewQuery("meme").
-			Filter("CreatedUserId =",this.Key.Name)
-
+		Filter("CreatedUserId =", this.Key.Name)
 
 	count, er := shared.DatastoreClient.Count(ctx, q)
 
@@ -128,5 +128,25 @@ func (this *User)  GetPostCount() (count int, err error) {
 		return -1, er
 	}
 
-	return count , nil
+	return count, nil
+}
+
+
+func GetUserFromUsername(username string) (objs *User, err error) {
+	ctx := context.Background()
+
+	q := datastore.NewQuery("user").
+		Filter("Username =", username)
+
+	var users []User
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &users)
+
+	if er != nil {
+		return nil, er
+	}
+
+	if len(users) > 0 {
+		return &users[0], nil
+	}
+	return nil, nil
 }
