@@ -50,6 +50,13 @@ func (c *MemesController) GetRecentBlock() {
 	}
 	c.Data["voteMap"] = voteMapCss
 
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
+
 	if len(*memes) == 0 {
 		c.Abort("404")
 	}
@@ -76,6 +83,7 @@ func (c *MemesController) GetTopBlock() {
 		keys = append(keys, key)
 	}
 
+
 	var voteMapCss = make(map[string]string)
 	if (c.Authorized) {
 		voteMap, _ := models.GetMemeVoteFromMemesByUser(keys, c.Data["userKey"].(*datastore.Key).Name)
@@ -91,6 +99,13 @@ func (c *MemesController) GetTopBlock() {
 	if len(*memes) == 0 {
 		c.Abort("404")
 	}
+
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
 
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
@@ -133,6 +148,13 @@ func (c *MemesController) GetUserPosts() {
 		}
 	}
 	c.Data["voteMap"] = voteMapCss
+
+	var users []string
+	for _, mem := range *memes {
+		key := mem.CreatedUserId
+		users = append(users, key)
+	}
+	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
 
 	if len(*memes) == 0 {
 		c.Abort("404")

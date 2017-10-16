@@ -2,10 +2,14 @@
 {{ $authorized1  := .authorized }}
 {{ $userKey1  := .userKey }}
 {{ $voteMap  := .voteMap }}
+{{ $memeUsers  := .memeUsers }}
 {{ range $mm  := .data }}
+
 <div class="meme" style=" ">
     <h2>{{$mm.Title}}</h2>
     <p class="meme-description" style="margin-top: -20px;">{{$mm.Description}}</p>
+    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">{{ (index $memeUsers $mm.CreatedUserId).Username}}</p></a>
+
 
     <div class="row">
         <div class="col-md-10 meme-img-container {{  index $voteMap $mm.Key.Name  }}"
@@ -29,7 +33,6 @@
                     <h5 class="sidebar-caption">Meme Rank</h5>
                     <h3 class="sidebar-value">#1</h3>
                 </div>
-
                 {{ end }}
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Total Worth</h5>
@@ -37,12 +40,20 @@
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Total Likes</h5>
-                    <h3 class="sidebar-value" id="like-value{{$mm.Key.Name}}">{{ $mm.InternalLikes }}</h3>
+                    <h3 class="sidebar-value" id="like-value{{$mm.Key.Name}}">{{ $mm.TotalLikes }}</h3>
                 </div>
 
-                {{ if $authorized1}}
+
+
+                {{ if and $authorized1 $mm.CanInvest }}
                 <button class="btn btn-default btn-block btn-lg btn-invest" style="background-color: #424242;" data-id="{{$mm.Key.Name}}"
                         data-toggle="modal" data-target="#investModal">
+                    Invest
+                </button>
+                {{end}}
+
+                {{ if and $authorized1 $mm.IsExpired }}
+                <button class="btn btn-default btn-block btn-lg btn-invest" style="background-color: #424242;"  disabled>
                     Invest
                 </button>
                 {{end}}

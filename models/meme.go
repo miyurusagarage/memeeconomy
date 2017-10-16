@@ -8,6 +8,7 @@ import (
 	"time"
 	"github.com/nu7hatch/gouuid"
 	"github.com/miyurusagarage/memeeconomy/utils"
+	"google.golang.org/api/iterator"
 )
 
 const SocialPostThreshold = 1
@@ -74,6 +75,15 @@ func (this *Meme) kind() (str string) {
 	return "meme"
 }
 
+func (this *Meme) TotalLikes() (str int) {
+	return this.InternalLikes + this.SocialLikes
+}
+
+func (this *Meme) CanInvest() ( bool) {
+
+	return !this.IsExpired
+}
+
 func GetMemeFromId(id string) (objs *Meme, err error) {
 	ctx := context.Background()
 
@@ -127,20 +137,31 @@ func GetRecentMemes(offset int, pageSize int, fromTime time.Time) (objs *[]Meme,
 }
 
 func GetTopMemes(offset int, pageSize int) (objs *[]Meme, total int, err error) {
-
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
-	q = q.Order("-CurrentInvestments")
-	q = q.Offset(offset)
-	q = q.Limit(pageSize)
+	q = q.Filter("IsExpired =",false)
 
+	q = q.Order("CurrentInvestments")
 	var data []Meme
-	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+	it := shared.DatastoreClient.Run(ctx, q)
+	for {
+		var meme Meme
+		_, err := it.Next(&meme)
+		if err == iterator.Done {
+			break
+		}
+		if err != nil {
+			println(err.Error())
+			break
+		}
+		data = append(data, meme)
+
+	}
 
 	//count for pagination
 	q = datastore.NewQuery("meme")
-	count := 0
-	count, er = shared.DatastoreClient.Count(ctx, q, )
+
+	count, er := shared.DatastoreClient.Count(ctx, q, )
 	println(count)
 	if er != nil {
 		return nil, 0, er

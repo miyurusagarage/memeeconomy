@@ -21,6 +21,7 @@ func (c *BaseController) Prepare() {
 	if c.Ctx.Request.Header.Get("X-Pjax") == "" {
 		c.Layout = "index.tpl"
 	}
+
 	t := url.QueryEscape(time.Now().Format("2006-01-02 15:04:05"))
 	c.Data["time"] = t
 	c.IsAuthorized()
