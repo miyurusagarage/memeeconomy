@@ -378,3 +378,13 @@ textarea.form-control:focus, textarea.form-control:active {
     color:white;
     font-size: 12px;
 }
+
+.sidebar{
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .sidebar{
+        display: none;
+    }
+}

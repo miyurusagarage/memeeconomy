@@ -59,10 +59,6 @@
                         <p >Upload Meme</p>
                     </a>
                 </li>
-
-
-
-
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
@@ -86,8 +82,6 @@
                     </a>
                 </li>
                 {{end}}
-
-
             </ul>
         </div>
 
