@@ -1,5 +1,5 @@
 <div class=" " style=" ">
-    <h3>You Transactions</h3>
+    <h3>Your Transactions</h3>
     <p>This table show a list of investments made by you.</p>
     <hr/>
     {{ if .data}}
