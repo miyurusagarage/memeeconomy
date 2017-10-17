@@ -31,6 +31,6 @@ func (c *PayoutInvestmentsController) Get() {
 }
 
 func getPayoutAmount(meme models.Meme, memeInvestment models.MemeInvestment) int{
-
-	return ((meme.TotalFame / memeInvestment.MomentsTotalFame) * (memeInvestment.BidAmount / memeInvestment.MomentsTotalFame) - (memeInvestment.BidAmount / memeInvestment.MomentsTotalFame)) * (memeInvestment.BidAmount/meme.TotalFame)
+	variance := meme.TotalFame - memeInvestment.MomentsTotalFame - memeInvestment.BidAmount
+	return variance
 }
