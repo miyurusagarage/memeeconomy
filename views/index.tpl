@@ -81,7 +81,7 @@
                 <li class="nav-item">
                     <a class="nav-link   " href="/login" data-pjax="#pjax-container"  >
 
-                        <p style="color:#333">Login</p>
+                        <p  >Login</p>
                     </a>
                 </li>
                 {{end}}
