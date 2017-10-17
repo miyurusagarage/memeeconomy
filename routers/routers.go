@@ -20,6 +20,7 @@ func init() {
     beego.Router("/getTopMemes", &controllers.MemesController{},"get:GetTop")
     beego.Router("/gettopblock", &controllers.MemesController{},"get:GetTopBlock")
     beego.Router("/logout", &controllers.LoginController{},"get:LogOut")
+    beego.Router("/getmemesingle", &controllers.MemesController{},"get:GetMemeSingle")
     beego.Router("/setusername", &controllers.ProfileController{},"get:SetUsername")
     beego.Router("/payoutinvestments", &controllers.PayoutInvestmentsController{})
 }

@@ -23,7 +23,7 @@ func (c *MemesController) GetTop() {
 
 func (c *MemesController) GetRecentBlock() {
 	offset, err := c.GetInt("offset")
-	t,_ := url.QueryUnescape(c.GetString("time"))
+	t, _ := url.QueryUnescape(c.GetString("time"))
 	startingTime, _ := time.Parse("2006-01-02 15:04:05", t)
 
 	if (err != nil) {
@@ -55,7 +55,7 @@ func (c *MemesController) GetRecentBlock() {
 		key := mem.CreatedUserId
 		users = append(users, key)
 	}
-	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
+	c.Data["memeUsers"], _ = models.GetUsersFromUserIds(users)
 
 	if len(*memes) == 0 {
 		c.Abort("404")
@@ -83,7 +83,6 @@ func (c *MemesController) GetTopBlock() {
 		keys = append(keys, key)
 	}
 
-
 	var voteMapCss = make(map[string]string)
 	if (c.Authorized) {
 		voteMap, _ := models.GetMemeVoteFromMemesByUser(keys, c.Data["userKey"].(*datastore.Key).Name)
@@ -105,7 +104,7 @@ func (c *MemesController) GetTopBlock() {
 		key := mem.CreatedUserId
 		users = append(users, key)
 	}
-	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
+	c.Data["memeUsers"], _ = models.GetUsersFromUserIds(users)
 
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
@@ -154,7 +153,7 @@ func (c *MemesController) GetUserPosts() {
 		key := mem.CreatedUserId
 		users = append(users, key)
 	}
-	c.Data["memeUsers"],_ = models.GetUsersFromUserIds(users)
+	c.Data["memeUsers"], _ = models.GetUsersFromUserIds(users)
 
 	if len(*memes) == 0 {
 		c.Abort("404")
@@ -165,3 +164,39 @@ func (c *MemesController) GetUserPosts() {
 	c.Data["total"] = total
 	c.TplName = "memeList.tpl"
 }
+
+func (c *MemesController) GetMemeSingle() {
+	memeid := c.GetString("memeid")
+
+	mem, _ := models.GetMemeFromId(memeid)
+
+	var keys []string
+	keys = append(keys, memeid)
+
+	var voteMapCss = make(map[string]string)
+	if (c.Authorized) {
+		voteMap, _ := models.GetMemeVoteFromMemesByUser(keys, c.Data["userKey"].(*datastore.Key).Name)
+		for k, v := range *voteMap {
+			if (&v != nil) {
+				voteMapCss[k] = "liked"
+			}
+		}
+	}
+	c.Data["voteMap"] = voteMapCss
+
+	var users []string
+
+	key := mem.CreatedUserId
+	users = append(users, key)
+
+	c.Data["memeUsers"], _ = models.GetUsersFromUserIds(users)
+
+	var memes []models.Meme
+	memes = append(memes, *mem)
+	c.Data["data"] = memes
+	c.Data["showRank"] = false
+	c.Data["total"] = 1
+	c.TplName = "memeList.tpl"
+}
+
+var memes *[]models.Meme

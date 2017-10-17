@@ -49,14 +49,14 @@
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link  btn btn-light  " href="/getTopMemes" data-pjax="#pjax-container"  >
-                        <p style="color:#333; ">Top Memes</p>
+                    <a class="nav-link    " href="/getTopMemes" data-pjax="#pjax-container"  >
+                        <p >Top Memes</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn btn-warning " href="/uploadmeme" data-pjax="#pjax-container"  >
-                        <i style="color:#333" class="now-ui-icons arrows-1_share-66"></i>
-                        <p style="color:#333">Upload Meme</p>
+                    <a class="nav-link   " href="/uploadmeme" data-pjax="#pjax-container"  >
+                        <i  class="now-ui-icons arrows-1_share-66"></i>
+                        <p >Upload Meme</p>
                     </a>
                 </li>
 
@@ -65,8 +65,8 @@
 
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle   btn btn-light   " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                         <p style="color:#333">{{.user.Username}}</p>
+                    <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                         <p >{{.user.Username}}</p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/profile" data-pjax="#pjax-container" >
