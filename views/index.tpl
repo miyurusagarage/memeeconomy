@@ -103,6 +103,41 @@
         </div>
     </div>
 </div>
+{{if .user}}
+<div class="modal fade" id="usernamePromptModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/setusername" method="get" id="usernameSubmitForm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Enter your Username!</h4>
+                </div>
+                <div class="modal-body">
+                    <input name="userId" value={{.user.Key.Name}} id="userId" type="hidden"/>
+                    <div class="col-sm-12">
+
+                        <div class="form-group">
+
+                            <input type="text" id="username" name="amount" placeholder="Enter your Username" required
+                                   value="{{.user.Username}}"
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <p class="text-warning" style="display: none;" id="username-warning">That username is already taken</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p></p>
+                    <button type="button" id="usernameFormBtn" class="btn btn-primary btn-simple">Save</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+{{end}}
 <footer class="footer">
 
     <div class="container text-center">
@@ -145,6 +180,31 @@
 
 
 <script type="text/javascript">
+    var usernamePromptShown = {{.user.UsernamePromptShown}}
+    if(!usernamePromptShown){
+        $('#usernamePromptModal').modal().show()
+        $('#usernameFormBtn').on('click', function () {
+            $.ajax('/setusername', {data: {userId: $('#userId').val(), username : $('#username').val()}}).done(function () {
+                $('#usernamePromptModal').modal('toggle')
+                iziToast.success({
+                    id: 'success',
+                    zindex: 9000,
+                    layout: 1,
+                    title: 'Yaay!',
+                    message:  'Username was updated.',
+                    position: 'bottomRight',
+                    transitionIn: 'bounceInLeft'
+                });
+            }).fail(function (data, status) {
+                if(status = 400){
+                    $('#username-warning').show()
+                }
+            })
+        });
+        $('#username').on('keyup', function () {
+            $('#username-warning').hide()
+        })
+    }
     $('.navbar-toggle').click(function () {
         setTimeout(function () {
             $($('.dropdown')[0]).addClass('open')

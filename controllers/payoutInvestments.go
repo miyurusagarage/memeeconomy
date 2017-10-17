@@ -14,7 +14,7 @@ func (c *PayoutInvestmentsController) Prepare() {
 }
 
 func (c *PayoutInvestmentsController) Get() {
-	eligibleMemes, _ := models.GetAllMemes()//
+	eligibleMemes, _ := models.GetToBeExpiredMemes()
 	for _, eligibleMeme := range *eligibleMemes {
 		eligibleMeme.IsExpired = true
 		eilgibleInvestments, _ := models.GetMemeInvestmentsByMeme(eligibleMeme.Key.Name)
@@ -32,5 +32,5 @@ func (c *PayoutInvestmentsController) Get() {
 
 func getPayoutAmount(meme models.Meme, memeInvestment models.MemeInvestment) int{
 
-	return (meme.TotalFame - memeInvestment.MomentsTotalFame - memeInvestment.BidAmount) + ((meme.TotalFame / memeInvestment.MomentsTotalFame) * memeInvestment.BidAmount)
+	return ((meme.TotalFame / memeInvestment.MomentsTotalFame) * (memeInvestment.BidAmount / memeInvestment.MomentsTotalFame) - (memeInvestment.BidAmount / memeInvestment.MomentsTotalFame)) * (memeInvestment.BidAmount/meme.TotalFame)
 }

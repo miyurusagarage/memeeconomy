@@ -208,3 +208,15 @@ func GetAllMemes( ) (objs *[]Meme, err error) {
 	return &data , nil
 }
 
+func GetToBeExpiredMemes( ) (objs *[]Meme, err error) {
+	ctx := context.Background()
+	q := datastore.NewQuery("meme").Filter("ExpirationDate <", time.Now()).Filter("IsExpired !=", true)
+
+	var data []Meme
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+
+	if er != nil {
+		return nil, er
+	}
+	return &data , nil
+}
