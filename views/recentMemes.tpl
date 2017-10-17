@@ -152,6 +152,16 @@
             var memeId = $(this).data('id');
             $(".modal-body #memeId").val(memeId);
         });
+
+        $(document).on("click", ".btn-share", function () {
+            var memeId = $(this).data('id');
+            var siteUrl =  {{.siteUrl}}
+            FB.ui({
+                method: 'share',
+                href: siteUrl + '/getmemesingle?memeid=' + memeId,
+            }, function(response){});
+        });
+
         {{if .user }}
         $('#investAmount').on('input',function(e){
            if(parseInt(e.target.value, 10)>parseInt('{{.user.CurrentCredit }}',10)){

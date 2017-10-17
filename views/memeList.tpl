@@ -48,10 +48,11 @@
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Share</h5>
-                    <a class="  btn btn-neutral btn-icon btn-facebook btn-round btn-lg" href="https://www.facebook.com/TheMemeEconomy123/" target="_blank">
+
+                    <button class="btn btn-neutral btn-icon btn-facebook btn-round btn-lg btn-share" data-id={{$mm.Key.Name}}>
                         <i class="fa fa-facebook-square"></i>
                         <p class="d-lg-none d-xl-none">Facebook</p>
-                    </a>
+                    </button>
                 </div>
 
 
