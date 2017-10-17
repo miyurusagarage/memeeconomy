@@ -20,6 +20,7 @@ type MemeInvestment struct {
 	MomentsSocialShares   int
 	MomentsTotalFame      int
 	MemeId                string
+	MemeName              string
 	PayoutAmount          int
 	PayoutDate            time.Time
 	UserId                string
@@ -52,6 +53,10 @@ func (this *MemeInvestment) kind() (str string) {
 	return "meme_investment"
 }
 
+func (this *MemeInvestment) GetCreatedTime() (str string) {
+	return  this.CreatedDate.Format("Jan 02 2006   03:04 PM")
+}
+
 func GetMemeInvestmentFromId(id string) (objs *User, err error) {
 	ctx := context.Background()
 
@@ -77,6 +82,37 @@ func GetMemeInvestmentsByMeme(memeId string) (objs *[]MemeInvestment, err error)
 	if er != nil {
 		return nil, er
 	}
-	return &data , nil
+	return &data, nil
 }
 
+func GetAllTransactions(userKey string, offset int, pageSize int) (objs *[]MemeInvestment, err error) {
+
+	ctx := context.Background()
+	q := datastore.NewQuery("meme_investment")
+	println(pageSize)
+
+	q = q.Filter("UserId =", userKey)
+	q = q.Offset(offset)
+	q = q.Limit(pageSize)
+
+	var data []MemeInvestment
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
+
+	if er != nil {
+		return nil, er
+	}
+	return &data, nil
+}
+func GetAllTransactionsTotal(userKey string) (int, error) {
+
+	ctx := context.Background()
+	//count for pagination
+	q := datastore.NewQuery("meme_investment")
+	q = q.Filter("UserId =", userKey)
+	count, er := shared.DatastoreClient.Count(ctx, q )
+
+	if er != nil {
+		return 0, er
+	}
+	return count, nil
+}

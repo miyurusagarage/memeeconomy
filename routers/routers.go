@@ -23,4 +23,5 @@ func init() {
     beego.Router("/getmemesingle", &controllers.MemesController{},"get:GetMemeSingle")
     beego.Router("/setusername", &controllers.ProfileController{},"get:SetUsername")
     beego.Router("/payoutinvestments", &controllers.PayoutInvestmentsController{})
+    beego.Router("/transactions", &controllers.ProfileController{},"get:GetTransactions")
 }

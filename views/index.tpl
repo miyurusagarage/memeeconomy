@@ -68,6 +68,9 @@
                         <a class="dropdown-item" href="/profile" data-pjax="#pjax-container" >
                              Profile
                         </a>
+                        <a class="dropdown-item" href="/transactions" data-pjax="#pjax-container" >
+                            Transactions
+                        </a>
                         <a class="dropdown-item" href="/logout">
                             Logout
                         </a>
@@ -76,7 +79,7 @@
                 </li>
                 {{else}}
                 <li class="nav-item">
-                    <a class="nav-link btn btn-light  " href="/login" data-pjax="#pjax-container"  >
+                    <a class="nav-link   " href="/login" data-pjax="#pjax-container"  >
 
                         <p style="color:#333">Login</p>
                     </a>
