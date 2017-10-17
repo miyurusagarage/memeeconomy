@@ -8,7 +8,7 @@
 <div class="meme" style=" ">
     <h2>{{$mm.Title}}</h2>
     <p class="meme-description" style="margin-top: -20px;">{{$mm.Description}}</p>
-    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">{{ (index $memeUsers $mm.CreatedUserId).Username}}</p></a>
+    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by {{ (index $memeUsers $mm.CreatedUserId).Username}}</p></a>
 
 
     <div class="row">
@@ -35,12 +35,23 @@
                 </div>
                 {{ end }}
                 <div class="sidebar-block">
-                    <h5 class="sidebar-caption">Total Worth</h5>
+                    <h5 class="sidebar-caption">Worth</h5>
+                    <h3 class="sidebar-value"  >{{ $mm.TotalFame }} F</h3>
+                </div>
+                <div class="sidebar-block">
+                    <h5 class="sidebar-caption">Investments</h5>
                     <h3 class="sidebar-value" id="meme-flurbos{{$mm.Key.Name}}">{{ $mm.CurrentInvestments }} F</h3>
                 </div>
                 <div class="sidebar-block">
-                    <h5 class="sidebar-caption">Total Likes</h5>
+                    <h5 class="sidebar-caption">Likes</h5>
                     <h3 class="sidebar-value" id="like-value{{$mm.Key.Name}}">{{ $mm.TotalLikes }}</h3>
+                </div>
+                <div class="sidebar-block">
+                    <h5 class="sidebar-caption">Share</h5>
+                    <a class="  btn btn-neutral btn-icon btn-facebook btn-round btn-lg" href="https://www.facebook.com/TheMemeEconomy123/" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none d-xl-none">Facebook</p>
+                    </a>
                 </div>
 
 

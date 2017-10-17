@@ -367,3 +367,14 @@ textarea.form-control:focus, textarea.form-control:active {
 .social-btn-fb:hover p{
     color: #4267b2 !important;
 }
+
+.nav-link{
+    color:white;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 7px;
+    background: rgba(0, 0, 0, 0.04);
+}
+.nav-link p{
+    color:white;
+    font-size: 12px;
+}
