@@ -9,10 +9,8 @@ import (
 	"github.com/nu7hatch/gouuid"
 	"github.com/miyurusagarage/memeeconomy/utils"
 	"google.golang.org/api/iterator"
+	"strconv"
 )
-
-const SocialPostThreshold = 1
-const MemeExpirationInDays = 5
 
 type Meme struct {
 	Key                 *datastore.Key `datastore:"__key__"`
@@ -38,7 +36,8 @@ type Meme struct {
 
 func (this *Meme) Save() (err error) {
 	this.CreatedDate = time.Now()
-	this.SocialPostThreshold = SocialPostThreshold
+	socialPostThreshold, _ := GetConfigByName("SocialPostThreshold")
+	this.SocialPostThreshold, _ = strconv.Atoi(socialPostThreshold.Value)
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()
@@ -58,7 +57,9 @@ func (this *Meme) Update() (err error) {
 			postId := utils.PostMemeToFb(this.ImagePath, this.Title)
 			this.SocialFbPostLink = postId
 			this.SocialPostedDate = time.Now()
-			this.ExpirationDate = time.Now().Add(MemeExpirationInDays * (time.Hour * 24))
+			memeExpirationInDaysConfig , _ := GetConfigByName("MemeExpirationInDays")
+			memeExpirationInDays , _ := strconv.Atoi(memeExpirationInDaysConfig.Value)
+			this.ExpirationDate = time.Now().Add(time.Duration(memeExpirationInDays) * (time.Hour * 24))
 			this.SocialPostsCreated = true
 		}
 	}
