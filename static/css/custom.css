@@ -50,6 +50,17 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #fff;
 }
 
+.btn:hover{
+    color: white;
+}
+.btn:focus{
+    color: white;
+}
+
+.btn:active{
+    color: white;
+}
+
 .form-control {
     border: 1px solid #636363;
 }
@@ -473,15 +484,4 @@ textarea.form-control:focus, textarea.form-control:active {
 .meme div:hover .meme-title{
     opacity:1;
     transition: .5s;
-}
-
-.btn:hover{
-    color: white;
-}
-.btn:focus{
-    color: white;
-}
-
-.btn:active{
-    color: white;
 }
