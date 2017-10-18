@@ -123,8 +123,10 @@ textarea.form-control:focus, textarea.form-control:active {
 
 .meme-img {
     border-radius: 7px;
-    width: 100%;
     cursor: pointer;
+    margin: auto;
+    height: 100%;
+    max-height: 900px;
 }
 
 .like-icon {
@@ -134,6 +136,12 @@ textarea.form-control:focus, textarea.form-control:active {
     font-weight: 600;
     /*-webkit-text-stroke-width: 1px;*/
     /*-webkit-text-stroke-color: #c01300;*/
+
+    border: 0px white solid;
+    border-radius: 100%;
+    padding: 10px;
+    background: rgb(101, 94, 94);
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.87);
 }
 
 .liked {
@@ -147,8 +155,8 @@ textarea.form-control:focus, textarea.form-control:active {
     margin-top: -20px;
     float: right;
     position: absolute;
-    right: 29px;
-    top: 27px;
+    right: 45%;
+    bottom: 12px;
 }
 
 .meme {
@@ -161,6 +169,8 @@ textarea.form-control:focus, textarea.form-control:active {
 
 .meme-img-container {
     position: relative;
+    background-color: #0c0c0c;
+    border-radius: 9px;
 
 }
 
