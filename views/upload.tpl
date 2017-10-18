@@ -16,7 +16,7 @@
                 <input type="hidden" id="imgId" name="imgId" value=""/>
 
             </div>
-            <div class="form-group text-center">
+            <div class="form-group text-center" style="margin-top: 40px;">
                 <input type="submit" class="btn btn-primary btn-round btn-lg"
                        style="display: inline-block;text-align: center" value="Post Meme">
             </div>

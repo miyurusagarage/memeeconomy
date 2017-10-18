@@ -64,7 +64,8 @@
                 append: '.meme',
                 status: '.scroller-status',
                 history: false,
-                checkLastPage: true
+                checkLastPage: true,
+                scrollThreshold:400
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
         })
