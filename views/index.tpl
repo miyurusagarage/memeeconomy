@@ -44,6 +44,7 @@
         <div class="navbar-translate">
             <a class="navbar-brand" href="/" rel="tooltip" href="/" data-pjax="#pjax-container"
                  data-placement="bottom" target="_blank">
+                <img src="static/img/logoxs.png" style="margin-right: 16px;width: 30px;margin-top: -7px;">
                 Meme Economy
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"
