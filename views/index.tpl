@@ -76,7 +76,7 @@
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                         <p >{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>  {{.user.CurrentCredit}}</p>
+                        <p >{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>  <span id="user-current-credit">{{.user.CurrentCredit}}</span></p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/profile" data-pjax="#pjax-container" >

@@ -126,9 +126,10 @@
                 var imgContainer = $("#meme-img-container" + key),
                     theHeartImage = $("#js-heart-image" + key),
                     likedHeart = $("#liked-heart" + key),
-                    likeValue = $("#like-value" + key);
+                    likeValue = $("#like-value" + key),
+                    worthValue = $("#worth-value" + key);
 
-                if (isAuthorized == 'true') {
+                if (isAuthorized=='true') {
                     imgContainer.on('click', function () {
                         if (!imgContainer.hasClass(likedClassName)) {
                             imgContainer.removeClass(activeClassName)
@@ -138,6 +139,10 @@
                             likeValue.text(function (i, oldVal) {
                                 return parseInt(oldVal, 10) + 1;
                             });
+                            worthValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) + 1;
+                            });
+
                             $.ajax({
                                 url: "/votememe",
                                 type: "get",
@@ -146,14 +151,13 @@
                                     memeId: key
                                 }
                             });
-                        }
-                    });
-                    likedHeart.on('click', function (event) {
-                        event.stopPropagation();
-                        if (likedHeart.hasClass(likedClassName)) {
+                        }else{
                             imgContainer.removeClass(likedClassName)
                             likedHeart.removeClass(likedClassName)
                             likeValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) - 1;
+                            });
+                            worthValue.text(function (i, oldVal) {
                                 return parseInt(oldVal, 10) - 1;
                             });
                             $.ajax({
@@ -161,6 +165,46 @@
                                 type: "get",
                                 data: {
                                     type: 'down',
+                                    memeId: key
+                                }
+                            });
+                        }
+                    });
+                    likedHeart.on('click', function (event ) {
+                        event.stopPropagation();
+                        if (likedHeart.hasClass(likedClassName)) {
+                            imgContainer.removeClass(likedClassName)
+                            likedHeart.removeClass(likedClassName)
+                            likeValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) - 1;
+                            });
+                            worthValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) - 1;
+                            });
+                            $.ajax({
+                                url: "/votememe",
+                                type: "get",
+                                data: {
+                                    type: 'down',
+                                    memeId: key
+                                }
+                            });
+                        }else{
+                            imgContainer.removeClass(activeClassName)
+                            imgContainer.addClass(activeClassName)
+                            imgContainer.addClass(likedClassName)
+                            likedHeart.addClass(likedClassName)
+                            likeValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) + 1;
+                            });
+                            worthValue.text(function (i, oldVal) {
+                                return parseInt(oldVal, 10) + 1;
+                            });
+                            $.ajax({
+                                url: "/votememe",
+                                type: "get",
+                                data: {
+                                    type: 'up',
                                     memeId: key
                                 }
                             });
@@ -226,6 +270,14 @@
 
                         $('#meme-flurbos' + key).text(function (i, oldVal) {
                             return parseInt(oldVal, 10) + parseInt($('#investAmount').val(), 10)
+                        });
+
+                        $('#user-current-credit').text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) - parseInt($('#investAmount').val(),10)
+                        })
+
+                        $("#worth-value" + key).text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) + parseInt($('#investAmount').val(),10)
                         });
                     },
                     error: function (result) {

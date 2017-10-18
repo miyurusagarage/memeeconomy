@@ -40,7 +40,7 @@
                 {{ end }}
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Worth</h5>
-                    <h3 class="sidebar-value" style="float: left">{{ $mm.TotalFame }} </h3><i
+                    <h3 class="sidebar-value" style="float: left"  id="worth-value{{$mm.Key.Name}}">{{ $mm.TotalFame }} </h3><i
                         style="margin-left: 5px;margin-top: 9px;font-size: 18px" class="fa fa-star"
                         aria-hidden="true"></i>
                 </div>

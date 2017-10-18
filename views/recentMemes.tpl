@@ -96,7 +96,8 @@
             var imgContainer = $("#meme-img-container" + key),
                 theHeartImage = $("#js-heart-image" + key),
                 likedHeart = $("#liked-heart" + key),
-                likeValue = $("#like-value" + key);
+                likeValue = $("#like-value" + key),
+                worthValue = $("#worth-value" + key);
 
             if (isAuthorized=='true') {
                 imgContainer.on('click', function () {
@@ -108,6 +109,10 @@
                         likeValue.text(function (i, oldVal) {
                             return parseInt(oldVal, 10) + 1;
                         });
+                        worthValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) + 1;
+                        });
+
                         $.ajax({
                             url: "/votememe",
                             type: "get",
@@ -120,6 +125,9 @@
                         imgContainer.removeClass(likedClassName)
                         likedHeart.removeClass(likedClassName)
                         likeValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) - 1;
+                        });
+                        worthValue.text(function (i, oldVal) {
                             return parseInt(oldVal, 10) - 1;
                         });
                         $.ajax({
@@ -140,6 +148,9 @@
                         likeValue.text(function (i, oldVal) {
                             return parseInt(oldVal, 10) - 1;
                         });
+                        worthValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) - 1;
+                        });
                         $.ajax({
                             url: "/votememe",
                             type: "get",
@@ -154,6 +165,9 @@
                         imgContainer.addClass(likedClassName)
                         likedHeart.addClass(likedClassName)
                         likeValue.text(function (i, oldVal) {
+                            return parseInt(oldVal, 10) + 1;
+                        });
+                        worthValue.text(function (i, oldVal) {
                             return parseInt(oldVal, 10) + 1;
                         });
                         $.ajax({
@@ -232,6 +246,14 @@
                     });
                     $('span[name=availableFlurbos]').text(function (i, oldVal) {
                         return parseInt(oldVal, 10) - parseInt($('#investAmount').val(),10)
+                    });
+
+                    $('#user-current-credit').text(function (i, oldVal) {
+                        return parseInt(oldVal, 10) - parseInt($('#investAmount').val(),10)
+                    })
+
+                    $("#worth-value" + key).text(function (i, oldVal) {
+                        return parseInt(oldVal, 10) + parseInt($('#investAmount').val(),10)
                     });
 
                     $('#meme-flurbos'+key).text(function (i, oldVal) {
