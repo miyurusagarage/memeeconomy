@@ -7,6 +7,7 @@ import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"time"
 	"github.com/miyurusagarage/memeeconomy/shared"
+	"cloud.google.com/go/datastore"
 )
 
 type UploadController struct {
@@ -19,6 +20,7 @@ func (c *UploadController) Get() {
 }
 
 func (c *UploadController) Post() {
+
 	title := c.GetString("title")
 	description := c.GetString("description")
 	imageid := c.GetString("imgId")
@@ -27,6 +29,7 @@ func (c *UploadController) Post() {
 		Description:description,
 		CreatedDate: time.Now(),
 		ImagePath: shared.CreateObjectPath(imageid + ".jpg"),
+		CreatedUserId: c.Data["userKey"].(*datastore.Key).Name,
 	}
 	meme.Save()
 	c.Ctx.Redirect(302, "/")

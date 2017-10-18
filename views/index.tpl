@@ -58,7 +58,7 @@
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link    " href="/leaderboard" data-pjax="#pjax-container"  >
+                    <a class="nav-link    "href="/leaderboard" data-pjax="#pjax-container"  >
                         <p >Top Users</p>
                     </a>
                 </li>
@@ -76,7 +76,7 @@
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-                         <p >{{.user.Username}}</p>
+                         <p >{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>  {{.user.CurrentCredit}}</p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/profile" data-pjax="#pjax-container" >
@@ -201,7 +201,7 @@
 <script src="static/js/iziToast.min.js"></script>
 <link rel="stylesheet" href="static/css/iziToast.min.css">
 
-
+{{ if .authorized }}
 <script type="text/javascript">
     var usernamePromptShown = {{.user.UsernamePromptShown}}
     if(!usernamePromptShown){
@@ -243,4 +243,5 @@
         $('#root').load('./parts/' + location.hash.slice(1) + '.html')
     })
 </script>
+{{end}}
 </html>

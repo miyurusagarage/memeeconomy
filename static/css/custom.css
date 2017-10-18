@@ -8,7 +8,8 @@ body {
 }
 
 .section {
-    background: #2c2c2c
+    background: #2c2c2c;
+    padding: 40px 0;
 }
 
 h1, h2 {
@@ -105,8 +106,10 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .btn-invest {
-    margin-top: 36px;
+    margin-top: 15px;
     font-size: 16px;
+    margin-bottom: 25px;
+    border: 2px rgba(243, 103, 0, 0.28) solid;
 }
 
 .help-box {
@@ -122,7 +125,6 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .meme-img {
-    border-radius: 7px;
     cursor: pointer;
     margin: auto;
     height: 100%;
@@ -140,8 +142,8 @@ textarea.form-control:focus, textarea.form-control:active {
     border: 0px white solid;
     border-radius: 100%;
     padding: 10px;
-    background: rgb(101, 94, 94);
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.87);
+    background: rgb(49, 49, 49);
+    box-shadow:0 0px 12px 1px rgb(2, 2, 2);
 }
 
 .liked {
@@ -151,7 +153,7 @@ textarea.form-control:focus, textarea.form-control:active {
     /*-webkit-text-stroke-color: #c01300;*/
 }
 
-.meme-likes{
+.meme-likes {
     margin-top: -20px;
     float: right;
     position: absolute;
@@ -160,7 +162,14 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .meme {
-    margin-bottom: 60px;
+    padding-left: 15px;
+    background: #484848;
+    padding-right: 14px;
+    border-radius: 9px;
+    margin-bottom: 67px;
+    padding-bottom: 0px;
+    border: 1px solid #292929;
+    box-shadow: 0 7px 11px 2px rgba(0, 0, 0, 0.4);
 }
 
 .memecontainer {
@@ -170,7 +179,7 @@ textarea.form-control:focus, textarea.form-control:active {
 .meme-img-container {
     position: relative;
     background-color: #0c0c0c;
-    border-radius: 9px;
+    border-radius: 9px 0 0 9px;
 
 }
 
@@ -263,16 +272,28 @@ textarea.form-control:focus, textarea.form-control:active {
 .loader-ellips__dot:nth-child(2) {
     left: 0;
 }
-.loader-ellips__dot:nth-child(3) { left: 1.5em; }
-.loader-ellips__dot:nth-child(4) { left: 3em; }
+
+.loader-ellips__dot:nth-child(3) {
+    left: 1.5em;
+}
+
+.loader-ellips__dot:nth-child(4) {
+    left: 3em;
+}
 
 @keyframes reveal {
-    from { transform: scale(0.001); }
-    to { transform: scale(1); }
+    from {
+        transform: scale(0.001);
+    }
+    to {
+        transform: scale(1);
+    }
 }
 
 @keyframes slide {
-    to { transform: translateX(1.5em) }
+    to {
+        transform: translateX(1.5em)
+    }
 }
 
 .loader-ellips__dot:nth-child(1) {
@@ -316,52 +337,57 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 @keyframes loader-wheel-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.profileStatBox{
+.profileStatBox {
     height: 279px;
     margin: 45px;
     text-align: center;
-    -webkit-border-radius:10px;
-    -moz-border-radius:10px;
-    border-radius:10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
     border: 1px solid #7b7b7b;
     background: #212121;
 }
 
-.profileStatBox h2{
+.profileStatBox h2 {
     font-size: 26px;
     color: #828282;
     margin-top: 30px;
     text-transform: uppercase;
 }
 
-.stat-icon{
+.stat-icon {
     margin-top: 4px;
     font-size: 87px;
 }
 
-.usermemes{
+.usermemes {
     margin: 20px;
     padding: 20px;
 }
 
-.social-btn-fb{
-    background-color: #4267b2  ;
+.social-btn-fb {
+    background-color: #4267b2;
     color: #fff;
     height: 15.6rem !important;
     min-width: 3.6rem !important;;
     width: 15.6rem !important;;
 }
-.social-btn-fb i.fa{
+
+.social-btn-fb i.fa {
     left: 43% !important;
     top: 45% !important;
     font-size: 6rem !important;
 }
 
-.social-btn-fb p{
+.social-btn-fb p {
     left: 10% !important;
     text-transform: uppercase;
     position: absolute;
@@ -369,32 +395,75 @@ textarea.form-control:focus, textarea.form-control:active {
     font-weight: 600;
 }
 
-.social-btn-fb:hover{
-     background-color: #fff  ;
-     color: #4267b2 !important;
- }
-
-.social-btn-fb:hover p{
+.social-btn-fb:hover {
+    background-color: #fff;
     color: #4267b2 !important;
 }
 
-.nav-link{
-    color:white;
+.social-btn-fb:hover p {
+    color: #4267b2 !important;
+}
+
+.nav-link {
+    color: white;
     border: 1px solid rgba(0, 0, 0, 0.09);
     border-radius: 7px;
     background: rgba(0, 0, 0, 0.04);
 }
-.nav-link p{
-    color:white;
+
+.nav-link p {
+    color: white;
     font-size: 12px;
 }
 
-.sidebar{
+.sidebar {
     display: block;
+    padding-top: 20px;
 }
 
 @media (max-width: 768px) {
-    .sidebar{
+    .sidebar {
         display: none;
     }
+}
+
+.fb-likes {
+    margin-top: -1px;
+    margin-right: 16px;
+    font-size: 24px;
+}
+
+.like-counter{
+    font-size: 16px;
+    margin-top: 18px;
+    margin-bottom: -5px;
+    padding-left: 34px;
+}
+
+.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active {
+    color: #489efb;
+}
+
+.btn-share{
+    height: 40px !important;
+    min-width: 2.6rem !important;;
+    width: 100% !important;;
+    background: #3a3a3a !important;;
+    border: 1px solid #585858 !important;;
+}
+
+.btn-share p{
+     margin-top: 8px;
+     margin-left: -30px;
+}
+
+.meme-title{
+    position: absolute;
+    background: rgba(25, 25, 25, 0.83);
+    z-index: 1000;
+    border-radius: 9px 0 0 0;
+}
+
+.navbar .navbar-nav .nav-link:not(.btn) {
+    text-transform: none;
 }

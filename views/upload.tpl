@@ -16,10 +16,6 @@
                 <input type="hidden" id="imgId" name="imgId" value=""/>
 
             </div>
-            <div class="form-group">
-                <textarea class="form-control" placeholder="Tell your fans a bit about this meme..." name="description"
-                          rows="5"></textarea>
-            </div>
             <div class="form-group text-center">
                 <input type="submit" class="btn btn-primary btn-round btn-lg"
                        style="display: inline-block;text-align: center" value="Post Meme">

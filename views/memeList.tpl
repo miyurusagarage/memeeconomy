@@ -6,15 +6,16 @@
 {{ range $mm  := .data }}
 
 <div class="meme" style=" ">
-    <div class="row">
-        <div class="col-md-10">
-            <h4>{{$mm.Title}}</h4>
-            <p class="meme-description" style="margin-top: -20px;">{{$mm.Description}}</p>
-            <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
-        </div>
-    </div>
 
-    <div class="row">
+
+    <div class="row" style="position: relative;">
+        <div class="meme-title col-md-10">
+            <div class="col-md-10">
+                <h4 style="    margin-top: 12px;">{{$mm.Title}}</h4>
+                <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by
+                    {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
+            </div>
+        </div>
         <div class="col-md-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"
              id="meme-img-container{{$mm.Key.Name}}">
             <p class="meme-likes">
@@ -39,23 +40,34 @@
                 {{ end }}
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Worth</h5>
-                    <h3 class="sidebar-value">{{ $mm.TotalFame }} F</h3>
+                    <h3 class="sidebar-value" style="float: left">{{ $mm.TotalFame }} </h3><i
+                        style="margin-left: 5px;margin-top: 9px;font-size: 18px" class="fa fa-star"
+                        aria-hidden="true"></i>
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Investments</h5>
-                    <h3 class="sidebar-value" id="meme-flurbos{{$mm.Key.Name}}">{{ $mm.CurrentInvestments }} F</h3>
+                    <h3 class="sidebar-value" id="meme-flurbos{{$mm.Key.Name}}" style="float: left">
+                        {{$mm.CurrentInvestments }}</h3>
+                    <p style="font-size: 22px;display: inline;margin-left: 5px;">ƒ</p>
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Likes</h5>
-                    <h3 class="sidebar-value" id="like-value{{$mm.Key.Name}}">{{ $mm.TotalLikes }}</h3>
+                    <div class="sidebar-value" style="margin-bottom: 0"><i
+                            class="fa fa-facebook-square pull-left fb-likes"></i><h4 class="like-counter">
+                        {{$mm.SocialLikes }}</h4></div>
+                    <div class="sidebar-value" style="margin-bottom: 0"><i
+                            class="fa fa-facebook-square pull-left fb-likes"></i><h4 id="like-value{{$mm.Key.Name}}"
+                                                                                     class="like-counter">
+                        {{$mm.InternalLikes }}</h4></div>
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Share</h5>
 
-                    <button class="btn btn-neutral btn-icon btn-facebook btn-round btn-lg btn-share"
+                    <button class="btn btn-neutral btn-icon btn-facebook btn-round btn-lg btn-share btn-block btn-share"
+                            style=""
                             data-id={{$mm.Key.Name}}>
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none d-xl-none">Facebook</p>
+                        <i class="fa fa-facebook-square" style="left: 30px;"></i>
+                        <p>123</p>
                     </button>
                 </div>
 
