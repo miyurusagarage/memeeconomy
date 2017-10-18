@@ -55,9 +55,8 @@
                     <div class="sidebar-value" style="margin-bottom: 0"><i
                             class="fa fa-facebook-square pull-left fb-likes"></i><h4 class="like-counter">
                         {{$mm.SocialLikes }}</h4></div>
-                    <div class="sidebar-value" style="margin-bottom: 0"><i
-                            class="fa fa-facebook-square pull-left fb-likes"></i><h4 id="like-value{{$mm.Key.Name}}"
-                                                                                     class="like-counter">
+                    <div class="sidebar-value" style="margin-bottom: 0">
+                        <img  style="float: left;width: 23px;" src="static/img/logoxs.png"></img><h4 id="like-value{{$mm.Key.Name}}" class="like-counter">
                         {{$mm.InternalLikes }}</h4></div>
                 </div>
                 <div class="sidebar-block">
