@@ -117,6 +117,11 @@ func (this *User) GetRank() (rank int, err error) {
 	return rank + 1, nil
 }
 
+func (this *User) AddOne() (rank int) {
+
+	return rank + 1
+}
+
 func (this *User) GetPostCount() (count int, err error) {
 	ctx := context.Background()
 	q := datastore.NewQuery("meme").
@@ -150,3 +155,23 @@ func GetUserFromUsername(username string) (objs *User, err error) {
 	}
 	return nil, nil
 }
+
+func GetLeaders() (objs *[]User, err error) {
+	ctx := context.Background()
+
+	q := datastore.NewQuery("user").
+		Order("-CurrentCredit")
+	q = q.Limit(100)
+
+	var users []User
+	_, er := shared.DatastoreClient.GetAll(ctx, q, &users)
+
+	if er != nil {
+		return nil, er
+	}
+
+	println(&users)
+
+	return &users, nil
+}
+

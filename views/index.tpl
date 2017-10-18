@@ -49,6 +49,11 @@
              data-nav-image="./assets/img/blurred-image-1.jpg">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link    " href="/leaderboard" data-pjax="#pjax-container"  >
+                        <p >Top Users</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link    " href="/getTopMemes" data-pjax="#pjax-container"  >
                         <p >Top Memes</p>
                     </a>
