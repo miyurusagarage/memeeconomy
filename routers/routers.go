@@ -25,4 +25,5 @@ func init() {
     beego.Router("/payoutinvestments", &controllers.PayoutInvestmentsController{})
     beego.Router("/transactions", &controllers.ProfileController{},"get:GetTransactions")
     beego.Router("/privacy-policy", &controllers.MainController{},"get:PrivacyPolicy")
+    beego.Router("/leaderboard", &controllers.LeaderboardController{})
 }
