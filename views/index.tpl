@@ -152,6 +152,9 @@
             <i class="fa fa-facebook-square"></i>
             <p class="d-lg-none d-xl-none">Facebook</p>
         </a>
+        <div>
+           <a href="/privacy-policy" target="_blank">Privacy Policy</a> | <a href="http://intellogic.lk" target="_blank">About Us</a>
+        </div>
         <div class="  ">
             &copy;
             <script>document.write(new Date().getFullYear())</script>
