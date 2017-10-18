@@ -67,7 +67,7 @@
                             style=""
                             data-id={{$mm.Key.Name}}>
                         <i class="fa fa-facebook-square" style="left: 30px;"></i>
-                        <p>123</p>
+                        <p>{{$mm.SocialShares}}</p>
                     </button>
                 </div>
 
