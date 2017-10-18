@@ -13,3 +13,7 @@ func (c *MainController) Get() {
 	c.Data["blockFetchUrl"] = "getmeme"
 	c.TplName = "recentMemes.tpl"
 }
+
+func (c *MainController) PrivacyPolicy() {
+	c.TplName = "privacy-policy.tpl"
+}
