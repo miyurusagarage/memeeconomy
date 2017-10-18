@@ -5,17 +5,20 @@
     {{ if .data}}
     <table class="col-md-12">
         <thead>
-        <th style="width: 40%;">
+        <th style="width: 30%;">
             Meme
         </th>
         <th style="width: 10%;">
             Link
         </th>
-        <th style="width: 30%;">
+        <th style="width: 20%;">
             Date
         </th>
         <th style="width: 20%;text-align: right">
             Amount
+        </th>
+        <th style="width: 20%;text-align: right">
+            Earnings
         </th>
         </thead>
 
@@ -25,6 +28,7 @@
             <td><a href="/getmemesingle?memeid={{$mm.MemeId}}">link</a></td>
             <td>{{$mm.GetCreatedTime}}</td>
             <td style="text-align: right">{{$mm.BidAmount}}</td>
+            <td style="text-align: right">{{$mm.PayoutAmount}}</td>
         </tr>
         {{end}}
 

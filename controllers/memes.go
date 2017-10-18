@@ -5,6 +5,7 @@ import (
 	"cloud.google.com/go/datastore"
 	"time"
 	"net/url"
+	"github.com/miyurusagarage/memeeconomy/services"
 )
 
 type MemesController struct {
@@ -30,8 +31,9 @@ func (c *MemesController) GetRecentBlock() {
 		return
 	}
 
-	println(offset)
+
 	memes, total, _ := models.GetRecentMemes((offset-2)*3, 3, startingTime)
+	services.UpdateMemeFbLikesAndSharesForMemes(memes)
 
 	var keys []string
 	for _, mem := range *memes {
@@ -74,8 +76,8 @@ func (c *MemesController) GetTopBlock() {
 		return
 	}
 
-	println(offset)
 	memes, total, _ := models.GetTopMemes((offset-2)*3, 3)
+	services.UpdateMemeFbLikesAndSharesForMemes(memes)
 
 	var keys []string
 	for _, mem := range *memes {
@@ -119,7 +121,6 @@ func (c *MemesController) GetUserPosts() {
 		return
 	}
 
-	println(offset)
 	var user *models.User
 	userKey := c.GetString("id")
 
@@ -130,6 +131,7 @@ func (c *MemesController) GetUserPosts() {
 	}
 
 	memes, total, _ := models.GetRecentMemesByUser(user.Key.Name, (offset-2)*3, 3)
+	services.UpdateMemeFbLikesAndSharesForMemes(memes)
 
 	var keys []string
 	for _, mem := range *memes {
@@ -193,6 +195,7 @@ func (c *MemesController) GetMemeSingle() {
 
 	var memes []models.Meme
 	memes = append(memes, *mem)
+	services.UpdateMemeFbLikesAndSharesForMemes(&memes)
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
 	c.Data["total"] = 1

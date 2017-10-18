@@ -35,7 +35,6 @@ func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 
 		user, _ := models.GetUserFromFbToken(cookie.Value)
 		if (user != nil) {
-			println("Cookie have")
 			fbUser := new(shared.FbUser)
 			err := utils.GetFbJson("https://graph.facebook.com/me?access_token="+cookie.Value, fbUser)
 			if (fbUser.Name != "") {
@@ -80,7 +79,6 @@ func (c *BaseController) Authorize() {
 				//https://developers.facebook.com/docs/facebook-login/access-tokens/debugging-and-error-handling
 			}
 		}
-		println("no cookie sending to login")
 		//send to login if there was no cookie (new guy)
 		c.Redirect("/login", 302)
 		return

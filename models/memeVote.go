@@ -118,7 +118,6 @@ func GetMemeVoteFromMemesByUser(memeIds []string, userId string) (objs *map[stri
 
 	for v := range bufferedChan {
 		if (v != nil) {
-			fmt.Println(*v)
 			voteMap[v.MemeId] = *v
 		}
 	}
@@ -152,7 +151,6 @@ func GetUsersFromUserIds(userIds []string) (objs *map[string]User, err error) {
 
 	for v := range bufferedChan {
 		if (v != nil) {
-			fmt.Println(*v)
 			voteMap[v.Key.Name] = *v
 		}
 	}

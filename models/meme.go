@@ -164,7 +164,7 @@ func GetTopMemes(offset int, pageSize int) (objs *[]Meme, total int, err error) 
 	q = datastore.NewQuery("meme")
 
 	count, er := shared.DatastoreClient.Count(ctx, q, )
-	println(count)
+
 	if er != nil {
 		return nil, 0, er
 	}
@@ -176,7 +176,6 @@ func GetRecentMemesByUser(key string ,offset int, pageSize int) (objs *[]Meme, t
 
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
-	println(pageSize)
 
 
 	q = q.Filter("CreatedUserId =", key)

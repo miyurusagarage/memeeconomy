@@ -1,6 +1,6 @@
 <div class=" " style=" ">
     <h3>Top Users</h3>
-    <p>The richest folk in the meme market.</p>
+    <p>The top 100 richest folk in the meme market.</p>
     <hr/>
     {{ if .data}}
 
