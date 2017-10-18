@@ -52,6 +52,12 @@ type LikeSummary struct {
 	Total_count int
 }
 
+type EngagementResponse struct {
+	Id int
+	Engagement Engagement
+}
+
+
 type Engagement struct {
 	Reaction_count int
 	Comment_count int

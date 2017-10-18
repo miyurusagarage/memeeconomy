@@ -6,14 +6,17 @@ import (
 	"github.com/miyurusagarage/memeeconomy/utils"
 	"github.com/astaxie/beego"
 	"sync"
+	"strconv"
 )
 
 func UpdateMemeFbLikesAndShares(meme *models.Meme) {
-	if meme.SocialFbPostLink != "" && meme.SocialUpdatedDate.Before(time.Now().Add(time.Minute * -5)) {
+	updateIntervalInMinutesConfig, _ := models.GetConfigByName("SocialUpdateIntervalInMinutes");
+	updateIntervalInMinutes, _ := strconv.Atoi(updateIntervalInMinutesConfig.Value);
+	if meme.SocialFbPostLink != ""  && meme.SocialUpdatedDate.Before(time.Now().Add(time.Minute * - time.Duration(updateIntervalInMinutes) )){
 		println("getting likes")
 		siteUrl := beego.AppConfig.String("app_url")
 		postStatResult := utils.GetFbStatsForPost(meme.SocialFbPostLink)
-		engagement := utils.GetFbEngagementForUrl(siteUrl + "getmemesingle?memeid=" + meme.Key.Name)
+		engagement := utils.GetFbEngagementForUrl(siteUrl + "getmemesingle?memeid=" + meme.Key.Name).Engagement
 		meme.SocialLikes = postStatResult.Likes.Summary.Total_count + engagement.Reaction_count
 		meme.SocialShares = postStatResult.Shares.Count + engagement.Share_count
 		meme.SocialUpdatedDate = time.Now()
