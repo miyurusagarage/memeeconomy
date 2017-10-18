@@ -462,8 +462,15 @@ textarea.form-control:focus, textarea.form-control:active {
     background: rgba(25, 25, 25, 0.83);
     z-index: 1000;
     border-radius: 9px 0 0 0;
+    opacity:0;
+    transition: .25s;
 }
 
 .navbar .navbar-nav .nav-link:not(.btn) {
     text-transform: none;
+}
+
+.meme div:hover .meme-title{
+    opacity:1;
+    transition: .5s;
 }
