@@ -51,3 +51,10 @@ type PostShares struct {
 type LikeSummary struct {
 	Total_count int
 }
+
+type Engagement struct {
+	Reaction_count int
+	Comment_count int
+	Share_count int
+	Comment_plugin_count int
+}

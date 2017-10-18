@@ -64,3 +64,16 @@ func GetFbStatsForPost(postId string) (*shared.PostStatsResult){
 	}
 	return nil
 }
+
+func GetFbEngagementForUrl(urlPath string) (*shared.Engagement){
+	fbGraphUrl := beego.AppConfig.String("facebook_graph_url")
+	fbPageAccessToken := beego.AppConfig.String("facebook_page_access_token")
+
+	response, err := simpleHttpClient.Get(fbGraphUrl + "/?id=" + url.PathEscape(urlPath) + "&fields=engagement" + "&access_token=" + fbPageAccessToken)
+	if err == nil{
+		engagement := new(shared.Engagement)
+		json.NewDecoder(response.Body).Decode(engagement)
+		return engagement
+	}
+	return nil
+}
