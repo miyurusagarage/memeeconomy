@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/miyurusagarage/memeeconomy/models"
 	"time"
+	"math"
 )
 
 type PayoutInvestmentsController struct {
@@ -31,6 +32,12 @@ func (c *PayoutInvestmentsController) Get() {
 }
 
 func getPayoutAmount(meme models.Meme, memeInvestment models.MemeInvestment) int{
-	variance := meme.TotalFame - memeInvestment.MomentsTotalFame - memeInvestment.BidAmount
-	return variance
+	moment :=float64(memeInvestment.MomentsTotalFame - memeInvestment.BidAmount)
+	bid := float64(memeInvestment.BidAmount)
+	total :=float64(meme.TotalFame)
+	gain := total - moment - bid
+	absTotal := math.Abs(float64(total))
+	fame := (bid / absTotal * gain) + bid
+	fame = math.Max(fame,0)
+	return int(fame)
 }
