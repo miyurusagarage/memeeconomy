@@ -14,7 +14,6 @@ type LoginController struct {
 }
 
 func (c *LoginController) Get() {
-	c.Data["FbUrl"] = shared.FbConfig.AuthCodeURL("")
 	c.TplName = "login.tpl"
 }
 

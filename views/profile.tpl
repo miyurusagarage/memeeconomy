@@ -1,7 +1,12 @@
 <div class="container" style=" ">
 
     <h2>Profile</h2>
-    <h4 style="margin-top: -20px">{{.userData.Username}}</h4>
+    <div>
+        <span>
+            <h4 id="profile-username" style="margin-top: -20px; display: inline-block;">{{.userData.Username}} </h4>
+            <a href="#" data-target="#usernamePromptModal" data-toggle="modal" style="font-size: 18px;"> <i class="fa fa-pencil"></i></a>
+        </span>
+    </div>
     <hr/>
     <div class="row">
         <div class="col-3 profileStatBox">
@@ -38,7 +43,7 @@
             <p class="infinite-scroll-error text-center">No more memes to load</p>
         </div>
         {{if .user}}
-            {{template "investModal.tpl"}}
+        {{template "investModal.tpl"}}
         {{end}}
         <script>
             $(document).ready(function () {
