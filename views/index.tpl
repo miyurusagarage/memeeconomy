@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
 
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="static/img/favicon.png" type="image/x-icon">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta http-equiv="x-pjax-version" content="v123">

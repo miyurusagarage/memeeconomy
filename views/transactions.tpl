@@ -5,19 +5,19 @@
     {{ if .data}}
     <table class="col-md-12">
         <thead>
-        <th style="width: 30%;">
+        <th  class="theader" style="width: 30%;">
             Meme
         </th>
-        <th style="width: 20%;text-align: right">
+        <th class="theader" style="width: 20%;text-align: right">
             Date
         </th>
-        <th style="width: 20%;text-align: right">
+        <th  class="theader" style="width: 20%;text-align: right">
             Amount
         </th>
-        <th style="width: 20%;text-align: right">
+        <th class="theader" style="width: 20%;text-align: right">
             Payout Date
         </th>
-        <th style="width: 20%;text-align: right">
+        <th class="theader" style="width: 20%;text-align: right">
             Earnings
         </th>
         </thead>
