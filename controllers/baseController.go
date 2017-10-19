@@ -25,6 +25,7 @@ func (c *BaseController) Prepare() {
 	t := url.QueryEscape(time.Now().Format("2006-01-02 15:04:05"))
 	c.Data["time"] = t
 	c.Data["siteUrl"] = c.Ctx.Input.Site()
+	c.Data["FbUrl"] = shared.FbConfig.AuthCodeURL("")
 	c.IsAuthorized()
 }
 

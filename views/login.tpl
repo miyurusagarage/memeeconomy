@@ -19,7 +19,7 @@
 
     </div>
     <p style="margin-top: 100px">
-        We will not use any of your information without your permission. Check out our  <a href={{.FbUrl}} class="text-default"  >
+        We will not use any of your information without your permission. Check out our  <a href="/privacy-policy" class="text-default"  >
         privacy policy
     </a>
     </p>

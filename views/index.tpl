@@ -32,7 +32,6 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-
         gtag('config', 'UA-108226507-1');
     </script>
 
@@ -78,9 +77,9 @@
                 </li>
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle  btn-light btn" id="navbarDropdownMenuLink"
+                    <a href="#" class="nav-link dropdown-toggle btn-light btn" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-expanded="false">
-                        <p>{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>
+                        <p id="navbar-username">{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>
                             <span id="user-current-credit">{{.user.CurrentCredit}}</span></p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -120,40 +119,9 @@
     </div>
 </div>
 {{if .user}}
-<div class="modal fade" id="usernamePromptModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="/setusername" method="get" id="usernameSubmitForm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Enter your Username!</h4>
-                </div>
-                <div class="modal-body">
-                    <input name="userId" value={{.user.Key.Name}} id="userId" type="hidden"/>
-                    <div class="col-sm-12">
-
-                        <div class="form-group">
-
-                            <input type="text" id="username" name="amount" placeholder="Enter your Username" required
-                                   value="{{.user.Username}}"
-                                   class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <p class="text-warning" style="display: none;" id="username-warning">That username is
-                                already taken</p>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <p></p>
-                    <button type="button" id="usernameFormBtn" class="btn btn-primary btn-simple">Save</button>
-                </div>
-
-            </div>
-        </form>
-    </div>
-</div>
+    {{template "usernamePromptModal.tpl" .user}}
+{{else}}
+    {{template "loginModal.tpl" .FbUrl}}
 {{end}}
 <footer class="footer">
 
@@ -209,17 +177,30 @@
 <script src="static/js/iziToast.min.js"></script>
 <link rel="stylesheet" href="static/css/iziToast.min.css">
 
+<script type="text/javascript">
+    window._mfq = window._mfq || [];
+    (function() {
+        var mf = document.createElement("script");
+        mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/a2caef2d-3660-4848-a652-8d7341acc19a.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+    })();
+</script>
+
 {{ if .authorized }}
 <script type="text/javascript">
-    var siteUrl =  {{.siteUrl}}
+    var siteUrl = {{.siteUrl}}
     var user = {{.user}}
+    var userId = {{.user.Key.Name}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
-    if (!usernamePromptShown) {
-        $('#usernamePromptModal').modal().show()
+    if (user) {
+        if (!usernamePromptShown) {
+            $('#usernamePromptModal').modal().show()
+        }
         $('#usernameFormBtn').on('click', function () {
             $.ajax('/setusername', {
                 data: {
-                    userId: $('#userId').val(),
+                    userId: userId,
                     username: $('#username').val()
                 }
             }).done(function () {
@@ -232,6 +213,13 @@
                     message: 'Username was updated.',
                     position: 'bottomRight',
                     transitionIn: 'bounceInLeft'
+                });
+                $('#navbar-username').text(function () {
+                    return $('#username').val()
+                });
+
+                $('#profile-username').text(function () {
+                    return $('#username').val()
                 });
             }).fail(function (data, status) {
                 if (status = 400) {

@@ -35,9 +35,11 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                 imgContainer.removeClass(likedClassName)
                 likedHeart.removeClass(likedClassName)
                 likeValue.text(function (i, oldVal) {
+                    if(oldVal < 1) return;
                     return parseInt(oldVal, 10) - 1;
                 });
                 worthValue.text(function (i, oldVal) {
+                    if(oldVal < 1) return;
                     return parseInt(oldVal, 10) - 1;
                 });
                 $.ajax({
@@ -56,9 +58,11 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                 imgContainer.removeClass(likedClassName)
                 likedHeart.removeClass(likedClassName)
                 likeValue.text(function (i, oldVal) {
+                    if(oldVal < 1) return;
                     return parseInt(oldVal, 10) - 1;
                 });
                 worthValue.text(function (i, oldVal) {
+                    if(oldVal < 1) return;
                     return parseInt(oldVal, 10) - 1;
                 });
                 $.ajax({
@@ -92,11 +96,11 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
         });
     }else{
         imgContainer.on('click', function (){
-
+            $('#loginModal').modal().toggle()
         });
 
         likedHeart.on('click', function (){
-
+            $('#loginModal').modal().toggle()
         })
     }
 
