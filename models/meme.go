@@ -85,6 +85,13 @@ func (this *Meme) CanInvest() ( bool) {
 	return !this.IsExpired
 }
 
+func (this *Meme) DaysToExpire() ( int) {
+
+	diff := this.ExpirationDate.Sub(time.Now()).Hours()
+	return int(diff/24)
+}
+
+
 func GetMemeFromId(id string) (objs *Meme, err error) {
 	ctx := context.Background()
 

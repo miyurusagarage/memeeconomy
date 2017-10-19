@@ -32,6 +32,6 @@ func (c *UploadController) Post() {
 		CreatedUserId: c.Data["userKey"].(*datastore.Key).Name,
 	}
 	meme.Save()
-	c.Ctx.Redirect(302, "/")
+	c.Ctx.Redirect(302, "/?usuccess=true")
 }
 

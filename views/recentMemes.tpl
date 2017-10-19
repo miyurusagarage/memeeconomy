@@ -214,7 +214,6 @@
         });
         {{end}}
         $("#investSubmitForm").submit(function (event) {
-
             /* stop form from submitting normally */
             event.preventDefault();
 

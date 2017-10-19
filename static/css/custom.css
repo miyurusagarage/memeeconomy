@@ -417,9 +417,7 @@ textarea.form-control:focus, textarea.form-control:active {
 
 .nav-link {
     color: white;
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 7px;
-    background: rgba(0, 0, 0, 0.04);
+
 }
 
 .nav-link p {
@@ -496,4 +494,11 @@ textarea.form-control:focus, textarea.form-control:active {
 
 #btn-submit-investment{
     margin-right: 15px;
+}
+
+.days-left{
+    float: right;
+    margin-top: 26px;
+    margin-right: 0;
+    color: #a7a7a7;
 }
