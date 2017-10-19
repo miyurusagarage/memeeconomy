@@ -10,10 +10,13 @@
 
     <div class="row" style="position: relative;">
         <div class="meme-title col-md-10">
-            <div class="col-md-10">
-                <h4 style="    margin-top: 12px;">{{$mm.Title}}</h4>
+            <div class="col-md-12">
+                <div style="float: left">
+                <h4 style="margin-top: 12px;">{{$mm.Title}}</h4>
                 <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by
                     {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
+                </div>
+                <p  class="days-left">{{$mm.DaysToExpire}} days left</p>
             </div>
         </div>
         <div class="col-md-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"

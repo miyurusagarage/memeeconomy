@@ -66,14 +66,19 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .btn-light {
-    background-color: #ebebeb !important;
-    color: #000;
+    background-color: rgb(70, 70, 70) !important;
+    color: #fff !important;
 }
 
 .btn-light:hover {
-    background-color: #ffffff !important;
-    color: #000;
+    background-color: rgb(99, 99, 99) !important;
+    color: #fff !important;
 }
+
+.btn-light p{
+    color: #e0e0e0 !important;
+}
+
 
 .has-icon i {
     float: left;
@@ -417,9 +422,7 @@ textarea.form-control:focus, textarea.form-control:active {
 
 .nav-link {
     color: white;
-    border: 1px solid rgba(0, 0, 0, 0.09);
-    border-radius: 7px;
-    background: rgba(0, 0, 0, 0.04);
+
 }
 
 .nav-link p {
@@ -497,3 +500,11 @@ textarea.form-control:focus, textarea.form-control:active {
 #btn-submit-investment{
     margin-right: 15px;
 }
+
+.days-left{
+    float: right;
+    margin-top: 26px;
+    margin-right: 0;
+    color: #a7a7a7;
+}
+

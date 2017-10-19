@@ -28,13 +28,10 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108226507-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
         function gtag() {
             dataLayer.push(arguments);
         }
-
         gtag('js', new Date());
-
         gtag('config', 'UA-108226507-1');
     </script>
 
@@ -80,7 +77,7 @@
                 </li>
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink"
+                    <a href="#" class="nav-link dropdown-toggle btn-light btn" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-expanded="false">
                         <p id="navbar-username">{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>
                             <span id="user-current-credit">{{.user.CurrentCredit}}</span></p>
@@ -248,6 +245,43 @@
     $(window).on('hashchange', function () {
         $('#root').load('./parts/' + location.hash.slice(1) + '.html')
     })
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+    $(document).ready(function () {
+        var loginstatus = getParameterByName('lsuccess');
+        if (loginstatus == 'true') {
+            iziToast.success({
+                id: 'success',
+                zindex: 9000,
+                layout: 1,
+                title: 'Yaay!',
+                message:  'Logged in successfully.',
+                position: 'bottomRight',
+                transitionIn: 'bounceInLeft',
+            });
+        }
+
+        var uploadStatus = getParameterByName('usuccess');
+        if (uploadStatus == 'true') {
+            iziToast.success({
+                id: 'success',
+                zindex: 9000,
+                layout: 1,
+                title: 'Yaay!',
+                message:  'Meme uploaded successfully.',
+                position: 'bottomRight',
+                transitionIn: 'bounceInLeft',
+            });
+        }
+    })
+
 </script>
 {{end}}
 </html>

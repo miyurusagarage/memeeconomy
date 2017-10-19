@@ -91,6 +91,6 @@ func (c *BaseController) ManageLoginCookie() {
 		expiration := time.Now().Add(365 * 24 * time.Hour) //1 year
 		tokenCookie := http.Cookie{Name: "token", Value: c.GetString("t"), Expires: expiration}
 		http.SetCookie(c.Ctx.ResponseWriter, &tokenCookie)
-		c.Redirect("/", 302)
+		c.Redirect("/?lsuccess=true", 302)
 	}
 }

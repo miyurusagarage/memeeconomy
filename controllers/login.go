@@ -48,12 +48,10 @@ func (this *LoginController) LoginFb() {
 
 	this.Redirect("/?t=" + tok.AccessToken, 302)
 	return
-
 }
 
 
 func (c *BaseController) LogOut() {
-
 		expiration := time.Now().Add(365 * 24 * time.Hour) //1 year
 		tokenCookie := http.Cookie{Name: "token", Value:"", Expires: expiration}
 		http.SetCookie(c.Ctx.ResponseWriter, &tokenCookie)

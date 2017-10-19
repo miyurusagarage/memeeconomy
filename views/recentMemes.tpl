@@ -28,7 +28,6 @@
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
         })
-
     </script>
     <script src="/static/js/meme-operations.js" type="text/javascript"></script>
 </div>

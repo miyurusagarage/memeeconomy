@@ -43,6 +43,9 @@ func (this *Meme) Save() (err error) {
 	urlId := id.String()
 	key := datastore.NameKey(this.kind(), urlId, nil)
 	ctx := context.Background()
+	memeExpirationInDaysConfig , _ := GetConfigByName("MemeExpirationInDays")
+	memeExpirationInDays , _ := strconv.Atoi(memeExpirationInDaysConfig.Value)
+	this.ExpirationDate = time.Now().Add(time.Duration(memeExpirationInDays) * (time.Hour * 24))
 	if _, err := shared.DatastoreClient.Put(ctx, key, this); err != nil {
 		fmt.Println(err)
 		return err
@@ -84,6 +87,13 @@ func (this *Meme) CanInvest() ( bool) {
 
 	return !this.IsExpired
 }
+
+func (this *Meme) DaysToExpire() ( int) {
+
+	diff := this.ExpirationDate.Sub(time.Now()).Hours()
+	return int(diff/24)
+}
+
 
 func GetMemeFromId(id string) (objs *Meme, err error) {
 	ctx := context.Background()
