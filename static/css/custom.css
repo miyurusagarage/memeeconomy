@@ -508,3 +508,13 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #a7a7a7;
 }
 
+td{
+    padding: 12px;
+}
+tr:nth-child(even) {background: transparent}
+tr:nth-child(odd) {background: #383838}
+
+.theader{
+    padding: 12px;
+    background: #525252;
+}
