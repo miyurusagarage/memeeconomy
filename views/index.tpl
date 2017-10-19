@@ -204,6 +204,8 @@
 
 {{ if .authorized }}
 <script type="text/javascript">
+    var siteUrl =  {{.siteUrl}}
+    var user = {{.user}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
     if(!usernamePromptShown){
         $('#usernamePromptModal').modal().show()
