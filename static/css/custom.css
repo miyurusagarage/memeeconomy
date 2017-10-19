@@ -66,14 +66,19 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .btn-light {
-    background-color: #ebebeb !important;
-    color: #000;
+    background-color: rgb(70, 70, 70) !important;
+    color: #fff !important;
 }
 
 .btn-light:hover {
-    background-color: #ffffff !important;
-    color: #000;
+    background-color: rgb(99, 99, 99) !important;
+    color: #fff !important;
 }
+
+.btn-light p{
+    color: #e0e0e0 !important;
+}
+
 
 .has-icon i {
     float: left;
@@ -502,3 +507,4 @@ textarea.form-control:focus, textarea.form-control:active {
     margin-right: 0;
     color: #a7a7a7;
 }
+

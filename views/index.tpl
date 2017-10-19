@@ -78,7 +78,7 @@
                 </li>
                 {{ if .authorized }}
                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle      " id="navbarDropdownMenuLink"
+                    <a href="#" class="nav-link dropdown-toggle  btn-light btn" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-expanded="false">
                         <p>{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>
                             <span id="user-current-credit">{{.user.CurrentCredit}}</span></p>
@@ -211,6 +211,8 @@
 
 {{ if .authorized }}
 <script type="text/javascript">
+    var siteUrl =  {{.siteUrl}}
+    var user = {{.user}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
     if (!usernamePromptShown) {
         $('#usernamePromptModal').modal().show()
