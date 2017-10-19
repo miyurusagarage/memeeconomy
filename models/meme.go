@@ -141,7 +141,7 @@ func GetTopMemes(offset int, pageSize int) (objs *[]Meme, total int, err error) 
 	ctx := context.Background()
 	q := datastore.NewQuery("meme")
 	q = q.Filter("IsExpired =",false)
-	q = q.Order("CurrentInvestments")
+	q = q.Order("-TotalFame")
 	q = q.Offset(offset)
 	q = q.Limit(pageSize)
 	var data []Meme

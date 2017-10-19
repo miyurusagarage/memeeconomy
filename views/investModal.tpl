@@ -20,19 +20,14 @@
                                    class="form-control">
                         </div>
                         <div class="form-group">
-
                             <p class="text-warning" style="display: none;" id="flurbowarning">Insufficient flurbos! Enter a value less than <span name="availableFlurbos">{{ .user.CurrentCredit }}</span></p>
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-simple " data-color="popover-info"
-                            data-toggle="popover" data-placement="left" title="Meme Investing"
-                            data-content="Mung beans smell like death -Creed">What's this?
-                    </button>
+                    <p></p>
                     <button type="submit" class="btn btn-primary btn-simple " id="btn-submit-investment">Submit Investment</button>
-
                 </div>
 
             </div>
