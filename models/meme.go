@@ -38,6 +38,7 @@ func (this *Meme) Save() (err error) {
 	this.CreatedDate = time.Now()
 	socialPostThreshold, _ := GetConfigByName("SocialPostThreshold")
 	this.SocialPostThreshold, _ = strconv.Atoi(socialPostThreshold.Value)
+	this.IsExpired = false
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()
@@ -221,7 +222,7 @@ func GetAllMemes( ) (objs *[]Meme, err error) {
 
 func GetToBeExpiredMemes( ) (objs *[]Meme, err error) {
 	ctx := context.Background()
-	q := datastore.NewQuery("meme").Filter("ExpirationDate <", time.Now()).Filter("IsExpired !=", true)
+	q := datastore.NewQuery("meme").Filter("ExpirationDate <", time.Now()).Filter("IsExpired =", false)
 
 	var data []Meme
 	_, er := shared.DatastoreClient.GetAll(ctx, q, &data)
