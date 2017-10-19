@@ -8,14 +8,14 @@
         <th style="width: 30%;">
             Meme
         </th>
-        <th style="width: 10%;">
-            Link
-        </th>
-        <th style="width: 20%;">
+        <th style="width: 20%;text-align: right">
             Date
         </th>
         <th style="width: 20%;text-align: right">
             Amount
+        </th>
+        <th style="width: 20%;text-align: right">
+            Payout Date
         </th>
         <th style="width: 20%;text-align: right">
             Earnings
@@ -24,10 +24,10 @@
 
         {{ range $mm := .data}}
         <tr>
-            <td>{{$mm.MemeName}}</td>
-            <td><a href="/getmemesingle?memeid={{$mm.MemeId}}">link</a></td>
-            <td>{{$mm.GetCreatedTime}}</td>
+            <td><a href="/getmemesingle?memeid={{$mm.MemeId}}">{{$mm.MemeName}}</a></td>
+            <td style="text-align: right">{{$mm.GetCreatedTime}}</td>
             <td style="text-align: right">{{$mm.BidAmount}}</td>
+            <td style="text-align: right">{{$mm.GetPayOutDate}}</td>
             <td style="text-align: right">{{$mm.PayoutAmount}}</td>
         </tr>
         {{end}}

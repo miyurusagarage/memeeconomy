@@ -57,6 +57,10 @@ func (this *MemeInvestment) GetCreatedTime() (str string) {
 	return  this.CreatedDate.Format("Jan 02 2006   03:04 PM")
 }
 
+func (this *MemeInvestment) GetPayOutDate() (str string) {
+	return  this.PayoutDate.Format("Jan 02 2006   03:04 PM")
+}
+
 func GetMemeInvestmentFromId(id string) (objs *User, err error) {
 	ctx := context.Background()
 

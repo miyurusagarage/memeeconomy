@@ -9,7 +9,7 @@ type VoteMemeController struct {
 	BaseController
 }
 
-func(c * VoteMemeController) Prepare() {
+func (c *VoteMemeController) Prepare() {
 	c.Authorize()
 }
 
@@ -19,7 +19,7 @@ func (c *VoteMemeController) Get() {
 	userKey := c.Data["userKey"].(*datastore.Key)
 	memeVote, _ := models.GetMemeVoteFromMemeByUser(memeId, userKey.Name)
 	meme, _ := models.GetMemeFromId(memeId)
-	if meme != nil && userKey != nil && memeId != ""  && !meme.IsExpired{
+	if meme != nil && userKey != nil && memeId != "" && !meme.IsExpired {
 		switch voteType {
 		case "up":
 			if memeVote == nil {
@@ -28,7 +28,7 @@ func (c *VoteMemeController) Get() {
 				memeVote.UserId = userKey.Name
 				memeVote.VoteValue = 1
 				err := memeVote.Save()
-				if err == nil{
+				if err == nil {
 					meme.InternalLikes++
 					meme.Update()
 				}
@@ -37,8 +37,10 @@ func (c *VoteMemeController) Get() {
 			if memeVote != nil {
 				err := memeVote.Delete()
 				if err == nil {
-					meme.InternalLikes--
-					meme.Update()
+					if (meme.InternalLikes > 0) {
+						meme.InternalLikes--
+						meme.Update()
+					}
 				}
 			}
 		}
@@ -46,4 +48,3 @@ func (c *VoteMemeController) Get() {
 	c.Data["json"] = &meme
 	c.ServeJSON()
 }
-

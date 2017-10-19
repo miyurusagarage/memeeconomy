@@ -485,3 +485,15 @@ textarea.form-control:focus, textarea.form-control:active {
     opacity:1;
     transition: .5s;
 }
+
+.form-control {
+    border-radius: 5px;
+}
+
+.modal-title{
+    margin-top: 3px;
+}
+
+#btn-submit-investment{
+    margin-right: 15px;
+}
