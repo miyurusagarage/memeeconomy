@@ -518,3 +518,7 @@ tr:nth-child(odd) {background: #383838}
     padding: 12px;
     background: #525252;
 }
+
+.dropdown-menu:before{
+    color: #fff;
+}
