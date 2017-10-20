@@ -19,10 +19,10 @@ func (c *ProfileController) Get() {
 
 	} else {
 		c.Authorize()
-		user = (c.Data["user"]).(*models.User)
+		user = (c.Data["userp"].( *models.User))
 	}
 
-	c.Data["userData"] = user
+	c.Data["userData"] = *user
 	c.Data["userRank"], _ = user.GetRank()
 	c.Data["userPosts"], _ = user.GetPostCount()
 	c.TplName = "profile.tpl"
