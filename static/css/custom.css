@@ -158,7 +158,7 @@ textarea.form-control:focus, textarea.form-control:active {
     border-radius: 100%;
     padding: 10px;
     background: rgb(49, 49, 49);
-    box-shadow:0 0px 12px 1px rgb(2, 2, 2);
+    box-shadow:0 0px 5px 1px rgb(2, 2, 2);
 }
 
 .liked {
@@ -174,7 +174,7 @@ textarea.form-control:focus, textarea.form-control:active {
     position: absolute;
     right: 45%;
     bottom: 12px;
-    opacity: 0;
+    opacity: 0.6;
 }
 
 .meme {

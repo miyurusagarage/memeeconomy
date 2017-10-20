@@ -6,8 +6,6 @@
 {{ range $mm  := .data }}
 
 <div class="meme" style=" ">
-
-
     <div class="row" style="position: relative;">
         <div class="meme-title col-md-10">
             <div class="col-md-12">
