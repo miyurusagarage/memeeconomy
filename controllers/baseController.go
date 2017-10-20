@@ -44,9 +44,12 @@ func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 				dbUser, _ := models.GetUserFromFbId(fbUser.Id)
 				c.Data["userKey"] = dbUser.Key
 				c.Data["username"] = dbUser.Username
-				c.Data["user"] = dbUser
+				var user1 models.User
+				user1 = *dbUser
+				c.Data["user"] = user1
 				c.Data["fbId"] = dbUser.FbId
-
+				dbUser.InitialCreditShown = true
+				dbUser.Update()
 				return true, err
 			} else {
 				c.Authorized = false

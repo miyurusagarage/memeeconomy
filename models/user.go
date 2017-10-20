@@ -19,11 +19,13 @@ type User struct {
 	CreatedDate         time.Time
 	UpdateDate          time.Time
 	UsernamePromptShown bool
+	InitialCreditShown  bool
 }
 
 func (this *User) Save() (err error) {
 	this.CreatedDate = time.Now()
 	this.CurrentCredit = 1000
+	this.InitialCreditShown = false
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()
@@ -137,7 +139,6 @@ func (this *User) GetPostCount() (count int, err error) {
 	return count, nil
 }
 
-
 func GetUserFromUsername(username string) (objs *User, err error) {
 	ctx := context.Background()
 
@@ -175,4 +176,3 @@ func GetLeaders() (objs *[]User, err error) {
 
 	return &users, nil
 }
-

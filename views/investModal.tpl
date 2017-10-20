@@ -16,7 +16,7 @@
 
                         <div class="form-group">
 
-                            <input type="number" id="investAmount" name="amount" placeholder="enter the amount" required
+                            <input type="number" id="investAmount" name="amount" placeholder="Enter the amount (e.g. 200)" required
                                    class="form-control">
                         </div>
                         <div class="form-group">

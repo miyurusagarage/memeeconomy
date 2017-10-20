@@ -191,9 +191,21 @@
 
 {{ if .authorized }}
 <script type="text/javascript">
-    
+
     var userId = {{.user.Key.Name}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
+
+    if(!user.InitialCreditShown){
+        iziToast.info({
+            id: 'info',
+            zindex: 9000,
+            layout: 1,
+            title: 'Yaay!',
+            message: 'You have been give 1000 credit.',
+            position: 'bottomRight',
+            transitionIn: 'bounceInLeft'
+        });
+    }
 
     function submitUsernameAjax(){
         $('#usernamePromptModal').modal('toggle')
