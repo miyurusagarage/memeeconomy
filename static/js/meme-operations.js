@@ -20,7 +20,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                     return parseInt(oldVal, 10) + 1;
                 });
                 worthValue.text(function (i, oldVal) {
-                    return parseInt(oldVal, 10) + 1;
+                    return parseInt(oldVal, 10) + 2;
                 });
 
                 $.ajax({
@@ -40,7 +40,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                 });
                 worthValue.text(function (i, oldVal) {
                     if(oldVal < 1) return;
-                    return parseInt(oldVal, 10) - 1;
+                    return parseInt(oldVal, 10) - 2;
                 });
                 $.ajax({
                     url: "/votememe",
@@ -63,7 +63,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                 });
                 worthValue.text(function (i, oldVal) {
                     if(oldVal < 1) return;
-                    return parseInt(oldVal, 10) - 1;
+                    return parseInt(oldVal, 10) - 2;
                 });
                 $.ajax({
                     url: "/votememe",
@@ -82,7 +82,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                     return parseInt(oldVal, 10) + 1;
                 });
                 worthValue.text(function (i, oldVal) {
-                    return parseInt(oldVal, 10) + 1;
+                    return parseInt(oldVal, 10) + 2;
                 });
                 $.ajax({
                     url: "/votememe",

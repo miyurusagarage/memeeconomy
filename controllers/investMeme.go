@@ -30,6 +30,7 @@ func (c *InvestMemeController) Get() {
 			memeInvestment.UserId = userKey.Name
 			memeInvestment.BidAmount = investmentBidAmount
 			memeInvestment.MemeName = meme.Title
+			memeInvestment.PayoutDate = meme.ExpirationDate
 
 			// Deduct From User
 			dbUser.CurrentCredit -= memeInvestment.BidAmount
