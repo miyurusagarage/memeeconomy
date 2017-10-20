@@ -71,10 +71,9 @@
                     </button>
                 </div>
 
-                {{ if and $authorized1 $mm.CanInvest }}
+                {{ if $mm.CanInvest }}
                 <button class="btn btn-default btn-block btn-lg btn-invest" style="background-color: #424242;"
-                        data-id="{{$mm.Key.Name}}"
-                        data-toggle="modal" data-target="#investModal">
+                        data-id="{{$mm.Key.Name}}">
                     Invest
                 </button>
                 {{end}}

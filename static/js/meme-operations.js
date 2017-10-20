@@ -117,6 +117,11 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
 $(document).on("click", ".btn-invest", function () {
     var memeId = $(this).data('id');
     $(".modal-body #memeId").val(memeId);
+    if(user) {
+        $("#investModal").modal().toggle();
+    }else{
+        $("#loginModal").modal().toggle();
+    }
 });
 
 $(document).on("click", ".btn-share", function () {

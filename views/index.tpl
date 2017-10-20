@@ -186,12 +186,12 @@
         document.getElementsByTagName("head")[0].appendChild(mf);
     })();
     var siteUrl = {{.siteUrl}}
+    var user = {{.user}} || ""
 </script>
 
 {{ if .authorized }}
 <script type="text/javascript">
-
-    var user = {{.user}}
+    
     var userId = {{.user.Key.Name}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
 
