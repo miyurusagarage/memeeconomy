@@ -43,7 +43,7 @@
             <p class="infinite-scroll-error text-center">No more memes to load</p>
         </div>
         {{if .user}}
-        {{template "investModal.tpl"}}
+        {{template "investModal.tpl" .user}}
         {{end}}
         <script>
             $(document).ready(function () {

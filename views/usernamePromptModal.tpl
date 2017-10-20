@@ -11,7 +11,7 @@
 
                         <div class="form-group">
 
-                            <input type="text" id="username" name="amount" placeholder="Enter your Username" required
+                            <input type="text" id="username" name="username" placeholder="Enter your Username" required
                                    value="{{.Username}}"
                                    class="form-control">
                         </div>
