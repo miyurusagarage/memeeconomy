@@ -32,9 +32,12 @@ func (c *ProfileController) GetTransactions() {
 	c.Authorize()
 	total,_:=models.GetAllTransactionsTotal(c.Data["userKey"].(*datastore.Key).Name)
 	paginator := pagination.SetPaginator(c.Ctx, 10, int64(total))
-
 	c.Data["data"] ,_= models.GetAllTransactions(c.Data["userKey"].(*datastore.Key).Name, paginator.Offset(), 10)
 	c.TplName = "transactions.tpl"
+	var user1 models.User
+	user1 =  c.Data["user"].( models.User)
+	user1.TransactionTipsShown=true
+	go user1.Update()
 }
 
 func (c *ProfileController) SetUsername() {

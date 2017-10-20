@@ -50,7 +50,7 @@ func (c *BaseController) IsAuthorized() (bool, *shared.FbError) {
 				c.Data["fbId"] = dbUser.FbId
 				dbUser.InitialCreditShown = true
 				dbUser.MemeTipsShown = true
-				dbUser.Update()
+				go dbUser.Update()
 				return true, err
 			} else {
 				c.Authorized = false

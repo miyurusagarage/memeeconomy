@@ -62,6 +62,7 @@
             {{end}}
         </div>
     </div>
+    {{if not .user.TransactionTipsShown }}
     <script>
         $(document).ready(function (e) {
             var tour = {
@@ -85,7 +86,7 @@
             // Start the tour!
             hopscotch.startTour(tour);
         })
-
     </script>
+    {{end}}
 </div>
 
