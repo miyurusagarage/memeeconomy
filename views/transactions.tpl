@@ -78,7 +78,7 @@
                         title: "Payments",
                         content: "You will receive the payment when the meme expires (2 days).",
                         target: document.getElementsByName("payout-cell")[0],
-                        placement: "right"
+                        placement: "left"
                     },
                 ]
             };

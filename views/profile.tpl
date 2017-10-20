@@ -4,7 +4,7 @@
     <div>
         <span>
             <h4 id="profile-username" style="margin-top: -20px; display: inline-block;">{{.userData.Username}} </h4>
-            <a href="#" data-target="#usernamePromptModal" data-toggle="modal" style="font-size: 18px;"> <i class="fa fa-pencil"></i></a>
+            <a href="#" data-target="#usernamePromptModal" data-toggle="modal" style="font-size: 18px;margin-left:10px"> <i class="fa fa-pencil"></i></a>
         </span>
     </div>
     <hr/>

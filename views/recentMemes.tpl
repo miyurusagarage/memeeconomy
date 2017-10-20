@@ -44,13 +44,13 @@
                                 title: "Such worth, Much Wow",
                                 content: "The worth is increased from likes, facebook shares and likes",
                                 target: $(".sidebar-block")[0],
-                                placement: "right"
+                                placement: "left"
                             },
                             {
                                 title: "Invest and Earn",
                                 content: "By investing in this meme you can gain flurbos as the meme worth increases over time.",
                                 target: $(".sidebar-block")[1],
-                                placement: "right"
+                                placement: "left"
                             }
                         ]
                     };
