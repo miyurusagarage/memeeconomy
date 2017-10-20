@@ -28,6 +28,7 @@ func (this *User) Save() (err error) {
 	this.CreatedDate = time.Now()
 	this.CurrentCredit = 1000
 	this.InitialCreditShown = false
+	this.MemeTipsShown = false
 	var id *uuid.UUID
 	id, _ = uuid.NewV4()
 	urlId := id.String()

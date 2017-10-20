@@ -27,6 +27,46 @@
                 scrollThreshold: 400
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
+
+            $('.memecontainer').on( 'append.infiniteScroll', function( event, response, path ) {
+                if(!user.MemeTipsShown){
+                    var tour = {
+                        id: "memeTips",
+                        steps: [
+                            {
+                                title: "Like Memes?",
+                                content: "Click on the image to like or dislike",
+                                target: $(".meme-likes")[0],
+                                placement: "right"
+                            },
+                            {
+                                title: "Such worth, Much Wow",
+                                content: "The worth is increased from likes, facebook shares and likes",
+                                target: $(".sidebar-block")[0],
+                                placement: "right"
+                            },
+                            {
+                                title: "Invest and Earn",
+                                content: "By investing in this meme you can gain flurbos as the meme worth increases over time.",
+                                target: $(".sidebar-block")[1],
+                                placement: "right"
+                            }
+                        ]
+                    };
+                    hopscotch.startTour(tour);
+                    $(".like-icon").one('click', function () {
+                        if(hopscotch.getCurrStepNum() == 0) {
+                            hopscotch.nextStep()
+                        }
+                    });
+                    $(".meme-img").one('click', function () {
+                        if(hopscotch.getCurrStepNum() == 0) {
+                            hopscotch.nextStep()
+                        }
+                    })
+                }
+            });
+
         })
     </script>
     <script src="/static/js/meme-operations.js" type="text/javascript"></script>

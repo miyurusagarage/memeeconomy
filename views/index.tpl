@@ -280,10 +280,12 @@
             $($('.dropdown')[0]).addClass('open')
         }, 500);
     });
+    $(document).on('pjax:success', function() {
+        hopscotch.endTour()
+    })
     if (location.hash.slice(1) != '') {
         $('#root').load('./parts/' + location.hash.slice(1) + '.html')
-    }
-    else {
+    }else {
         $('#root').load('./parts/home.html')
     }
     $(window).on('hashchange', function () {
@@ -327,22 +329,6 @@
             window.history.replaceState({}, document.title, "/");
         }
     })
-
-
-    var tour = {
-        id: "yo",
-        steps: [
-            {
-                title: "My Header",
-                content: "This is the header of my page.",
-                target: "pjax-container",
-                placement: "right"
-            }
-        ]
-    };
-
-    // Start the tour!
-    hopscotch.startTour(tour);
 
 </script>
 {{end}}
