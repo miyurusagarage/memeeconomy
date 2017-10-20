@@ -12,7 +12,7 @@
         <div class="meme-title col-md-10">
             <div class="col-md-12">
                 <div style="float: left">
-                <h4 style="margin-top: 12px;">{{$mm.Title}}</h4>
+                    <a href="/getmemesingle?memeid={{$mm.Key.Name}}"><h4 style="margin-top: 12px;">{{$mm.Title}}</h4></a>
                 <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by
                     {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
                 </div>
