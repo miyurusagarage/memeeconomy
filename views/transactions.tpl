@@ -23,12 +23,12 @@
         </thead>
 
         {{ range $mm := .data}}
-        <tr>
+        <tr name="transaction-row">
             <td><a href="/getmemesingle?memeid={{$mm.MemeId}}">{{$mm.MemeName}}</a></td>
             <td style="text-align: right">{{$mm.GetCreatedTime}}</td>
             <td style="text-align: right">{{$mm.BidAmount}}</td>
             <td style="text-align: right">{{$mm.GetPayOutDate}}</td>
-            <td style="text-align: right">{{$mm.PayoutAmount}}</td>
+            <td style="text-align: right" name="payout-cell">{{$mm.PayoutAmount}}</td>
         </tr>
         {{end}}
 
@@ -62,5 +62,30 @@
             {{end}}
         </div>
     </div>
+    <script>
+        $(document).ready(function (e) {
+            var tour = {
+                id: "yo",
+                steps: [
+                    {
+                        title: "Investments",
+                        content: "This is your first investment.",
+                        target:  document.getElementsByName("transaction-row")[0],
+                        placement: "bottom"
+                    },
+                    {
+                        title: "Payments",
+                        content: "You will receive the payment when the meme expires (2 days).",
+                        target: document.getElementsByName("payout-cell")[0],
+                        placement: "right"
+                    },
+                ]
+            };
+
+            // Start the tour!
+            hopscotch.startTour(tour);
+        })
+
+    </script>
 </div>
 
