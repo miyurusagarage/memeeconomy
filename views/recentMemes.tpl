@@ -24,7 +24,7 @@
                 status: '.scroller-status',
                 history: false,
                 checkLastPage: true,
-                scrollThreshold: 400
+                scrollThreshold: 1000
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
 
