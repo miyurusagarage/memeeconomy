@@ -582,3 +582,7 @@ tr:nth-child(odd) {background: #383838}
     margin-top: 18px;
     margin-left: 15px;
 }
+
+.alert .close{
+    color: #ffffff;
+}

@@ -1,6 +1,20 @@
 <div class="container" style=" ">
 
     <link rel="stylesheet" href="static/css/dropzone.css">
+    <div class="alert alert-warning col-md-12" role="alert" style="    background-color: rgb(252, 109, 45); margin-bottom: 50px;color: #ffffff;">
+        <div class="container">
+            <div class="alert-icon">
+                <i class="now-ui-icons travel_info"></i>
+            </div>
+            <strong>Heads up!</strong> If your meme exceeds 500 investments, we will post it to our facebook page with
+            due credits to you.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">
+                                <i class="now-ui-icons ui-1_simple-remove"></i>
+                            </span>
+            </button>
+        </div>
+    </div>
     <h2>Upload Meme</h2>
 
     <form action="/uploadimage" enctype="multipart/form-data" method="post"
@@ -16,6 +30,7 @@
                 <input type="hidden" id="imgId" name="imgId" value=""/>
 
             </div>
+
             <div class="form-group text-center" style="margin-top: 40px;">
                 <input type="submit" class="btn btn-primary btn-round btn-lg" id="submit-meme" disabled
                        style="display: inline-block;text-align: center" value="Post Meme">
@@ -27,7 +42,7 @@
 
     <script>
 
-        $.getScript('static/js/dropzone.js', function(){
+        $.getScript('static/js/dropzone.js', function () {
             onPageLoad()
         });
 
@@ -90,10 +105,10 @@
 
             $('#my-awesome-dropzone').addClass('dropzone')
             var myDropzone = new Dropzone("#my-awesome-dropzone");
-            myDropzone.on("addedfile", function(file) {
+            myDropzone.on("addedfile", function (file) {
                 $('#submit-meme').attr("disabled", true)
             });
-            myDropzone.on("success", function(file) {
+            myDropzone.on("success", function (file) {
                 $('#submit-meme').removeAttr("disabled")
             });
         }
