@@ -89,10 +89,13 @@ func (this *Meme) CanInvest() ( bool) {
 	return !this.IsExpired
 }
 
-func (this *Meme) DaysToExpire() ( int) {
-
+func (this *Meme) DaysToExpire() ( string) {
 	diff := this.ExpirationDate.Sub(time.Now()).Hours()
-	return int(diff/24)
+	expireString := strconv.Itoa(int(diff/24)) + " days left"
+	if diff < 0 {
+		expireString = "Expired"
+	}
+	return expireString
 }
 
 

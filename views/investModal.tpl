@@ -9,7 +9,7 @@
                 <div class="modal-body">
                     <input name="memeId" value="" id="memeId" type="hidden"/>
                     <div class="col-sm-12">
-                        <p>You have <strong><span name="availableFlurbos">{{ .user.CurrentCredit }}</span> Flurbos</strong></p>
+                        <p>You have <strong><span name="availableFlurbos">{{ .CurrentCredit }}</span> Flurbos</strong></p>
 
                         <p>Enter the amount of Flurbos you want to invest:</p>
 
@@ -20,14 +20,14 @@
                                    class="form-control">
                         </div>
                         <div class="form-group">
-                            <p class="text-warning" style="display: none;" id="flurbowarning">Insufficient flurbos! Enter a value less than <span name="availableFlurbos">{{ .user.CurrentCredit }}</span></p>
+                            <p class="text-warning" style="display: none;" id="flurbowarning">Insufficient flurbos! Enter a value less than <span name="availableFlurbos">{{ .CurrentCredit }}</span></p>
                         </div>
 
                     </div>
                 </div>
                 <div class="modal-footer">
                     <p></p>
-                    <button type="submit" class="btn btn-primary btn-simple " id="btn-submit-investment">Submit Investment</button>
+                    <button type="button" class="btn btn-primary btn-simple " id="btn-submit-investment">Submit Investment</button>
                 </div>
 
             </div>

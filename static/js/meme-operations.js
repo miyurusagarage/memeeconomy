@@ -128,10 +128,13 @@ $(document).on("click", ".btn-share", function () {
     });
 });
 
+$('#btn-submit-investment').on('click', function () {
+    $("#investSubmitForm").submit();
+})
 
 $('#investAmount').on('input', function (e) {
     if (user) {
-        if (parseInt(e.target.value, 10) > parseInt('{{.user.CurrentCredit }}', 10)) {
+        if (parseInt(e.target.value, 10) > parseInt(user.CurrentCredit, 10)) {
             $("#btn-submit-investment").prop("disabled", true);
             $('#flurbowarning').show()
         } else {
@@ -143,6 +146,16 @@ $('#investAmount').on('input', function (e) {
 
 $("#investSubmitForm").submit(function (event) {
     if (user) {
+        iziToast.info({
+            id: 'info',
+            zindex: 9000,
+            layout: 1,
+            timeout: 2000,
+            title: 'Hold on!',
+            message: 'Processing.',
+            position: 'bottomRight',
+            transitionIn: 'bounceInLeft'
+        });
         /* stop form from submitting normally */
         event.preventDefault();
 
@@ -159,6 +172,7 @@ $("#investSubmitForm").submit(function (event) {
                 memeId: key
             },
             success: function (result) {
+                iziToast.destroy();
                 iziToast.success({
                     id: 'error',
                     zindex: 9000,

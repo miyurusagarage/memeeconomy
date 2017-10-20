@@ -14,7 +14,7 @@
     </div>
 
     {{if .user}}
-        {{template "investModal.tpl"}}
+        {{template "investModal.tpl" .user}}
     {{end}}
     <script>
         $(document).ready(function () {

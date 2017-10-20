@@ -16,7 +16,7 @@
                 <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by
                     {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
                 </div>
-                <p  class="days-left">{{$mm.DaysToExpire}} days left</p>
+                <p  class="days-left">{{$mm.DaysToExpire}}</p>
             </div>
         </div>
         <div class="col-md-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"

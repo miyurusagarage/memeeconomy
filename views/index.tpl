@@ -193,39 +193,68 @@
     var user = {{.user}}
     var userId = {{.user.Key.Name}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
+
+    function submitUsernameAjax(){
+        $('#usernamePromptModal').modal('toggle')
+        iziToast.info({
+            id: 'info',
+            zindex: 9000,
+            layout: 1,
+            timeout: 2000,
+            title: 'Hold on!',
+            message: 'Processing.',
+            position: 'bottomRight',
+            transitionIn: 'bounceInLeft'
+        });
+        $.ajax('/setusername', {
+            data: {
+                userId: userId,
+                username: $('#username').val()
+            }
+        }).done(function () {
+            iziToast.destroy();
+            iziToast.success({
+                id: 'success',
+                zindex: 9000,
+                layout: 1,
+                title: 'Yaay!',
+                message: 'Username was updated.',
+                position: 'bottomRight',
+                transitionIn: 'bounceInLeft'
+            });
+            $('#navbar-username').text(function () {
+                return $('#username').val()
+            });
+
+            $('#profile-username').text(function () {
+                return $('#username').val()
+            });
+        }).fail(function (data, status) {
+            if (status = 400) {
+                $('#username-warning').show()
+            }
+        })
+    }
+
     if (user) {
+        $('#usernameSubmitForm').on('keyup keypress', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        $('#usernameSubmitForm').on('keyup', function(e) {
+            var keyCode = e.keyCode || e.which;
+            if (keyCode === 13) {
+                submitUsernameAjax()
+            }
+        });
         if (!usernamePromptShown) {
             $('#usernamePromptModal').modal().show()
         }
         $('#usernameFormBtn').on('click', function () {
-            $.ajax('/setusername', {
-                data: {
-                    userId: userId,
-                    username: $('#username').val()
-                }
-            }).done(function () {
-                $('#usernamePromptModal').modal('toggle')
-                iziToast.success({
-                    id: 'success',
-                    zindex: 9000,
-                    layout: 1,
-                    title: 'Yaay!',
-                    message: 'Username was updated.',
-                    position: 'bottomRight',
-                    transitionIn: 'bounceInLeft'
-                });
-                $('#navbar-username').text(function () {
-                    return $('#username').val()
-                });
-
-                $('#profile-username').text(function () {
-                    return $('#username').val()
-                });
-            }).fail(function (data, status) {
-                if (status = 400) {
-                    $('#username-warning').show()
-                }
-            })
+            submitUsernameAjax()
         });
         $('#username').on('keyup', function () {
             $('#username-warning').hide()
@@ -266,6 +295,7 @@
                 position: 'bottomRight',
                 transitionIn: 'bounceInLeft',
             });
+            window.history.replaceState({}, document.title, "/");
         }
 
         var uploadStatus = getParameterByName('usuccess');
@@ -279,6 +309,7 @@
                 position: 'bottomRight',
                 transitionIn: 'bounceInLeft',
             });
+            window.history.replaceState({}, document.title, "/");
         }
     })
 

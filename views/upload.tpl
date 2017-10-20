@@ -9,15 +9,15 @@
         <input type="hidden" id="dropzoneImageId" name="imgId" value=""/>
 
     </form>
-    <form action="/uploadmeme" enctype="multipart/form-data" method="post" class="row">
+    <form action="/uploadmeme" enctype="multipart/form-data" method="post" class="row" id="upload-form">
         <div class="col-sm-12">
             <div class="form-group">
-                <input type="text" value="" name="title" placeholder="Title" class="form-control">
+                <input type="text" value="" name="title" placeholder="Title" class="form-control" required>
                 <input type="hidden" id="imgId" name="imgId" value=""/>
 
             </div>
             <div class="form-group text-center" style="margin-top: 40px;">
-                <input type="submit" class="btn btn-primary btn-round btn-lg"
+                <input type="submit" class="btn btn-primary btn-round btn-lg" id="submit-meme" disabled
                        style="display: inline-block;text-align: center" value="Post Meme">
             </div>
         </div>
@@ -30,6 +30,19 @@
         $.getScript('static/js/dropzone.js', function(){
             onPageLoad()
         });
+
+        $('#upload-form').on('submit', function () {
+            iziToast.info({
+                id: 'info',
+                zindex: 9000,
+                layout: 1,
+                timeout: 2000,
+                title: 'Hold on!',
+                message: 'Processing.',
+                position: 'bottomRight',
+                transitionIn: 'bounceInLeft'
+            });
+        })
 
         function onPageLoad() {
             Dropzone.autoDiscover = false;
@@ -77,7 +90,12 @@
 
             $('#my-awesome-dropzone').addClass('dropzone')
             var myDropzone = new Dropzone("#my-awesome-dropzone");
-
+            myDropzone.on("addedfile", function(file) {
+                $('#submit-meme').attr("disabled", true)
+            });
+            myDropzone.on("success", function(file) {
+                $('#submit-meme').removeAttr("disabled")
+            });
         }
 
     </script>
