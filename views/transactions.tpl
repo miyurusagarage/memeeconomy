@@ -5,13 +5,13 @@
     {{ if .data}}
     <table class="col-md-12">
         <thead>
-        <th  class="theader" style="width: 30%;">
+        <th class="theader" style="width: 30%;">
             Meme
         </th>
         <th class="theader" style="width: 20%;text-align: right">
             Date
         </th>
-        <th  class="theader" style="width: 20%;text-align: right">
+        <th class="theader" style="width: 20%;text-align: right">
             Amount
         </th>
         <th class="theader" style="width: 20%;text-align: right">
@@ -34,31 +34,33 @@
 
     </table>
     {{end}}
-    <div class="row text-center">
-        {{if gt .paginator.PageNums 1}}
-        <ul class="pagination pagination-sm">
-            {{if .paginator.HasPrev}}
-            <li><a href="{{.paginator.PageLinkFirst}}">Prev</a></li>
-            <li><a href="{{.paginator.PageLinkPrev}}">&lt;</a></li>
-            {{else}}
-            <li class="disabled"><a>First</a></li>
-            <li class="disabled"><a>&lt;</a></li>
+    <div class="row ">
+        <div class="text-center" style="margin: auto;">
+            {{if gt .paginator.PageNums 1}}
+            <ul class="pagination pagination-sm">
+                {{if .paginator.HasPrev}}
+                <li><a href="{{.paginator.PageLinkFirst}}" class="page-link">Prev</a></li>
+                <li class="page-item"><a class="page-link" href="{{.paginator.PageLinkPrev}}">&lt;</a></li>
+                {{else}}
+                <li class="disabled page-item"><a class="page-link">First</a></li>
+                <li class="disabled page-item"><a class="page-link">&lt;</a></li>
+                {{end}}
+                {{range $index, $page := .paginator.Pages}}
+                <li
+                        {{if $.paginator.IsActive .}} class="active page-item" {{else}} class="page-item" {{end}}>
+                    <a class="page-link" href="{{$.paginator.PageLink $page}}">{{$page}}</a>
+                </li>
+                {{end}}
+                {{if .paginator.HasNext}}
+                <li class="page-item"><a class="page-link" href="{{.paginator.PageLinkNext}}">&gt;</a></li>
+                <li class="page-item"><a class="page-link" href="{{.paginator.PageLinkLast}}">Next</a></li>
+                {{else}}
+                <li class="page-item disabled"><a class="page-link">&gt;</a></li>
+                <li class="page-item disabled" class="page-link"><a>Last</a></li>
+                {{end}}
+            </ul>
             {{end}}
-            {{range $index, $page := .paginator.Pages}}
-            <li
-                    {{if $.paginator.IsActive .}} class="active" {{end}}>
-                <a href="{{$.paginator.PageLink $page}}">{{$page}}</a>
-            </li>
-            {{end}}
-            {{if .paginator.HasNext}}
-            <li><a href="{{.paginator.PageLinkNext}}">&gt;</a></li>
-            <li><a href="{{.paginator.PageLinkLast}}">Next</a></li>
-            {{else}}
-            <li class="disabled"><a>&gt;</a></li>
-            <li class="disabled"><a>Last</a></li>
-            {{end}}
-        </ul>
-        {{end}}
+        </div>
     </div>
 </div>
 

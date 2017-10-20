@@ -522,3 +522,25 @@ tr:nth-child(odd) {background: #383838}
 .dropdown-menu:before{
     color: #fff;
 }
+
+.page-link{
+    text-transform: none !important;
+}
+
+.pagination .page-item .page-link{
+    background: rgb(64, 64, 64);
+
+}
+
+.pagination .page-item.active>.page-link{
+    background-color: #f18923;
+
+}
+
+.pagination .page-item.disabled>.page-link{
+    border: 1px solid rgba(80, 34, 19, 0.41);
+}
+
+.pagination{
+    margin-top: 40px;
+}
