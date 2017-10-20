@@ -185,11 +185,12 @@
         mf.src = "//cdn.mouseflow.com/projects/a2caef2d-3660-4848-a652-8d7341acc19a.js";
         document.getElementsByTagName("head")[0].appendChild(mf);
     })();
+    var siteUrl = {{.siteUrl}}
 </script>
 
 {{ if .authorized }}
 <script type="text/javascript">
-    var siteUrl = {{.siteUrl}}
+
     var user = {{.user}}
     var userId = {{.user.Key.Name}}
     var usernamePromptShown = {{.user.UsernamePromptShown}}
