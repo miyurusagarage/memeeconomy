@@ -19,6 +19,7 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/hopscotch.css">
     <link href="static/css/now-ui-kit.css?v=1.1.0" rel="stylesheet"/>
     <link rel='stylesheet' href='static/css/nprogress.css'/>
     <link rel="stylesheet" href="static/css/custom.css">
@@ -169,6 +170,7 @@
 <script src='static/js/nprogress.js'></script>
 <script src='static/js/pjax-standalone.min.js'></script>
 <script src="static/js/pageloading.js"></script>
+<script src="static/js/hopscotch.min.js"></script>
 
 <!--Inf Scrolling-->
 <script src="static/js/infinite-scroll.pkgd.min.js"></script>
@@ -325,6 +327,22 @@
             window.history.replaceState({}, document.title, "/");
         }
     })
+
+
+    var tour = {
+        id: "yo",
+        steps: [
+            {
+                title: "My Header",
+                content: "This is the header of my page.",
+                target: "pjax-container",
+                placement: "right"
+            }
+        ]
+    };
+
+    // Start the tour!
+    hopscotch.startTour(tour);
 
 </script>
 {{end}}

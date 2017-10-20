@@ -11,15 +11,17 @@ import (
 )
 
 type User struct {
-	Key                 *datastore.Key `datastore:"__key__"`
-	Username            string
-	FbId                string
-	FbToken             string
-	CurrentCredit       int
-	CreatedDate         time.Time
-	UpdateDate          time.Time
-	UsernamePromptShown bool
-	InitialCreditShown  bool
+	Key                  *datastore.Key `datastore:"__key__"`
+	Username             string
+	FbId                 string
+	FbToken              string
+	CurrentCredit        int
+	CreatedDate          time.Time
+	UpdateDate           time.Time
+	UsernamePromptShown  bool
+	InitialCreditShown   bool
+	MemeTipsShown        bool
+	TransactionTipsShown bool
 }
 
 func (this *User) Save() (err error) {
