@@ -27,9 +27,10 @@
                 scrollThreshold: 1000
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
-
+            var memeTipsShown = false;
             $('.memecontainer').on( 'append.infiniteScroll', function( event, response, path ) {
-                if(!user.MemeTipsShown){
+                if(user && !user.MemeTipsShown && !memeTipsShown){
+                    memeTipsShown = true;
                     var tour = {
                         id: "memeTips",
                         steps: [

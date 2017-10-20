@@ -67,7 +67,7 @@ func (this *Meme) Update() (err error) {
 			this.SocialPostsCreated = true
 		}
 	}
-	this.TotalFame = this.SocialLikes + this.SocialShares + this.CurrentInvestments + this.InternalLikes
+	this.TotalFame = (this.SocialLikes * 2) + (this.SocialShares * 10) + this.CurrentInvestments + (this.InternalLikes * 2)
 	ctx := context.Background()
 	if _, err := shared.DatastoreClient.Put(ctx, this.Key, this); err != nil {
 		fmt.Println(err)

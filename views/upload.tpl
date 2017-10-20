@@ -1,12 +1,9 @@
 <div class="container" style=" ">
 
     <link rel="stylesheet" href="static/css/dropzone.css">
-    <div class="alert alert-warning col-md-12" role="alert" style="    background-color: rgb(252, 109, 45); margin-bottom: 50px;color: #ffffff;">
+    <div class="alert alert-warning col-md-12" role="alert" style="background-color: rgb(68, 67, 66); margin-bottom: 50px;color: #ffffff;">
         <div class="container">
-            <div class="alert-icon">
-                <i class="now-ui-icons travel_info"></i>
-            </div>
-            <strong>Heads up!</strong> If your meme exceeds 500 investments, we will post it to our facebook page with
+            <strong>Heads up!</strong> When your meme exceeds 500 investments, we will post it to our facebook page with
             due credits to you.
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">
