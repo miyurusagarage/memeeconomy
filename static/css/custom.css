@@ -559,7 +559,7 @@ tr:nth-child(odd) {
     color: #fff;
     height: 3.6rem !important;
     min-width: 3.6rem !important;
-    width: 17.6rem !important;
+    width: 160px !important;
 }
 
 .social-btn-fb-sm i.fa {
@@ -664,8 +664,9 @@ tr:nth-child(odd) {
         font-size: 15px;
         margin-bottom: 12px;
         border: 2px rgba(243, 103, 0, 0.28) solid;
-        width: 110px;
+        width: 77px;
         height: 50px;
+        padding: 0;
     }
 
     .btn-share {

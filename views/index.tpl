@@ -96,7 +96,6 @@
                 {{else}}
                 <li class="nav-item">
                     <a class="nav-link   " href="/login" data-pjax="#pjax-container">
-
                         <p>Login</p>
                     </a>
                 </li>
