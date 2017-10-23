@@ -32,24 +32,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
                     }
                 });
             } else {
-                imgContainer.removeClass(likedClassName)
-                likedHeart.removeClass(likedClassName)
-                likeValue.text(function (i, oldVal) {
-                    if(oldVal < 1) return;
-                    return parseInt(oldVal, 10) - 1;
-                });
-                worthValue.text(function (i, oldVal) {
-                    if(oldVal < 1) return;
-                    return parseInt(oldVal, 10) - 2;
-                });
-                $.ajax({
-                    url: "/votememe",
-                    type: "get",
-                    data: {
-                        type: 'down',
-                        memeId: key
-                    }
-                });
+
             }
         });
         likedHeart.on('click', function (event) {

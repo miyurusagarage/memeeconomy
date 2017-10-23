@@ -198,7 +198,7 @@
             zindex: 9000,
             layout: 1,
             title: 'Yaay!',
-            message: 'You have been give 1000 credit.',
+            message: 'You have been given 1000 credit.',
             position: 'bottomRight',
             transitionIn: 'bounceInLeft'
         });
