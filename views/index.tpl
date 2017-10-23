@@ -39,7 +39,7 @@
 
 </head>
 
-<body class="index-page">
+<body class="index-page sidebar-collapse">
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-inverse ">
     <div class="container">
@@ -49,16 +49,13 @@
                 <img src="static/img/logoxs.png" style="margin-right: 16px;width: 30px;margin-top: -7px;">
                 Meme Economy
             </a>
-            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navigation" aria-controls="navigation-index" aria-expanded="false"
-                    aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navigation"
-             data-nav-image="./assets/img/blurred-image-1.jpg">
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" >
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link    " href="/leaderboard" data-pjax="#pjax-container">
@@ -130,7 +127,6 @@
         <a class="  btn btn-neutral btn-icon btn-facebook btn-round btn-lg"
            href="https://www.facebook.com/TheMemeEconomy123/" target="_blank">
             <i class="fa fa-facebook-square"></i>
-            <p class="d-lg-none d-xl-none">Facebook</p>
         </a>
         <div>
             <a href="/privacy-policy" target="_blank">Privacy Policy</a> | <a href="http://intellogic.lk"

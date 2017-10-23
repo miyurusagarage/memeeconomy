@@ -9,17 +9,17 @@
     </div>
     <hr/>
     <div class="row">
-        <div class="col-3 profileStatBox">
+        <div class="col-md-3 col-sm-12 profileStatBox">
             <h2>Rank</h2>
             <i class="fa fa-hashtag stat-icon" aria-hidden="true"></i>
             <h4>#{{.userRank}}</h4>
         </div>
-        <div class="col-3 profileStatBox">
+        <div class="col-md-3 col-sm-12 profileStatBox">
             <h2>Posts</h2>
             <i class="fa fa-picture-o stat-icon" aria-hidden="true"></i>
             <h4>{{.userPosts}}</h4>
         </div>
-        <div class="col-3 profileStatBox">
+        <div class="col-md-3 col-sm-12 profileStatBox">
             <h2>Credit</h2>
             <i class="fa fa-money stat-icon" aria-hidden="true"></i>
             <h4>{{.userData.CurrentCredit}}</h4>

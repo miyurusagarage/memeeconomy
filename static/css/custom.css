@@ -50,14 +50,15 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #fff;
 }
 
-.btn:hover{
-    color: white;
-}
-.btn:focus{
+.btn:hover {
     color: white;
 }
 
-.btn:active{
+.btn:focus {
+    color: white;
+}
+
+.btn:active {
     color: white;
 }
 
@@ -75,10 +76,9 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #fff !important;
 }
 
-.btn-light p{
+.btn-light p {
     color: #e0e0e0 !important;
 }
-
 
 .has-icon i {
     float: left;
@@ -158,7 +158,7 @@ textarea.form-control:focus, textarea.form-control:active {
     border-radius: 100%;
     padding: 10px;
     background: rgb(49, 49, 49);
-    box-shadow:0 0px 5px 1px rgb(2, 2, 2);
+    box-shadow: 0 0px 5px 1px rgb(2, 2, 2);
 }
 
 .liked {
@@ -435,19 +435,13 @@ textarea.form-control:focus, textarea.form-control:active {
     padding-top: 20px;
 }
 
-@media (max-width: 768px) {
-    .sidebar {
-        display: none;
-    }
-}
-
 .fb-likes {
     margin-top: -1px;
     margin-right: 16px;
     font-size: 24px;
 }
 
-.like-counter{
+.like-counter {
     font-size: 16px;
     margin-top: 18px;
     margin-bottom: -5px;
@@ -458,7 +452,7 @@ textarea.form-control:focus, textarea.form-control:active {
     color: #489efb;
 }
 
-.btn-share{
+.btn-share {
     height: 40px !important;
     min-width: 2.6rem !important;;
     width: 100% !important;;
@@ -466,17 +460,17 @@ textarea.form-control:focus, textarea.form-control:active {
     border: 1px solid #585858 !important;;
 }
 
-.btn-share p{
-     margin-top: 8px;
-     margin-left: -30px;
+.btn-share p {
+    margin-top: 8px;
+    margin-left: -30px;
 }
 
-.meme-title{
+.meme-title {
     position: absolute;
     background: rgba(25, 25, 25, 0.83);
     z-index: 1000;
     border-radius: 9px 0 0 0;
-    opacity:0;
+    opacity: 0;
     transition: .25s;
 }
 
@@ -485,11 +479,12 @@ textarea.form-control:focus, textarea.form-control:active {
 }
 
 .meme div:hover .meme-title {
-    opacity:1;
+    opacity: 1;
     transition: .5s;
 }
-.meme div:hover  .meme-img-container>.meme-likes {
-    opacity:1;
+
+.meme div:hover .meme-img-container > .meme-likes {
+    opacity: 1;
     transition: .5s;
 }
 
@@ -497,63 +492,69 @@ textarea.form-control:focus, textarea.form-control:active {
     border-radius: 5px;
 }
 
-.modal-title{
+.modal-title {
     margin-top: 3px;
 }
 
-#btn-submit-investment{
+#btn-submit-investment {
     margin-right: 15px;
 }
 
-.days-left{
+.days-left {
     float: right;
     margin-top: 26px;
     margin-right: 0;
     color: #a7a7a7;
 }
 
-td{
+td {
     padding: 12px;
 }
-tr:nth-child(even) {background: transparent}
-tr:nth-child(odd) {background: #383838}
 
-.theader{
+tr:nth-child(even) {
+    background: transparent
+}
+
+tr:nth-child(odd) {
+    background: #383838
+}
+
+.theader {
     padding: 12px;
     background: #525252;
 }
 
-.dropdown-menu:before{
+.dropdown-menu:before {
     color: #fff;
 }
 
-.page-link{
+.page-link {
     text-transform: none !important;
 }
 
-.pagination .page-item .page-link{
+.pagination .page-item .page-link {
     background: rgb(64, 64, 64);
 
 }
 
-.pagination .page-item.active>.page-link{
+.pagination .page-item.active > .page-link {
     background-color: #f18923;
 
 }
 
-.pagination .page-item.disabled>.page-link{
+.pagination .page-item.disabled > .page-link {
     border: 1px solid rgba(80, 34, 19, 0.41);
 }
 
-.pagination{
+.pagination {
     margin-top: 40px;
 }
 
-.social-btn-fb-sm:hover{
+.social-btn-fb-sm:hover {
     background: #1e3856 !important;
 }
 
-.social-btn-fb-sm{
+.social-btn-fb-sm {
     background-color: #4267b2;
     color: #fff;
     height: 3.6rem !important;
@@ -561,20 +562,20 @@ tr:nth-child(odd) {background: #383838}
     width: 17.6rem !important;
 }
 
-.social-btn-fb-sm i.fa{
+.social-btn-fb-sm i.fa {
     font-size: 2rem !important;
     margin-top: 14px;
     float: left;
     margin-left: 17px;
-    position:relative !important;
-    top: 0!important;
-    left: 0!important;
-    transform: inherit!important;
-    line-height: inherit!important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: inherit !important;
+    line-height: inherit !important;
     width: 25px;
 }
 
-.social-btn-fb-sm p{
+.social-btn-fb-sm p {
     text-transform: uppercase;
     font-weight: 600;
     padding-bottom: 25px;
@@ -583,6 +584,164 @@ tr:nth-child(odd) {background: #383838}
     margin-left: 15px;
 }
 
-.alert .close{
+.alert .close {
     color: #ffffff;
+}
+
+.mobile-control-block {
+    display: inline-block;
+    padding-top: 8px;
+}
+
+.mobile-control-strip {
+    width: 100%;
+    padding-left: 14px;
+    height: 75px;
+}
+
+.mobile-control-right {
+    float: right;
+    margin-right: 10px;
+}
+
+.mobile-control-left {
+    float: left;
+    margin-left: 12px;
+}
+
+.mobile-control-caption {
+    color: #6d6d6d;
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.mobile-control-value {
+    margin-bottom: 12px;
+    margin-left: 6px;
+}
+
+.mobile-control-first {
+    margin-left: 0px;
+}
+
+@media (max-width: 768px) {
+
+
+
+}
+
+@media screen and (max-width: 991px) {
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar-collapse .navbar .navbar-toggler-bar {
+        display: block;
+        position: relative;
+        width: 22px;
+        height: 1px;
+        border-radius: 1px;
+        background: #ffffff;
+    }
+
+    .sidebar-collapse .navbar-collapse {
+        background-color: #f96332;
+    }
+
+    .sidebar-collapse .navbar-collapse:before{
+        background: #f96332;
+    }
+    
+    .dropdown-item{
+        color: #fff !important;
+    }
+
+    .btn-invest {
+        margin-top: 6px;
+        font-size: 15px;
+        margin-bottom: 12px;
+        border: 2px rgba(243, 103, 0, 0.28) solid;
+        width: 110px;
+        height: 50px;
+    }
+
+    .btn-share {
+        height: 37px !important;
+        min-width: 2.6rem !important;
+        width: 49px !important;
+        background: #3a3a3a !important;
+        border: 0 !important;
+        margin-top: 2px !important;
+        font-size: 22px !important;
+    }
+
+    .meme-img-container {
+        border-radius: 9px 9px 0 0;
+    }
+
+    .nav-link>i {
+        display: none;
+    }
+
+    .profileStatBox {
+        height: 240px;
+        margin: 11px;
+        text-align: center;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        border: 1px solid #7b7b7b;
+        background: #212121;
+    }
+
+    .stat-icon {
+        margin-top: 4px;
+        font-size: 51px;
+    }
+
+    .profileStatBox h2 {
+        font-size: 27px;
+        color: #828282;
+        margin-top: 30px;
+        text-transform: uppercase;
+    }
+
+    .usermemes{
+        margin: 0;
+        padding:0;
+    }
+
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid rgba(249, 99, 50, 0.41); }
+
+    td {
+        border: none;
+        border-bottom: 1px solid rgba(238, 238, 238, 0.09);
+        position: relative;
+        padding-left: 30%;
+        text-align: left !important;
+    }
+
+    td:before {
+        position: absolute;
+        top: 11px;
+        left: 6px;
+        width: 42%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 600;
+    }
+
 }

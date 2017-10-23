@@ -1,3 +1,27 @@
+<style>
+
+    @media screen and (max-width: 991px) {
+        td:nth-of-type(1):before {
+            content: "Meme";
+        }
+
+        td:nth-of-type(2):before {
+            content: "Date";
+        }
+
+        td:nth-of-type(3):before {
+            content: "Amount";
+        }
+
+        td:nth-of-type(4):before {
+            content: "Payout Date";
+        }
+
+        td:nth-of-type(5):before {
+            content: "Earnings";
+        }
+    }
+</style>
 <div class=" " style=" ">
     <h3>Your Transactions</h3>
     <p>This table show a list of investments made by you.</p>

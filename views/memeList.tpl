@@ -10,14 +10,16 @@
         <div class="meme-title col-md-10">
             <div class="col-md-12">
                 <div style="float: left">
-                    <a href="/getmemesingle?memeid={{$mm.Key.Name}}"><h4 style="margin-top: 12px;">{{$mm.Title}}</h4></a>
-                <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">by
-                    {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
+                    <a href="/getmemesingle?memeid={{$mm.Key.Name}}"><h4 style="margin-top: 12px;">{{$mm.Title}}</h4>
+                    </a>
+                    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">
+                        by
+                        {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
                 </div>
-                <p  class="days-left">{{$mm.DaysToExpire}}</p>
+                <p class="days-left">{{$mm.DaysToExpire}}</p>
             </div>
         </div>
-        <div class="col-md-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"
+        <div class="col-md-12 col-lg-10 col-xl-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"
              id="meme-img-container{{$mm.Key.Name}}">
             <p class="meme-likes">
                 <i class="fa fa-heart like-icon {{  index $voteMap $mm.Key.Name  }}" aria-hidden="true"
@@ -31,7 +33,7 @@
                      alt="heart" id="js-heart-image{{$mm.Key.Name}}"/>
             </div>
         </div>
-        <div class="col-md-2 col-xs-2  col-sm-2 sidebar  hidden-sm-down hidden-xs">
+        <div class="col-md-2 col-xs-2  col-sm-2 sidebar   ">
             <div class="">
                 {{ if $showRank }}
                 <div class="sidebar-block">
@@ -41,7 +43,7 @@
                 {{ end }}
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Worth</h5>
-                    <h3 class="sidebar-value" style="float: left"  id="worth-value{{$mm.Key.Name}}">{{ $mm.TotalFame }} </h3><i
+                    <h3 class="sidebar-value" style="float: left" name="worth-value{{$mm.Key.Name}}">{{ $mm.TotalFame}} </h3><i
                         style="margin-left: 5px;margin-top: 9px;font-size: 18px" class="fa fa-star"
                         aria-hidden="true"></i>
                 </div>
@@ -57,13 +59,14 @@
                             class="fa fa-facebook-square pull-left fb-likes"></i><h4 class="like-counter">
                         {{$mm.SocialLikes }}</h4></div>
                     <div class="sidebar-value" style="margin-bottom: 0">
-                        <img  style="float: left;width: 23px;" src="static/img/logoxs.png"></img><h4 id="like-value{{$mm.Key.Name}}" class="like-counter">
+                        <img style="float: left;width: 23px;" src="static/img/logoxs.png"></img><h4
+                            id="like-value{{$mm.Key.Name}}" class="like-counter">
                         {{$mm.InternalLikes }}</h4></div>
                 </div>
                 <div class="sidebar-block">
                     <h5 class="sidebar-caption">Share</h5>
 
-                    <button class="btn btn-neutral btn-icon btn-facebook btn-round btn-lg btn-share btn-block btn-share"
+                    <button class="btn btn-neutral btn-icon btn-facebook btn-round btn-share btn-block btn-share"
                             style=""
                             data-id={{$mm.Key.Name}}>
                         <i class="fa fa-facebook-square" style="left: 30px;"></i>
@@ -72,18 +75,54 @@
                 </div>
 
                 {{ if $mm.CanInvest }}
-                <button class="btn btn-default btn-block btn-lg btn-invest" style="background-color: #424242;"
+                <button class="btn btn-default btn-block btn-invest" style="background-color: #f96332;"
                         data-id="{{$mm.Key.Name}}">
                     Invest
                 </button>
                 {{end}}
 
                 {{ if and $authorized1 $mm.IsExpired }}
-                <button class="btn btn-default btn-block btn-lg btn-invest" style="background-color: #424242;" disabled>
+                <button class="btn btn-default btn-block  btn-invest" style="background-color: #424242;" disabled>
                     Invest
                 </button>
                 {{end}}
 
+            </div>
+        </div>
+
+
+        <!--mobile strip-->
+        <div class="col-xs-12 mobile-control-strip d-lg-none d-xl-none ">
+            <div class="">
+                <div class="mobile-control-block mobile-control-left mobile-control-first">
+                    <h5 class="mobile-control-caption">Worth</h5>
+                    <h3 class="mobile-control-value" style="float: left" name="worth-value{{$mm.Key.Name}}">{{ $mm.TotalFame}} </h3><i
+                        style="margin-left: 5px;margin-top: 9px;font-size: 18px" class="fa fa-star"
+                        aria-hidden="true"></i>
+                </div>
+                <div class="mobile-control-block mobile-control-left">
+                    <h5 class="mobile-control-caption">Shares</h5>
+                    <button class="btn btn-neutral btn-icon btn-facebook mobile-control-value btn-md btn-share btn-block btn-share"
+                            style=""
+                            data-id={{$mm.Key.Name}}>
+                        <i class="fa fa-facebook-square" style="left: 25px;"></i>
+                    </button>
+                </div>
+                <div class="mobile-control-block mobile-control-right" >
+                    {{ if $mm.CanInvest }}
+                    <button class="btn btn-default  btn-md btn-invest" style="background-color: #f96332;"
+                            data-id="{{$mm.Key.Name}}">
+                        Invest
+                    </button>
+                    {{end}}
+
+                    {{ if and $authorized1 $mm.IsExpired }}
+                    <button class="btn btn-default btn-md btn-invest" style="background-color: #424242;"
+                            disabled>
+                        Invest
+                    </button>
+                    {{end}}
+                </div>
             </div>
         </div>
     </div>

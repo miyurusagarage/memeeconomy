@@ -24,7 +24,9 @@
                 status: '.scroller-status',
                 history: false,
                 checkLastPage: true,
-                scrollThreshold: 1000
+                scrollThreshold: 1000,
+                prefill: false,
+                loadOnScroll: true,
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
             var memeTipsShown = false;

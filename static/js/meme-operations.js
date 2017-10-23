@@ -7,7 +7,7 @@ function attachHeartAnimations(key, isAuthorized, userKey) {
         theHeartImage = $("#js-heart-image" + key),
         likedHeart = $("#liked-heart" + key),
         likeValue = $("#like-value" + key),
-        worthValue = $("#worth-value" + key);
+        worthValue = $("[name=worth-value" + key + ']');
 
     if (isAuthorized) {
         imgContainer.on('click', function () {
@@ -195,7 +195,7 @@ $("#investSubmitForm").submit(function (event) {
                     return parseInt(oldVal, 10) - parseInt($('#investAmount').val(), 10)
                 })
 
-                $("#worth-value" + key).text(function (i, oldVal) {
+                $("[name=worth-value" + key + ']').text(function (i, oldVal) {
                     return parseInt(oldVal, 10) + parseInt($('#investAmount').val(), 10)
                 });
 
