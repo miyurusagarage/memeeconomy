@@ -174,7 +174,7 @@ textarea.form-control:focus, textarea.form-control:active {
     position: absolute;
     right: 45%;
     bottom: 12px;
-    opacity: 0.6;
+    opacity: 0;
 }
 
 .meme {
