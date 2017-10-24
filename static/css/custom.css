@@ -657,10 +657,12 @@ tr:nth-child(odd) {
     margin-top: -53px;
 }
 
-@media (max-width: 768px) {
-
-
-
+.fblike-box{
+    padding: 20px 0 20px 11px;
+    background: #e8e8e8;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    border: 1px solid #464646;
 }
 
 @media screen and (max-width: 991px) {

@@ -1,4 +1,7 @@
 <div>
+    <div class="col-md-12 fblike-box">
+        <div class="fb-like" data-href="https://www.facebook.com/TheMemeEconomy123/" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+    </div>
     <div class="memecontainer" style=" ">
         <!--data-infinite-scroll='{ "path": "/getmeme?offset={{"{{"}}#{{"}}"}}", "append": ".meme", "history": false , status: ".scroller-status"}'-->
     </div>
@@ -14,7 +17,7 @@
     </div>
 
     {{if .user}}
-        {{template "investModal.tpl" .user}}
+    {{template "investModal.tpl" .user}}
     {{end}}
     <script>
         $(document).ready(function () {
@@ -30,8 +33,8 @@
             });
             $('.memecontainer').infiniteScroll('loadNextPage')
             var memeTipsShown = false;
-            $('.memecontainer').on( 'append.infiniteScroll', function( event, response, path ) {
-                if(user && !user.MemeTipsShown && !memeTipsShown){
+            $('.memecontainer').on('append.infiniteScroll', function (event, response, path) {
+                if (user && !user.MemeTipsShown && !memeTipsShown) {
                     memeTipsShown = true;
                     var tour = {
                         id: "memeTips",
@@ -58,12 +61,12 @@
                     };
                     hopscotch.startTour(tour);
                     $(".like-icon").one('click', function () {
-                        if(hopscotch.getCurrStepNum() == 0) {
+                        if (hopscotch.getCurrStepNum() == 0) {
                             hopscotch.nextStep()
                         }
                     });
                     $(".meme-img").one('click', function () {
-                        if(hopscotch.getCurrStepNum() == 0) {
+                        if (hopscotch.getCurrStepNum() == 0) {
                             hopscotch.nextStep()
                         }
                     })

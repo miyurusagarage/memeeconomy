@@ -48,6 +48,8 @@
 </head>
 
 <body class="index-page sidebar-collapse">
+
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-inverse ">
     <div class="container">
@@ -57,13 +59,14 @@
                 <img src="static/img/logoxs.png" style="margin-right: 16px;width: 30px;margin-top: -7px;">
                 Meme Economy
             </a>
-            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+                    aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-bar bar1"></span>
                 <span class="navbar-toggler-bar bar2"></span>
                 <span class="navbar-toggler-bar bar3"></span>
             </button>
         </div>
-        <div class="collapse navbar-collapse justify-content-end" id="navigation" >
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link    " href="/leaderboard" data-pjax="#pjax-container">
@@ -85,7 +88,8 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle btn-light btn" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-expanded="false">
-                        <p id="navbar-username">{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px" aria-hidden="true"></i>
+                        <p id="navbar-username">{{.user.Username}} <i class="fa fa-money" style="margin-left: 10px"
+                                                                      aria-hidden="true"></i>
                             <span id="user-current-credit">{{.user.CurrentCredit}}</span></p>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -124,9 +128,9 @@
     </div>
 </div>
 {{if .user}}
-    {{template "usernamePromptModal.tpl" .user}}
+{{template "usernamePromptModal.tpl" .user}}
 {{else}}
-    {{template "loginModal.tpl" .FbUrl}}
+{{template "loginModal.tpl" .FbUrl}}
 {{end}}
 <footer class="footer">
 
@@ -146,7 +150,8 @@
         </div>
     </div>
 </footer>
-</body>
+
+
 
 <div id="fb-root"></div>
 
@@ -177,23 +182,41 @@
 
 <script type="text/javascript">
     window._mfq = window._mfq || [];
-    (function() {
+    (function () {
         var mf = document.createElement("script");
-        mf.type = "text/javascript"; mf.async = true;
+        mf.type = "text/javascript";
+        mf.async = true;
         mf.src = "//cdn.mouseflow.com/projects/a2caef2d-3660-4848-a652-8d7341acc19a.js";
         document.getElementsByTagName("head")[0].appendChild(mf);
     })();
-    var siteUrl = {{.siteUrl}}
-    var user = {{.user}} || ""
+    var siteUrl = {
+    {.
+        siteUrl
+    }
+    }
+    var user = {
+    {.
+        user
+    }
+    } ||
+    ""
 </script>
 
 {{ if .authorized }}
 <script type="text/javascript">
 
-    var userId = {{.user.Key.Name}}
-    var usernamePromptShown = {{.user.UsernamePromptShown}}
+    var userId = {
+    {.
+        user.Key.Name
+    }
+    }
+    var usernamePromptShown = {
+    {.
+        user.UsernamePromptShown
+    }
+    }
 
-    if(!user.InitialCreditShown){
+    if (!user.InitialCreditShown) {
         iziToast.info({
             id: 'info',
             zindex: 9000,
@@ -205,7 +228,7 @@
         });
     }
 
-    function submitUsernameAjax(){
+    function submitUsernameAjax() {
         $('#usernamePromptModal').modal('toggle')
         iziToast.info({
             id: 'info',
@@ -248,14 +271,14 @@
     }
 
     if (user) {
-        $('#usernameSubmitForm').on('keyup keypress', function(e) {
+        $('#usernameSubmitForm').on('keyup keypress', function (e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
                 e.preventDefault();
                 return false;
             }
         });
-        $('#usernameSubmitForm').on('keyup', function(e) {
+        $('#usernameSubmitForm').on('keyup', function (e) {
             var keyCode = e.keyCode || e.which;
             if (keyCode === 13) {
                 submitUsernameAjax()
@@ -276,12 +299,12 @@
             $($('.dropdown')[0]).addClass('open')
         }, 500);
     });
-    $(document).on('pjax:success', function() {
+    $(document).on('pjax:success', function () {
         hopscotch.endTour()
     })
     if (location.hash.slice(1) != '') {
         $('#root').load('./parts/' + location.hash.slice(1) + '.html')
-    }else {
+    } else {
         $('#root').load('./parts/home.html')
     }
     $(window).on('hashchange', function () {
@@ -304,7 +327,7 @@
                 zindex: 9000,
                 layout: 1,
                 title: 'Yaay!',
-                message:  'Logged in successfully.',
+                message: 'Logged in successfully.',
                 position: 'bottomRight',
                 transitionIn: 'bounceInLeft',
             });
@@ -318,7 +341,7 @@
                 zindex: 9000,
                 layout: 1,
                 title: 'Yaay!',
-                message:  'Meme uploaded successfully.',
+                message: 'Meme uploaded successfully.',
                 position: 'bottomRight',
                 transitionIn: 'bounceInLeft',
             });
