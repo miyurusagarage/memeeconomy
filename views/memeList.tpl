@@ -132,7 +132,6 @@
         </div>
         {{end}}
     </div>
-    <script src="/static/js/meme-operations.js" type="text/javascript"></script>
 
 </div>
 {{ end }}
