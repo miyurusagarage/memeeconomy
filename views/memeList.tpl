@@ -3,6 +3,7 @@
 {{ $userKey1  := .userKey }}
 {{ $voteMap  := .voteMap }}
 {{ $memeUsers  := .memeUsers }}
+{{ $isSingleMeme  := .isSingleMeme }}
 {{ range $mm  := .data }}
 
 <div class="meme" style=" ">
@@ -125,12 +126,13 @@
                 </div>
             </div>
         </div>
+        {{if $isSingleMeme}}
+        <div class="col-md-10" style="background: white">
+            <div class="fb-comments" data-colorscheme="dark" data-width="100%" data-numposts="10"></div>
+        </div>
+        {{end}}
     </div>
-    <script>
-        alert("SSS")
-        $(document).ready(function () {
-            $('[data-toggle="popover"]').popover()
-    </script>
+    <script src="/static/js/meme-operations.js" type="text/javascript"></script>
 
 </div>
 {{ end }}

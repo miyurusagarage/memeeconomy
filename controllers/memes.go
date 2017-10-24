@@ -199,6 +199,7 @@ func (c *MemesController) GetMemeSingle() {
 	c.Data["data"] = memes
 	c.Data["showRank"] = false
 	c.Data["total"] = 1
+	c.Data["isSingleMeme"] = true
 	c.TplName = "memeList.tpl"
 }
 
