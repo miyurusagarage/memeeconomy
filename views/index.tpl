@@ -160,6 +160,7 @@
 <script src="static/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="static/js/now-ui-kit.js?v=1.1.0" type="text/javascript"></script>
+<script src="static/js/meme-operations.js" type="text/javascript"></script>
 
 <!--page loading-->
 <script src='static/js/nprogress.js'></script>
