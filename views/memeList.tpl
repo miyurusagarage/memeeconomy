@@ -11,15 +11,16 @@
         <div class="meme-title col-md-10">
             <div class="col-md-12">
                 <div style="float: left">
-                    <a href="/getmemesingle?memeid={{$mm.Key.Name}}"><h4 style="margin-top: 12px;">{{$mm.Title}}</h4>
+                    <a href="/getmemesingle?memeid={{$mm.Key.Name}}" data-pjax="#pjax-container"><h4 style="margin-top: 12px;">{{$mm.Title}}</h4>
                     </a>
-                    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" style="margin-top: -20px;">
+                    <a href="/profile?id={{$mm.CreatedUserId}}"><p class="meme-description" data-pjax="#pjax-container" style="margin-top: -20px;">
                         by
                         {{(index $memeUsers $mm.CreatedUserId).Username}}</p></a>
                 </div>
                 <p class="days-left">{{$mm.DaysToExpire}}</p>
             </div>
         </div>
+
         <div class="col-md-12 col-lg-10 col-xl-10 meme-img-container col-sm-12 {{  index $voteMap $mm.Key.Name  }}"
              id="meme-img-container{{$mm.Key.Name}}">
             <p class="meme-likes">
@@ -33,7 +34,13 @@
                 <img src="data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgd2lkdGg9IjEwMHB4IiBoZWlnaHQ9Ijg3LjVweCIgdmlld0JveD0iMCAwIDEwMCA4Ny41IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMDAgODcuNSIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNNTAsMTkuMUMzNy0xMS4yLDAuMi00LjEsMCwzMS4xYy0wLjEsMTkuMyw0OC44LDUyLjEsNTAuMSw1Ni40YzEuMS00LjMsNTAuMS0zNy4zLDUwLTU2LjYNCglDOTkuOC00LjQsNjIuMy0xMCw1MCwxOS4xeiIvPg0KPC9zdmc+DQo="
                      alt="heart" id="js-heart-image{{$mm.Key.Name}}"/>
             </div>
+            <div class="image-controls-strip">
+                <a class="pull-right" style="color: white" href="/getmemesingle?memeid={{$mm.Key.Name}}" data-pjax="#pjax-container" onclick="event.stopPropagation();" >
+                    Comments
+                </a>
+            </div>
         </div>
+
         <div class="col-md-2 col-xs-2  col-sm-2 sidebar   ">
             <div class="">
                 {{ if $showRank }}
@@ -126,15 +133,18 @@
                 </div>
             </div>
         </div>
-        {{if $isSingleMeme}}
-        <div class="col-md-10" style="background: white">
-            <div class="fb-comments" data-colorscheme="dark" data-width="100%" data-numposts="10"></div>
-        </div>
-        {{end}}
+
     </div>
 
 </div>
+
 {{ end }}
+
+{{if $isSingleMeme}}
+<div class="col-md-12 comment-box" >
+    <div class="fb-comments" data-colorscheme="dark" data-width="100%" data-numposts="10"></div>
+</div>
+{{end}}
 
 
 
