@@ -137,8 +137,17 @@
     </div>
 
 </div>
-
 {{ end }}
+
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-8i+2n-gm+b5+tt"
+     data-ad-client="ca-pub-1537045865676187"
+     data-ad-slot="7980200758"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 {{if $isSingleMeme}}
 <div class="col-md-12 comment-box" >

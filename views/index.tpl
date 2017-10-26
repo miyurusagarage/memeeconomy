@@ -180,6 +180,9 @@
 <script src="static/js/iziToast.min.js"></script>
 <link rel="stylesheet" href="static/css/iziToast.min.css">
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+
 <script type="text/javascript">
     window._mfq = window._mfq || [];
     (function () {
