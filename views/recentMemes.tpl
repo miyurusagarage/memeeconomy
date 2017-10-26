@@ -23,7 +23,7 @@
         $(document).ready(function () {
             $('.memecontainer').infiniteScroll({
                 path: '/{{.blockFetchUrl}}?offset={{"{{"}}#{{"}}"}}&time={{.time}}',
-                append: '.meme',
+                append: '.memeobj',
                 status: '.scroller-status',
                 history: false,
                 checkLastPage: true,

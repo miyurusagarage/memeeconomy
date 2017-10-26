@@ -6,7 +6,7 @@
 {{ $isSingleMeme  := .isSingleMeme }}
 {{ range $mm  := .data }}
 
-<div class="meme" style=" ">
+<div class="meme memeobj" style=" ">
     <div class="row" style="position: relative;">
         <div class="meme-title col-md-10">
             <div class="col-md-12">
@@ -98,7 +98,6 @@
             </div>
         </div>
 
-
         <!--mobile strip-->
         <div class="col-xs-12 mobile-control-strip d-lg-none d-xl-none ">
             <div class="">
@@ -139,8 +138,8 @@
 </div>
 {{ end }}
 
-<ins class="adsbygoogle"
-     style="display:block"
+<ins class="adsbygoogle memeobj"
+     style="display:block;height: 300px"
      data-ad-format="fluid"
      data-ad-layout-key="-8i+2n-gm+b5+tt"
      data-ad-client="ca-pub-1537045865676187"

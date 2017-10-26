@@ -49,7 +49,7 @@
             $(document).ready(function () {
                 $('.memecontainer').infiniteScroll({
                     path: '/getmemesforuser?offset={{"{{"}}#{{"}}"}}&id={{.userData.Key.Name}}',
-                    append: '.meme',
+                    append: '.memeobj',
                     status: '.scroller-status',
                     history: false,
                     checkLastPage: true
