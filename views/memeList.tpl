@@ -138,17 +138,6 @@
 </div>
 {{ end }}
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle memeobj"
-     style="display:block;"
-     data-ad-format="fluid"
-     data-ad-layout-key="-8i+2n-gm+b5+tt"
-     data-ad-client="ca-pub-1537045865676187"
-     data-ad-slot="7980200758"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
 {{if $isSingleMeme}}
 <div class="col-md-12 comment-box" >
     <div class="fb-comments" data-colorscheme="dark" data-width="100%" data-numposts="10"></div>
