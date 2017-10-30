@@ -165,6 +165,8 @@
 
 <div id="fb-root"></div>
 
+<script async="async" type="text/javascript" src="//go.mobisla.com/notice.php?p=1449059&interactive=1&pushup=1"></script>
+
 <script src="static/js/core/popper.min.js" type="text/javascript"></script>
 <script src="static/js/core/bootstrap.min.js" type="text/javascript"></script>
 <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
